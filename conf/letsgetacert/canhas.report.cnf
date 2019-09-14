@@ -1,0 +1,7 @@
+CN=canhas.report
+PRIVKEY=/etc/nginx/certs/$CN.privkey.pem
+CERT_DIR=/etc/nginx/certs
+SUBJECT="/C=CZ/ST=Prague/L=Prague/O=canhas.report/emailAddress=$SUBJECT_EMAIL/CN=$CN"
+WEBROOT_DIR=/srv/www/$CN
+DOMAINS="site=canhas.report,*.canhas.report"
+CHALLENGE="dns-01"
