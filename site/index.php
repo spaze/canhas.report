@@ -48,7 +48,7 @@ require __DIR__ . '/functions.php';
 <h2>Meta</h2>
 <ul>
 	<li><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/reports.php">View all reports</li>
-	<li><a href="https://github.com/spaze/exploited.cz/tree/master/site/reporting">Source code at github.com/spaze/exploited.cz</a></li>
+	<li><a href="https://github.com/spaze/canhas.report/tree/master/site">Source code</a></li>
 	<li><a href="https://cs.chromium.org/chromium/src/net/network_error_logging/network_error_logging_service.cc?l=78-139">All NEL types</a></li>
 </ul>
 
