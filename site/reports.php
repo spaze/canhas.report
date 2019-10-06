@@ -2,12 +2,17 @@
 declare(strict_types = 1);
 
 header("Content-Security-Policy: default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'");
-include __DIR__ . '/config.php';
-$subdomain = require './subdomain.php';
+require __DIR__ . '/config.php';
+require __DIR__ . '/functions.php';
+
+$who = \Can\Has\who();
+if ($who === null) {
+	\Can\Has\redirectToBase();
+}
 
 $database = new PDO("mysql:host=$dbHost;dbname=$dbSchema", $dbUsername, $dbPassword);
 $statement = $database->prepare('SELECT received, types, report FROM reports WHERE who = ? ORDER BY received DESC');
-$statement->execute([$subdomain]);
+$statement->execute([$who]);
 ?>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">

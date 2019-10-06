@@ -1,12 +1,14 @@
 <?php
 declare(strict_types = 1);
 
+require __DIR__ . '/functions.php';
+
 $reportTo = [
 	'group' => 'default',
 	'max_age' => 60,
 	'endpoints' => [
 		[
-			'url' => 'https://' . $_SERVER['HTTP_HOST'] . '/report.php',
+			'url' => \Can\Has\reportUrl(),
 		]
 	],
 	'include_subdomains' => true,

@@ -1,8 +1,10 @@
 <?php
 declare(strict_types = 1);
 
+require __DIR__ . '/functions.php';
+
 $nonce = base64_encode(random_bytes(16));
-header("Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; report-uri /report.php");
+header("Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; report-uri " . \Can\Has\reportUrl());
 ?>
 
 <img src="https://www.michalspacek.cz/i/images/photos/michalspacek-trademark-400x268.jpg" width="100" height="67">

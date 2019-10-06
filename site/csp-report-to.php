@@ -1,6 +1,8 @@
 <?php
 declare(strict_types = 1);
 
+require __DIR__ . '/functions.php';
+
 $nonce = base64_encode(random_bytes(16));
 header("Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; report-to default");
 
@@ -9,7 +11,7 @@ $reportTo = [
 	'max_age' => 60,
 	'endpoints' => [
 		[
-			'url' => 'https://' . $_SERVER['HTTP_HOST'] . '/report.php',
+			'url' => \Can\Has\reportUrl(),
 		]
 	],
 	'include_subdomains' => true,
