@@ -1,9 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-header("Content-Security-Policy: default-src 'none'; img-src 'self'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'");
 require __DIR__ . '/config.php';
-require __DIR__ . '/functions.php';
+require __DIR__ . '/../shared/functions.php';
+
+$baseOrigin = \Can\Has\baseOrigin();
+header("Content-Security-Policy: default-src 'none'; script-src {$baseOrigin}; style-src {$baseOrigin}; base-uri 'none'; form-action 'none'");
 
 $who = \Can\Has\who();
 if ($who === null) {
@@ -17,9 +19,9 @@ $statement->execute([$who]);
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>(Minority) Reporting: Received reports</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="highlight.pack.js"></script>
-	<script src="highlight-init.js"></script>
+	<link rel="stylesheet" href="<?= htmlspecialchars($baseOrigin); ?>/assets/style.css">
+	<script src="<?= htmlspecialchars($baseOrigin); ?>/assets/highlight.pack.js"></script>
+	<script src="<?= htmlspecialchars($baseOrigin); ?>/assets/highlight-init.js"></script>
 </head>
 <body>
 <div id="reports">
@@ -46,5 +48,5 @@ if ($statement->rowCount() === 0) {
 	echo '<p>No reports yet</p>';
 }
 ?>
-<p><a href=".">↩ Back</a> <em>By <a href="https://www.michalspacek.cz">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">spazef0rze</a></em></p>
+<p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a> <em>By <a href="https://www.michalspacek.cz">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">spazef0rze</a></em></p>
 </div>

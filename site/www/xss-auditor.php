@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/functions.php';
+require __DIR__ . '/../shared/functions.php';
 
 header("X-XSS-Protection: 1; report=" . \Can\Has\reportUrl());
 echo $_GET['echo'] ?? $_POST['echo'] ?? '';

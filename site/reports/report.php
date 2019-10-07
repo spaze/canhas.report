@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 require __DIR__ . '/config.php';
-require __DIR__ . '/functions.php';
+require __DIR__ . '/../shared/functions.php';
 
 $database = new PDO("mysql:host=$dbHost;dbname=$dbSchema", $dbUsername, $dbPassword);
 $json = file_get_contents('php://input');

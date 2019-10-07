@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/functions.php';
+require __DIR__ . '/../shared/functions.php';
 
 header("Content-Security-Policy-Report-Only: default-src https: 'unsafe-inline'; report-to default");
 

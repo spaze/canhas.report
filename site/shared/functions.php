@@ -5,7 +5,7 @@ namespace Can\Has;
 
 function redirectToBase(): void
 {
-	header("Location: https://{$_SERVER['CAN_HAS_BASE']}/");
+	header('Location: ' . baseOrigin() . '/');
 	exit;
 }
 
@@ -28,6 +28,12 @@ function cookie(): string
 function who(): ?string
 {
 	return $_SERVER['CAN_HAS_SUBDOMAIN'] ?: null;
+}
+
+
+function baseOrigin(): string
+{
+	return "https://{$_SERVER['CAN_HAS_BASE']}";
 }
 
 
