@@ -13,7 +13,10 @@ if (\Can\Has\who() !== null) {
 <body>
 <div id="tom">
 	<h1>Can Has (Minority) Reporting?</h1>
-	<img src="minority.webp" alt="Minority Report(s)" width="444" height="202">
+	<picture>
+		<source srcset="tom/minority.webp" type="image/webp">
+		<img src="tom/minority.gif" alt="Minority Report(s)" width="444" height="202">
+	</picture>
 	<p>Michal Špaček <small>(not me⤴)</small> &mdash; <code>@spazef0rze</code> &mdash; www.michalspacek.cz</p>
 </div>
 
