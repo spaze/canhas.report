@@ -8,6 +8,11 @@ body {
 body > div {
 	padding: 2em;
 }
+img {
+	border: none;
+	max-width: 100%;
+	height: auto;
+}
 #tom {
 	color: #FFF;
 	background-color: #000;
