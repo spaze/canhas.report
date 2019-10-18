@@ -15,16 +15,11 @@ if ($who === null) {
 $database = new PDO("mysql:host=$dbHost;dbname=$dbSchema", $dbUsername, $dbPassword);
 $statement = $database->prepare('SELECT received, types, report FROM reports WHERE who = ? ORDER BY received DESC');
 $statement->execute([$who]);
+echo \Can\Has\pageHead('Received Reports', ['highlight.pack.js', 'highlight-init.js']);
 ?>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>(Minority) Reporting: Received reports</title>
-	<link rel="stylesheet" href="<?= htmlspecialchars($baseOrigin); ?>/assets/style.css">
-	<script src="<?= htmlspecialchars($baseOrigin); ?>/assets/highlight.pack.js"></script>
-	<script src="<?= htmlspecialchars($baseOrigin); ?>/assets/highlight-init.js"></script>
-</head>
 <body>
 <div id="reports">
+<?= \Can\Has\bookmarks('index'); ?>
 <h1>Received Reports</h1>
 <?php
 foreach ($statement as $row) {

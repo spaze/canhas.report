@@ -14,8 +14,11 @@ $reportTo = [
 	'include_subdomains' => true,
 ];
 header('Report-To: ' . json_encode($reportTo, JSON_UNESCAPED_SLASHES));
+echo \Can\Has\pageHead('Intervention');
 ?>
-
+<body>
+<div>
+<?= \Can\Has\bookmarks('index', 'reports'); ?>
 <button id="wheel">Add <code>onwheel</code> handler</button> and then use your mousewheel to scroll
 <script>
 document.getElementById('wheel').onclick = function() {
@@ -23,5 +26,7 @@ document.getElementById('wheel').onclick = function() {
 		event.preventDefault();
 		console.log('weee');
 	});
-}	
+}
 </script>
+</div>
+</body>

@@ -38,3 +38,19 @@ pre {
 .hljs-string {
 	color: #194;
 }
+#bookmarks {
+	top: 2em;
+	position: sticky;
+	float: right;
+}
+#bookmarks > div {
+	padding: 0;
+	margin: 0 1em;
+	background-color: #FFF;
+	opacity: 0.75;
+}
+#bookmarks > div:hover { opacity: 1; }
+#bookmarks a {
+	margin: 0.5em;
+	text-decoration: none;
+}

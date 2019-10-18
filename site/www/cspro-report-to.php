@@ -16,9 +16,14 @@ $reportTo = [
 	'include_subdomains' => true,
 ];
 header('Report-To: ' . json_encode($reportTo, JSON_UNESCAPED_SLASHES));
+echo \Can\Has\pageHead('CSP report-to');
 ?>
-
+<body>
+<div>
+<?= \Can\Has\bookmarks('index', 'reports'); ?>
 <img src="http://www.michalspacek.cz/i/images/photos/michalspacek-trademark-400x268.jpg" width="100" height="67">
 <script>
 	console.log('hi');
 </script>
+</div>
+</body>

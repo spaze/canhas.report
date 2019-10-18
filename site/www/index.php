@@ -5,11 +5,7 @@ if (\Can\Has\who() !== null) {
 	\Can\Has\redirectToBase();
 }
 ?>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Can Has (Minority) Reporting?</title>
-	<link rel="stylesheet" href="/assets/style.css">
-</head>
+<?= \Can\Has\pageHead(); ?>
 <body>
 <div id="tom">
 	<h1>Can Has (Minority) Reporting?</h1>
@@ -21,6 +17,7 @@ if (\Can\Has\who() !== null) {
 </div>
 
 <div>
+<?= \Can\Has\bookmarks('reports'); ?>
 <h2>Browser Reporting</h2>
 <p>
 	Open developer tools (F12, Ctrl/Cmd+Shift+I) and watch the Console and Network tabs.
@@ -54,7 +51,7 @@ if (\Can\Has\who() !== null) {
 
 <h2>Meta</h2>
 <ul>
-	<li><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>">View all reports</li>
+	<li><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">View all reports</a></li>
 	<li><a href="https://github.com/spaze/canhas.report/tree/master/site">Source code</a></li>
 	<li><a href="https://cs.chromium.org/chromium/src/net/network_error_logging/network_error_logging_service.cc?l=78-139">All NEL types</a></li>
 </ul>

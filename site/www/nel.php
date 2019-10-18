@@ -27,12 +27,15 @@ header('NEL: ' . json_encode($nel, JSON_UNESCAPED_SLASHES));
 switch ($_GET['do'] ?? '') {
 	case '404':
 		http_response_code(404);
-		echo 'Not Found';
+		echo \Can\Has\pageHead('NEL 404');
+		echo \Can\Has\pageBody('Not Found');
 		break;
 	case 'wronghost':
-		echo 'Go to: <a href="https://wrong.host.exploited.cz/">https://wrong.host.exploited.cz/</a>';
+		echo \Can\Has\pageHead('NEL tls.cert.name_invalid');
+		echo \Can\Has\pageBody('Go to: <a href="https://wrong.host.exploited.cz/">https://wrong.host.exploited.cz/</a>');
 		break;
 	default:
-		echo 'Can do: 404 wronghost';
+		echo \Can\Has\pageHead('NEL?');
+		echo \Can\Has\pageBody('Can do: 404 wronghost');
 		break;
 }

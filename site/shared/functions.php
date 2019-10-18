@@ -3,6 +3,36 @@ declare(strict_types = 1);
 
 namespace Can\Has;
 
+function bookmarks(string ...$links): string
+{
+	$hrefs = [];
+	foreach ($links as $link) {
+		switch ($link) {
+			case 'index':
+				$hrefs[] = '<a href="' . htmlspecialchars(baseOrigin()) . '/">↩ Back</a>';
+				break;
+			case 'reports':
+				$hrefs[] = '<a href="' . htmlspecialchars(reportOrigin()) . '/">All reports</a>';
+				break;
+		}
+	} 
+	return '<div id="bookmarks"><div>' . implode(' ', $hrefs) . '</div></div>';
+}
+
+
+function pageHead(?string $title = null, array $extraScripts = []): string
+{
+	return '<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>' . ($title ? " {$title} | " : '') . 'Can Has (Minority) Reporting?</title>
+		<link rel="stylesheet" href="' . htmlspecialchars(baseOrigin()) . '/assets/style.css">'
+		. implode("\n", array_map(function (string $script): string {
+			return '<script src="' . htmlspecialchars(baseOrigin()) . '/assets/' . htmlspecialchars($script) . '"></script>';
+		}, $extraScripts))
+		. '</head>';
+}
+
+
 function redirectToBase(): void
 {
 	header('Location: ' . baseOrigin() . '/');
