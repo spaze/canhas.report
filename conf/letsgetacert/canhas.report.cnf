@@ -3,5 +3,5 @@ PRIVKEY=/etc/nginx/certs/$CN.privkey.pem
 CERT_DIR=/etc/nginx/certs
 SUBJECT="/C=CZ/ST=Prague/L=Prague/O=canhas.report/emailAddress=$SUBJECT_EMAIL/CN=$CN"
 WEBROOT_DIR=/srv/www/$CN/site
-DOMAINS="www=canhas.report;reports=*.canhas.report"
+DOMAINS="www=canhas.report;reports=*.canhas.report;hivemind=icanhas.report,www.icanhas.report"
 CHALLENGE="dns-01"

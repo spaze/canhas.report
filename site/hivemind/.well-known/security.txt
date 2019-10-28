@@ -1,0 +1,31 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+# Email
+Contact: https://www.michalspacek.com/contact
+
+# Twitter Direct Message to @spazef0rze
+Contact: https://twitter.com/messages/compose?recipient_id=15823805
+
+# Facebook Messenger
+Contact: https://m.me/spaze
+
+Encryption: https://www.michalspacek.cz/key.asc
+Canonical: https://icanhas.report/.well-known/security.txt
+Preferred-Languages: en, cs
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCgAdFiEES9TEA68vn8yxUf5htkvdbkZKtSkFAl2zjGQACgkQtkvdbkZK
+tSlqZw/9HSx3C1in1cRSHkFUtwJ29HY2NhJsdCXsNh+hZCK2revwb4oNxzp2s8uM
+LP2lSXbsn/yKWmRouCv3oIwDkGawpC/v8hzobc9EeRPTum0JRVjKQDxtVoUegW8R
+oVOtvCT2mge9ehAoojSDIzHU2YaM3yvlvp2n3TDCc2xaeLdfPRh4y9OI5i2Hqzo1
+9K3qek9y2c0VxVVa5BqcRLt+DBonLbk66h9p+DuxXQGpEhcNQFys7JSRRox9MAEO
+6SSWsRXW+XM3CxufwmzQEQxuvk3BPrhDh3iY33vkQQraQpCWhSl+9NehTB6O299J
+lJuXaVQUAQbq4f7OBRexcub7ltsYD2iHoZPKz/5VFHLd3LHjz9wUia0vbDYaiuOS
+QHxR4G3DzBZboLzLhGgjuvDSGlxMtaptLy77Cm8/a/3pb+uQYF1WQwOxjDKVHZjd
+Q9mb6ChpTa6q6z96GidJ1zkS2MbB2w8dG5adrMDcU3/cPbaRiSb+N65k/FC9h5+i
+WDoa7cj4/cTMK0ad+1aOE5kcW97IbS3wVpHpKoEiK/KjD/1Op2jM+BlYimROZm+Q
+dz8F3tOiu3XKkpndvR9jVnbt4vivoUSSSbldPPEPkUtbAJjxLqscjTn8Hey7Q2Ee
+YerGSWciFGDQgFr4/djWvDSMMQmW6w8702Inyk6OR0hp0ES9O+s=
+=ECTu
+-----END PGP SIGNATURE-----

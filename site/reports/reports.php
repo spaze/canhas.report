@@ -21,27 +21,6 @@ echo \Can\Has\pageHead('Received Reports', ['highlight.pack.js', 'highlight-init
 <div id="reports">
 <?= \Can\Has\bookmarks('index'); ?>
 <h1>Received Reports</h1>
-<?php
-foreach ($statement as $row) {
-	$counts = array_count_values(json_decode($row['types']));
-	$types = [];
-	foreach ($counts as $type => $count) {
-		$types[] = "{$count}× $type";
-	}
-	$reports = json_decode($row['report']);
-
-	$json = urldecode(json_encode($reports, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
-	printf('<p>%s <strong>%s</strong>%s</p><pre><code class="json">%s</code></pre>',
-		htmlspecialchars($row['received']),
-		htmlspecialchars(implode(' + ', $types)),
-		(is_array($reports) ? ' via <code>Report-To</code>' : ''),
-		htmlspecialchars(preg_replace('/^(  +?)\\1(?=[^ ])/m', '$1', $json))
-	);
-}
-
-if ($statement->rowCount() === 0) {
-	echo '<p>No reports yet</p>';
-}
-?>
+<?= \Can\Has\reports($statement); ?>
 <p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a> <em>By <a href="https://www.michalspacek.cz">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">spazef0rze</a></em></p>
 </div>

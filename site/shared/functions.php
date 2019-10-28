@@ -67,15 +67,45 @@ function baseOrigin(): string
 }
 
 
-function reportOrigin(): string
+function reportOrigin(?string $who = null): string
 {
-	return 'https://' . cookie() . ".{$_SERVER['CAN_HAS_BASE']}";
+	return 'https://' . ($who ?? cookie()) . ".{$_SERVER['CAN_HAS_BASE']}";
 }
 
 
 function reportUrl(): string
 {
 	return reportOrigin() . '/report.php';
+}
+
+
+function reports(\PDOStatement $statement): string
+{
+	$result = [];
+	foreach ($statement as $row) {
+		$counts = array_count_values(json_decode($row['types']));
+		$types = [];
+		foreach ($counts as $type => $count) {
+			$types[] = "{$count}× $type";
+		}
+		$reports = json_decode($row['report']);
+
+		$json = urldecode(json_encode($reports, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+		$who = (isset($row['who']) ? htmlspecialchars($row['who']) : null);
+		$result[] = sprintf('<p>%s <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
+			htmlspecialchars($row['received']),
+			htmlspecialchars(implode(' + ', $types)),
+			(is_array($reports) ? ' via <code>Report-To</code>' : ''),
+			(isset($who) ? ' from <code><a href="' . reportOrigin($who) . '"><strong>' . $who . '</strong></a></code>' : ''),
+			htmlspecialchars(preg_replace('/^(  +?)\\1(?=[^ ])/m', '$1', $json))
+		);
+	}
+
+	if ($statement->rowCount() === 0) {
+		return '<p>No reports yet</p>';
+	} else {
+		return implode("\n", $result);
+	}
 }
 
 
