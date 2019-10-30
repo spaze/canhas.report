@@ -19,6 +19,10 @@ if (\Can\Has\who() !== null) {
 <div>
 <?= \Can\Has\bookmarks('reports'); ?>
 <h2>Browser Reporting</h2>
+<div class="not-supported hidden">
+	😥 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API#Browser_compatibility">does not support</a> Reporting API,
+	the following reports will not be sent: <abbr title="Content Security Policy">CSP</abbr> <code>report-to</code>, Crash, Deprecation, Intervention, <abbr title="Network Error Logging">NEL</abbr>
+</div>
 <p>
 	Open developer tools (F12, Ctrl/Cmd+Shift+I) and watch the Console and Network tabs.
 	Also use <a href="chrome://net-export/">chrome://net-export/</a> (copy/paste the link) to see "hidden" asynchronous reports in exported logs.

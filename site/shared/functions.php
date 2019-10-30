@@ -25,7 +25,8 @@ function pageHead(?string $title = null, array $extraScripts = []): string
 	return '<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>' . ($title ? " {$title} | " : '') . 'Can Has (Minority) Reporting?</title>
-		<link rel="stylesheet" href="' . htmlspecialchars(baseOrigin()) . '/assets/style.css">'
+		<link rel="stylesheet" href="' . htmlspecialchars(baseOrigin()) . '/assets/style.css">
+		<script src="' . htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>'
 		. implode("\n", array_map(function (string $script): string {
 			return '<script src="' . htmlspecialchars(baseOrigin()) . '/assets/' . htmlspecialchars($script) . '"></script>';
 		}, $extraScripts))

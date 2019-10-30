@@ -54,3 +54,11 @@ pre {
 	margin: 0.5em;
 	text-decoration: none;
 }
+.hidden {
+	display: none;
+}
+.not-supported {
+	color: #F00;
+	font-weight: bold;
+	margin: 2em 0;
+}
