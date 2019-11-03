@@ -12,7 +12,7 @@ function bookmarks(string ...$links): string
 				$hrefs[] = '<a href="' . htmlspecialchars(baseOrigin()) . '/">↩ Back</a>';
 				break;
 			case 'reports':
-				$hrefs[] = '<a href="' . htmlspecialchars(reportOrigin()) . '/">All reports</a>';
+				$hrefs[] = '<a href="' . htmlspecialchars(reportOrigin()) . '/">Reports</a>';
 				break;
 		}
 	} 

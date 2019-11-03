@@ -55,7 +55,7 @@ if (\Can\Has\who() !== null) {
 
 <h2>Meta</h2>
 <ul>
-	<li><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">View all reports</a></li>
+	<li><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">View your reports</a></li>
 	<li>Your reporting subdomain is <code><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/"><?= htmlspecialchars(\Can\Has\cookie()) ?></a></code></li>
 	<li><a href="https://github.com/spaze/canhas.report/tree/master/site">Source code</a></li>
 	<li><a href="https://cs.chromium.org/chromium/src/net/network_error_logging/network_error_logging_service.cc?l=78-139">All NEL types</a></li>
