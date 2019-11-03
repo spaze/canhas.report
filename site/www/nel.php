@@ -32,7 +32,7 @@ switch ($_GET['do'] ?? '') {
 		break;
 	case 'wronghost':
 		echo \Can\Has\pageHead('NEL tls.cert.name_invalid');
-		echo \Can\Has\pageBody('Go to: <a href="https://wrong.host.exploited.cz/">https://wrong.host.exploited.cz/</a>');
+		echo \Can\Has\pageBody('Go to: <a href="https://wrong.host.canhas.report/">https://wrong.host.canhas.report/</a>');
 		break;
 	default:
 		echo \Can\Has\pageHead('NEL?');
