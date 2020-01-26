@@ -58,7 +58,7 @@ function cookie(): string
 
 function who(): ?string
 {
-	return $_SERVER['CAN_HAS_SUBDOMAIN'] ?: null;
+	return $_SERVER['HAS_SUBDOMAIN'] ?: null;
 }
 
 
@@ -70,7 +70,7 @@ function baseOrigin(): string
 
 function reportOrigin(?string $who = null): string
 {
-	return 'https://' . ($who ?? cookie()) . ".{$_SERVER['CAN_HAS_BASE']}";
+	return 'https://' . ($who ?? cookie()) . ".{$_SERVER['HAS_BASE']}";
 }
 
 
