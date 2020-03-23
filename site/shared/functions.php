@@ -110,6 +110,52 @@ function reports(\PDOStatement $statement): string
 }
 
 
+function reportToHeader(): string
+{
+	$reportTo = [
+		'group' => 'default',
+		'max_age' => 60,
+		'endpoints' => [
+			[
+				'url' => reportUrl(),
+			]
+		],
+		'include_subdomains' => true,
+	];
+	return 'Report-To: ' . json_encode($reportTo, JSON_UNESCAPED_SLASHES);
+}
+
+
+function reportToHeaderHtml(string $header): string
+{
+	return '<h2>The Report-To header:</h2>
+		<pre><code class="json">' . htmlspecialchars($header) . '</code></pre>
+		<ul>
+			<li><code>group</code>: the name of the group, the same as in the CSP header in the <code>report-to</code> directive</li>
+			<li><code>max_age</code>: how long the browser should use the endpoint and report errors to it</li>
+			<li>
+				<code>endpoints</code>: reporting endpoint configuration, can specify multiple endpoints but reports will be sent to just one of them
+				<ul>
+					<li><code>url</code>: where to send reports to, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
+				</ul>
+			</li>
+		</ul>';
+}
+
+
+function willTriggerReportToHtml(): string
+{
+	return 'will trigger a report that will be sent asynchronously (violation visible in Developer Tools only in the <em>Console</em> tab but you can still
+		<a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header#chrome-71-and-newer">view the requests</a>)';
+}
+
+
+function checkReportsReportToHtml(): string
+{
+	return 'check your <a href="' . htmlspecialchars(reportOrigin()) . '/">reports</a> (can take some time before the browser sends the report)';
+}
+
+
 function randomSubdomain(): string
 {
 	// Source http://world.std.com/~reinhold/diceware.wordlist.asc

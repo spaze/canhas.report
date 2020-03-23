@@ -1,9 +1,13 @@
 p, ol, h2 {
 	margin-top: 2em;
 }
+h1 {
+	clear: both;
+	margin-top: 1.4em;
+}
 body {
 	margin: 0;
-	font: 1em/1.5 Arial, sans-serif;
+	font: 1em/1.7 Arial, sans-serif;
 }
 body > div {
 	padding: 2em;
@@ -13,6 +17,23 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+ul, ol { padding-left: 2em; }
+ul li { list-style: none; }
+ul li:before {
+	content: '\2022';
+	display: block;
+	position: relative;
+	max-height: 0;
+	left: -1em;
+	color: #CCC;
+	font-size: 1.1em;
+}
+code {
+	background-color: #EFEFEF;
+	padding: 1px 4px;
+	font-size: 1.1em;
+}
+button code { background-color: transparent; }
 #tom {
 	color: #FFF;
 	background-color: #000;
@@ -21,6 +42,11 @@ img {
 #tom small {
 	color: #777;
 }
+#tom code {
+	background-color: inherit;
+	padding: inherit;
+}
+#tom h1 { margin-top: 0; }
 #reports p {
 	margin-top: 3em;
 }
@@ -61,4 +87,17 @@ pre {
 	color: #F00;
 	font-weight: bold;
 	margin: 2em 0;
+}
+.allowed {
+	color: #008000;
+	font-weight: bold;
+}
+.blocked {
+	color: #F00;
+	font-weight: bold;
+}
+@media (max-width: 680px) {
+	body > div {
+		padding: 1em;
+	}
 }
