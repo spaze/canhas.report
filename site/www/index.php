@@ -8,7 +8,7 @@ if (\Can\Has\who() !== null) {
 <?= \Can\Has\pageHead(); ?>
 <body>
 <div id="tom">
-	<h1>Can Has (Minority) Reporting?</h1>
+	<h1><small>Minority</small> Reporting API Demos</h1>
 	<picture>
 		<source srcset="tom/minority.webp" type="image/webp">
 		<img src="tom/minority.gif" alt="Minority Report(s)" width="444" height="202">
