@@ -13,7 +13,7 @@ if (\Can\Has\who() !== null) {
 		<source srcset="tom/minority.webp" type="image/webp">
 		<img src="tom/minority.gif" alt="Minority Report(s)" width="444" height="202">
 	</picture>
-	<p>Michal Špaček <small>(not me⤴)</small> &mdash; <code>@spazef0rze</code> &mdash; www.michalspacek.cz</p>
+	<p>Michal Špaček <small>(not me⤴)</small> &mdash;&nbsp;<code>@spazef0rze</code> &mdash;&nbsp;www.michalspacek.cz</p>
 </div>
 
 <div>
