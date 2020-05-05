@@ -5,7 +5,7 @@ declare(strict_types = 1);
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1><?= $pageHeaderHtml; ?></h1>
-	<p><em><?= htmlspecialchars($pageDescription); ?></em></p>
+	<p><em><?= $pageDescriptionHtml; ?></em></p>
 	<h2><?= htmlspecialchars($cspHeaderDescription); ?>:</h2>
 	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
 	<ul>

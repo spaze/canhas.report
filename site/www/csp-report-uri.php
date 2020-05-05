@@ -6,7 +6,7 @@ require __DIR__ . '/../shared/functions.php';
 $nonce = base64_encode(random_bytes(16));
 $cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self'; report-uri " . \Can\Has\reportUrl();
 $pageHeaderHtml = 'Content Security Policy with <code>report-uri</code>';
-$pageDescription = 'Sending Content Security Policy violation reports';
+$pageDescriptionHtml = 'Sending Content Security Policy violation reports';
 $cspHeaderDescription = 'The CSP header';
 $reportDirective = 'report-uri';
 $reportDirectiveDescription = 'where to send violation reports to';
