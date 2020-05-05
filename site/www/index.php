@@ -57,6 +57,31 @@ if (\Can\Has\who() !== null) {
 	<li><a href="https://cs.chromium.org/chromium/src/net/network_error_logging/network_error_logging_service.cc?l=78-139">All NEL types</a></li>
 </ul>
 
+<h2>Specs</h2>
+<ul>
+	<li>
+		<a href="https://www.w3.org/TR/CSP3/">Content Security Policy Level 3</a> Working Draft
+		<ul>
+			<li><small><a href="https://www.w3.org/TR/CSP2/">Content Security Policy Level 2</a></small></li>
+			<li><small><a href="https://www.w3.org/TR/CSP1/">Content Security Policy 1.0</a> (discontinued)</small></li>
+		</ul>
+	</li>
+	<li>
+		<a href="https://www.w3.org/TR/reporting/">Reporting API</a> Working Draft
+		<ul>
+			<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a <em>Working Draft</em>, followed by a <em>Recommendation</em> eventually) plus these very early-stage extra specs:</small></li>
+			<li><small><a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a> Draft Community Group Report</small></li>
+			<li><small><a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a> Draft Community Group Report</small></li>
+			<li><small><a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a> Draft Community Group Report</small></li>
+		</ul>
+	</li>
+	<li><a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft</li>
+	<li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-expect-ct">Expect-CT Extension for HTTP</a> Internet-Draft</li>
+	<li><a href="https://tools.ietf.org/html/rfc8659">DNS Certification Authority Authorization (CAA) Resource Record</a> (RFC 8659)</li>
+	<li><a href="https://tools.ietf.org/html/rfc7489">Domain-based Message Authentication, Reporting, and Conformance (DMARC)</a> (RFC 7489)</li>
+	<li><a href="https://tools.ietf.org/html/rfc8460">SMTP TLS Reporting</a> (RFC 8460)</li>
+</ul>
+
 <h2>Tools</h2>
 <ul>
 	<li><a href="https://report-uri.com/">report-uri.com</a> Browser reporting aggregator ← I work on this one</li>
