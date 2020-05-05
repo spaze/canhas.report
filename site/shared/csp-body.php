@@ -6,6 +6,7 @@ declare(strict_types = 1);
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1><?= $pageHeaderHtml; ?></h1>
 	<p><em><?= $pageDescriptionHtml; ?></em></p>
+	<?= $includeReportingApiNotSupportedWarning ? \Can\Has\reportingApiNotSupportedHtml() : ''; ?>
 	<h2><?= htmlspecialchars($cspHeaderDescription); ?>:</h2>
 	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
 	<ul>

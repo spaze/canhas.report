@@ -8,6 +8,7 @@ $cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https:
 $pageHeaderHtml = 'Content Security Policy with <code>report-to</code>';
 $reportToHeader = \Can\Has\reportToHeader();
 $pageDescriptionHtml = 'Sending Content Security Policy violation reports with Reporting API using the <code>Report-To</code> header, asynchronously and out-of-band, when the browser feels like';
+$includeReportingApiNotSupportedWarning = true;
 $cspHeaderDescription = 'The CSP header';
 $reportDirective = 'report-to';
 $reportDirectiveDescription = 'name of the group where to send violation reports to';

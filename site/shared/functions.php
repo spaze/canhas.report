@@ -156,6 +156,15 @@ function checkReportsReportToHtml(): string
 }
 
 
+function reportingApiNotSupportedHtml(string $messageSuffix = 'reporting will not work'): string
+{
+	return '<div class="not-supported hidden">'
+		. '😥 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API#Browser_compatibility">does not support</a> Reporting API, '
+		. $messageSuffix
+		. '</div>';
+}
+
+
 function randomSubdomain(): string
 {
 	// Source http://world.std.com/~reinhold/diceware.wordlist.asc

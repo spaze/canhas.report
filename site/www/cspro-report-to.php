@@ -15,6 +15,7 @@ echo \Can\Has\pageHead('CSPRO report-to', ['highlight.pack.js', 'highlight-init.
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>Content Security Policy <em>Report-Only</em> with <code>report-to</code></h1>
 	<p><em>Loading images, executing JavaScript and everything else as usual but sending a Content Security Policy violation report (with <code>"disposition": "report"</code> instead of <code>"disposition": "enforce"</code>) if something would go wrong</em></p>
+	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 	<h2>The CSPRO (CSP Report-Only) header:</h2>
 	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
 	<ul>
