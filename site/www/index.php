@@ -69,10 +69,13 @@ if (\Can\Has\who() !== null) {
 	<li>
 		<a href="https://www.w3.org/TR/reporting/">Reporting API</a> Working Draft
 		<ul>
-			<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a <em>Working Draft</em>, followed by a <em>Recommendation</em> eventually) plus these very early-stage extra specs:</small></li>
-			<li><small><a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a> Draft Community Group Report</small></li>
-			<li><small><a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a> Draft Community Group Report</small></li>
-			<li><small><a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a> Draft Community Group Report</small></li>
+			<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a Working Draft, followed by a Recommendation eventually)</small></li>
+			<li><small>
+				Notable changes in the Editor's Draft are switching to structured headers (<code>Reporting-Endpoints</code> instead of <code>Report-To</code>) and moving out concrete reports into the following separate Draft Community Group Reports:
+				<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a>,
+				<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a>,
+				<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a>
+			</small></li>
 		</ul>
 	</li>
 	<li><a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft</li>
