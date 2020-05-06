@@ -21,8 +21,11 @@ if (\Can\Has\who() !== null) {
 <h2>Browser Reporting</h2>
 <?= \Can\Has\reportingApiNotSupportedHtml('the following reports will not be sent: <abbr title="Content Security Policy">CSP</abbr> <code>report-to</code>, Crash, Deprecation, Intervention, <abbr title="Network Error Logging">NEL</abbr>') ?>
 <p>
-	Open developer tools (F12, Ctrl/Cmd+Shift+I) and watch the Console and Network tabs.
-	Also use <a href="chrome://net-export/">chrome://net-export/</a> (copy/paste the link) to see "hidden" asynchronous reports in exported logs.
+	This is a live demo tool. The headers shown here are real headers sent by the server and received by your browser, with real values. You can click around and see how things behave and how reporting works.
+	These demos also work on smaller screens and mobile devices, although sometimes it might be handy to use a desktop browser to open developer tools (F12, Ctrl/Cmd+Shift+I) and watch the Console and Network tabs.
+</p>
+<p>
+	In Chrome, you can also use <a href="chrome://net-export/">chrome://net-export/</a> (copy/paste the link) to see "hidden" asynchronous reports in exported logs.
 	See my <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header">article about how to read the logs</a>.
 </p>
 <ol>
