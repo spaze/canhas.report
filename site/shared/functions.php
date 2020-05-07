@@ -143,10 +143,10 @@ function reportToHeaderHtml(string $header): string
 }
 
 
-function willTriggerReportToHtml(): string
+function willTriggerReportToHtml(string $what = 'violation'): string
 {
-	return 'will trigger a report that will be sent asynchronously (violation visible in Developer Tools only in the <em>Console</em> tab but you can still
-		<a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header#chrome-71-and-newer">view the requests</a>)';
+	return "will trigger a report that will be sent asynchronously ({$what} visible in Developer Tools only in the <em>Console</em> tab but you can still"
+		. ' <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header#chrome-71-and-newer">view the reporting requests</a>)';
 }
 
 
