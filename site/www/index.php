@@ -59,6 +59,7 @@ if (\Can\Has\who() !== null) {
 	<li><a href="https://github.com/spaze/canhas.report/tree/master/site">Source code</a></li>
 	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">All NEL types</a></li>
 	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/frame/deprecation.cc?q=GetDeprecationInfo">All Chrome deprecations and invalid features</a></li>
+	<li><a href="https://www.chromestatus.com/features#intervention">Chrome interventions, incomplete list</a></li>
 </ul>
 
 <h2>Specs</h2>
