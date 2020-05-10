@@ -13,9 +13,7 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>Content Security Policy <em>Report-Only</em> with <code>report-uri</code> &ndash; mixed content detection</h1>
 	<p><em>
-		Loading images, executing JavaScript and everything else as usual but sending a Content Security Policy (CSP) violation report (with <code>"disposition": "report"</code> instead of <code>"disposition": "enforce"</code>) if something would be loaded from HTTP, not HTTPS.
-	</em></p>
-	<p><em>
+		Loading images, executing JavaScript and everything else as usual but sending a Content Security Policy (CSP) violation report (with <code>"disposition": "report"</code> instead of <code>"disposition": "enforce"</code>) if something would be loaded from HTTP, not HTTPS.<br><br>
 		CSP is a policy that lets the authors (or server administrators) of a web application inform the browser about the sources from which the application expects to load resources like images, scripts, styles, or even where to submit forms.
 		This Report-Only mode works with both <code>report-uri</code> and <code>report-to</code> directives, and is usually used for policy upgrades &ndash; an app can send both <code>Content-Security-Policy</code> and <code>Content-Security-Policy-Report-Only</code> headers with different policies.
 	</em></p>
