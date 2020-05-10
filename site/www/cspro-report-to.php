@@ -66,17 +66,5 @@ echo \Can\Has\pageHead('CSPRO report-to');
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>
-
-	<h2>Other CSPRO uses</h2>
-	<em>Mixed content detection: let the browser report HTTP resources loaded into HTTPS pages but still load them</em>
-	<pre><code class="csp">Content-Security-Policy-Report-Only: default-src https: 'unsafe-inline'; report-to default</code></pre>
-	<ul>
-		<li>
-			allows only files (images, JS, CSS, fonts, etc.) loaded using HTTPS,
-			and inline JavaScript (code between <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code>, handlers like <code>onmouseover</code> etc.)
-		</li>
-		<li>would trigger a report</li>
-		<li>but would still load everything because it's a <code>Content-Security-Policy-<strong>Report-Only</strong></code> header</li>
-	</ul>
 </div>
 </body>

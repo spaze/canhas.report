@@ -32,6 +32,7 @@ if (\Can\Has\who() !== null) {
 <ol>
 	<li><a href="csp-report-uri.php">Content Security Policy <code>report-uri</code></a></li>
 	<li><a href="csp-report-to.php">Content Security Policy <code>report-to</code></a></li>
+	<li><a href="cspro-report-uri.php">Content Security Policy Report-Only <code>report-uri</code> &ndash; mixed content detection</a></li>
 	<li><a href="cspro-report-to.php">Content Security Policy Report-Only <code>report-to</code></a></li>
 	<li><a href="crash.php">Crash</a></li>
 	<li><a href="deprecation.php">Deprecation</a></li>
