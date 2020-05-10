@@ -20,7 +20,7 @@ echo \Can\Has\pageHead('CSPRO report-to');
 		This Report-Only mode works with both <code>report-uri</code> and <code>report-to</code> directives, and is usually used for policy upgrades &ndash; an app can send both <code>Content-Security-Policy</code> and <code>Content-Security-Policy-Report-Only</code> headers with different policies.
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
-	<h2>The CSPRO (CSP Report-Only) header:</h2>
+	<h2>The CSPRO (CSP Report-Only) response header:</h2>
 	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
 	<ul>
 		<li>

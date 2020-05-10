@@ -26,7 +26,7 @@ echo \Can\Has\pageHead('Deprecation');
 		Deprecation reporting will send you a report if your code uses such deprecated feature, all you need to send is a <code>Report-To</code> response header.
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
-	<h2>The Report-To header:</h2>
+	<h2>The <code>Report-To</code> response header:</h2>
 	<pre><code class="json"><?= htmlspecialchars(\Can\Has\reportToHeader()); ?></code></pre>
 	<ul>
 		<li><code>group</code>: the name of the group (can be used in a CSP header in the <code>report-to</code> directive, for example)</li>

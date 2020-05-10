@@ -22,7 +22,7 @@ echo \Can\Has\pageHead('Crash');
 	<h1>Crash reports with <code>report-to</code></h1>
 	<p><em>Sending reports about browser or tab (where tab means one of the browser processes) crashes with Reporting API using the <code>Report-To</code> header (and only the <code>Report-To</code> header, no other header required), asynchronously.</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
-	<h2>The Report-To header:</h2>
+	<h2>The <code>Report-To</code> response header:</h2>
 	<pre><code class="json"><?= htmlspecialchars(\Can\Has\reportToHeader()); ?></code></pre>
 	<ul>
 		<li><code>group</code>: the name of the group (can be used in a CSP header in the <code>report-to</code> directive, for example)</li>

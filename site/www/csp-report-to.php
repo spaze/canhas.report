@@ -13,7 +13,7 @@ $pageDescriptionHtml = 'Sending Content Security Policy (CSP) violation reports 
 	The <code>report-to</code> directive using the Reporting API replaces the deprecated <code>report-uri</code> directive in Content Security Policy level 3 spec, which is not yet fully supported by all major clients.
 	To support more browsers, apps usually send both <code>report-uri</code> and <code>report-to</code> in their CSP headers.';
 $includeReportingApiNotSupportedWarning = true;
-$cspHeaderDescription = 'The CSP header';
+$cspHeaderDescription = 'The CSP response header';
 $reportDirective = 'report-to';
 $reportDirectiveDescription = 'name of the group where to send violation reports to';
 $willTriggerReportHtml = \Can\Has\willTriggerReportToHtml();
