@@ -16,6 +16,6 @@ $checkReportsHtml = 'check your <a href="' . htmlspecialchars(\Can\Has\reportOri
 $additionalHeaderHtml = null;
 
 header($cspHeader);
-echo \Can\Has\pageHead('CSP report-uri', ['highlight.pack.js', 'highlight-init.js']);
+echo \Can\Has\pageHead('CSP report-uri');
 
 require __DIR__ . '/../shared/csp-body.php';

@@ -15,7 +15,7 @@ if ($who === null) {
 $database = new PDO("mysql:host=$dbHost;dbname=$dbSchema", $dbUsername, $dbPassword);
 $statement = $database->prepare('SELECT received, types, report FROM reports WHERE who = ? ORDER BY received DESC');
 $statement->execute([$who]);
-echo \Can\Has\pageHead('Received Reports', ['highlight.pack.js', 'highlight-init.js']);
+echo \Can\Has\pageHead('Received Reports');
 ?>
 <body>
 <div id="reports">

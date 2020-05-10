@@ -41,28 +41,30 @@ echo \Can\Has\pageHead('Intervention');
 
 	<h2>Use an "intervened" feature</h2>
 	<p>
-		The mousewheel (in Chromium-based browsers) and touch (also in Firefox) event listeners that are registered on document level targets  (e.g. <code>window.document</code>)
+		The mousewheel (in Chromium-based browsers) and touch (also in Firefox) event listeners that are registered on document level targets  (e.g. <code>window.document</code> or <code>window</code>)
 		will be treated as <a href="https://developers.google.com/web/updates/2016/06/passive-event-listeners">passive</a> (it has something to do with custom scrolling)
 		if not specified as otherwise and calling <code>preventDefault()</code> inside such listeners will be ignored
 	</p>
 	<button id="wheel" class="blocked">Add <code>wheel</code> and <code>touchstart</code> handlers</button> and then use your mousewheel or your finger to scroll
+	<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
 	<script>
-	document.getElementById('wheel').onclick = function() {
-		let sent = 0;
-		const handler = function (event) {
-			event.preventDefault();
-			console.log('Whee');
-			sent++;
-			if (sent === 3) {
-				window.removeEventListener('wheel', handler);
-				window.removeEventListener('touchstart', handler);
-			}
-		};
-		window.addEventListener('wheel', handler);
-		window.addEventListener('touchstart', handler);
-		alert('Wheel and touchstart handlers added, now scroll');
-	}
+		document.getElementById('wheel').onclick = function() {
+			let sent = 0;
+			const handler = function (event) {
+				event.preventDefault();
+				console.log('Whee');
+				sent++;
+				if (sent === 3) {
+					window.removeEventListener('wheel', handler);
+					window.removeEventListener('touchstart', handler);
+				}
+			};
+			window.addEventListener('wheel', handler);
+			window.addEventListener('touchstart', handler);
+			alert('Wheel and touchstart handlers added, now scroll');
+		}
 	</script>
+	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li><?= \Can\Has\willTriggerReportToHtml('intervention'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>

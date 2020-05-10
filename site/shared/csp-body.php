@@ -35,20 +35,24 @@ declare(strict_types = 1);
 	<p>
 		<button id="allowed" class="allowed">Click to load</button>
 		another image from <em>https://www.michalspacek.cz</em> (<span class="allowed">allowed</span>)
+		<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
 		<script nonce="<?= htmlspecialchars($nonce); ?>">
-		document.getElementById('allowed').onclick = function(e) {
-			document.getElementById('image').src = 'https://www.michalspacek.cz/i/images/photos/michalspacek-webtop100-400x268.jpg';
-		}
+			document.getElementById('allowed').onclick = function(e) {
+				document.getElementById('image').src = 'https://www.michalspacek.cz/i/images/photos/michalspacek-webtop100-400x268.jpg';
+			}
 		</script>
+		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<p>
 		Now simulate an attacker:<br>
 		<button id="blocked" class="blocked">Click to load</button> an image from <em>https://example.com</em>
+		<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
 		<script nonce="<?= htmlspecialchars($nonce); ?>">
 			document.getElementById('blocked').onclick = function(e) {
 				document.getElementById('image').src = 'https://example.com/image.png';
 			}
 		</script>
+		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<ul>
 		<li><span class="blocked">blocked</span></li>
@@ -59,15 +63,18 @@ declare(strict_types = 1);
 	<h2>&hellip; and with JavaScript</h2>
 	<p>
 		<button id="js" class="allowed">Click to <code>alert('hi')</code></button> (<span class="allowed">allowed</span>, the <code>script</code> tag contains <code>nonce="<?= htmlspecialchars($nonce); ?>"</code>)
+		<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
 		<script nonce="<?= htmlspecialchars($nonce); ?>">
-		document.getElementById('js').onclick = function(e) {
-			alert('hi');
-		};
+			document.getElementById('js').onclick = function(e) {
+				alert('hi');
+			};
 		</script>
+		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<p>
 		Simulate an attacker:<br>
 		<button id="inject" class="blocked">Click to inject</button> blocked JS tag
+		<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
 		<script nonce="<?= htmlspecialchars($nonce); ?>">
 			document.getElementById('inject').onclick = function() {
 				const script = document.createElement('script');
@@ -75,9 +82,10 @@ declare(strict_types = 1);
 				document.getElementById('inject').insertAdjacentElement('afterend', script);
 			}
 		</script>
+		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<ul>
-		<li><span class="blocked">blocked</span> because the injected JS tag doesn't have a <code>nonce</code></li>
+		<li><span class="blocked">blocked</span> because the injected JS tag created by <code>document.createElement()</code> doesn't have a <code>nonce</code></li>
 		<li><?= $willTriggerReportHtml; ?></li>
 		<li><?= $checkReportsHtml; ?></li>
 		<li>see the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="inject"&gt;</code></li>

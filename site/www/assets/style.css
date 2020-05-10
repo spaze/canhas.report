@@ -96,6 +96,15 @@ pre {
 	color: #F00;
 	font-weight: bold;
 }
+.view-source {
+	text-decoration: none;
+}
+.view-source.allowed, .view-source.blocked {
+	font-weight: normal;
+}
+.view-source .arrow {
+	opacity: 0.25;
+}
 @media (max-width: 680px) {
 	body > div {
 		padding: 1em;

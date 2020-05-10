@@ -8,7 +8,7 @@ $reportToHeader = \Can\Has\reportToHeader();
 header($cspHeader);
 header($reportToHeader);
 
-echo \Can\Has\pageHead('CSPRO report-to', ['highlight.pack.js', 'highlight-init.js']);
+echo \Can\Has\pageHead('CSPRO report-to');
 ?>
 <body>
 <div>
@@ -33,7 +33,9 @@ echo \Can\Has\pageHead('CSPRO report-to', ['highlight.pack.js', 'highlight-init.
 	</ul>
 
 	<h2>Try it with images</h2>
+	<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
 	<img src="https://www.michalspacek.cz/i/images/photos/michalspacek-trademark-400x268.jpg" width="100" height="67" alt="Loaded image">
+	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li><span class="allowed">allowed</span> even though the image was loaded from <em>https://www.michalspacek.cz</em> and not from <em>this origin</em></li>
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
@@ -43,12 +45,14 @@ echo \Can\Has\pageHead('CSPRO report-to', ['highlight.pack.js', 'highlight-init.
 	<h2>&hellip; and with JavaScript</h2>
 	<p>
 		<button id="insert" class="allowed">Click to insert a text</button> <em id="here"></em>
+		<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
 		<script>
 			document.getElementById('insert').onclick = function() {
 				document.getElementById('here').innerHTML = "by JavaScript with <code>document.getElementById('here').innerHTML</code>";
 				alert('Text inserted');
 			}
 		</script>
+		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<ul>
 		<li>

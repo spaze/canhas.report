@@ -10,7 +10,7 @@ header("Content-Security-Policy: default-src 'none'; script-src {$baseOrigin}; s
 $database = new PDO("mysql:host=$dbHost;dbname=$dbSchema", $dbUsername, $dbPassword);
 $statement = $database->prepare('SELECT received, types, report, who FROM reports ORDER BY received DESC');
 $statement->execute();
-echo \Can\Has\pageHead('All Received Reports', ['highlight.pack.js', 'highlight-init.js']);
+echo \Can\Has\pageHead('All Received Reports');
 ?>
 <body>
 <div id="reports">

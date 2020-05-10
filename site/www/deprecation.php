@@ -45,12 +45,14 @@ echo \Can\Has\pageHead('Deprecation');
 		Developers must not pass <code>false</code> for the <code>async</code> argument of the <a href="https://xhr.spec.whatwg.org/#the-open()-method"><code>open()</code></a> method but you're a professional driver and this is a closed circuit, so&hellip;
 	</p>
 	<button id="xhr" class="blocked">Make a synchronous <code>XMLHttpRequest</code></button> by calling <code>new XMLHttpRequest().open('GET', 'foo', false)</code>
+	<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
 	<script>
-	document.getElementById('xhr').onclick = function() {
-		new XMLHttpRequest().open('GET', 'foo', false);
-		alert('XMLHttpRequest.open(async = false) called');
-	}
+		document.getElementById('xhr').onclick = function() {
+			new XMLHttpRequest().open('GET', 'foo', false);
+			alert('XMLHttpRequest.open(async = false) called');
+		}
 	</script>
+	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li><?= \Can\Has\willTriggerReportToHtml('deprecation'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
@@ -62,15 +64,17 @@ echo \Can\Has\pageHead('Deprecation');
 		But you will still get a report if you use them.
 	</p>
 	<button id="src" class="blocked">Create a <code>&lt;picture&gt;</code> with <code>&lt;source src&gt;</code></button> instead of <code>&lt;source srcset&gt;</code>
+	<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
 	<script>
-	document.getElementById('src').onclick = function() {
-		const source = document.createElement('source'), img = document.createElement('img');
-		source.src = 'data:image/webp;base64,UklGRhIAAABXRUJQVlA4TAYAAAAvQWxvAGs=';
-		img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAADs=';
-		document.createElement('picture').append(source, img);
-		alert('<picture>\n  <source src> ← this is invalid\n  <img src>\n</picture>\nhas been created');
-	}
+		document.getElementById('src').onclick = function() {
+			const source = document.createElement('source'), img = document.createElement('img');
+			source.src = 'data:image/webp;base64,UklGRhIAAABXRUJQVlA4TAYAAAAvQWxvAGs=';
+			img.src = 'data:image/gif;base64,R0lGODlhAQABAAAAADs=';
+			document.createElement('picture').append(source, img);
+			alert('<picture>\n  <source src> ← this is invalid\n  <img src>\n</picture>\nhas been created');
+		}
 	</script>
+	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li><?= \Can\Has\willTriggerReportToHtml('invalid feature'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>

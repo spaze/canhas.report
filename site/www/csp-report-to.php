@@ -18,6 +18,6 @@ $additionalHeaderHtml = \Can\Has\reportToHeaderHtml($reportToHeader);
 
 header($cspHeader);
 header($reportToHeader);
-echo \Can\Has\pageHead('CSP report-to', ['highlight.pack.js', 'highlight-init.js']);
+echo \Can\Has\pageHead('CSP report-to');
 
 require __DIR__ . '/../shared/csp-body.php';
