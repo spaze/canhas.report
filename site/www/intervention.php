@@ -23,7 +23,7 @@ echo \Can\Has\pageHead('Intervention');
 	<h1>Intervention reports</h1>
 	<p><em>
 		Intervention reports indicate that a browser has decided to not do what the server asked it to do for security, performance or user annoyance reasons.
-		The browser may for example block phone vibration unless the user has already interacted with the page somehow
+		The browser may for example block phone vibration unless the user has already interacted with the page somehow.
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 	<h2>The Report-To header:</h2>

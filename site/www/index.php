@@ -21,7 +21,8 @@ if (\Can\Has\who() !== null) {
 <h2>Browser Reporting</h2>
 <?= \Can\Has\reportingApiNotSupportedHtml('the following reports will not be sent: <abbr title="Content Security Policy">CSP</abbr> <code>report-to</code>, Crash, Deprecation, Intervention, <abbr title="Network Error Logging">NEL</abbr>') ?>
 <p>
-	This is a live demo tool. The headers shown here are real headers sent by the server and received by your browser, with real values. You can click around and see how things behave and how reporting works.
+	This is a live reporting demo tool. You'll not dive deep into the technologies mentioned below, instead we'll focus on the reporting side of things.
+	The headers shown here are real headers sent by the server and received by your browser, with real values. You can click around and see how things behave and how reporting works.
 	These demos also work on smaller screens and mobile devices, although sometimes it might be handy to use a desktop browser to open developer tools (F12, Ctrl/Cmd+Shift+I) and watch the Console and Network tabs.
 </p>
 <p>
