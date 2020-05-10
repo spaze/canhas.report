@@ -3,7 +3,8 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$cspHeader = "Content-Security-Policy-Report-Only: default-src 'self' 'report-sample'; report-to default";
+$nonce = base64_encode(random_bytes(16));
+$cspHeader = "Content-Security-Policy-Report-Only: default-src data: 'self' 'nonce-{$nonce}' 'report-sample'; report-to default";
 $reportToHeader = \Can\Has\reportToHeader();
 header($cspHeader);
 header($reportToHeader);
@@ -26,7 +27,9 @@ echo \Can\Has\pageHead('CSPRO report-to');
 		<li>
 			<code>default-src</code>: what's allowed by default, includes images, fonts, JavaScript <a href="https://www.w3.org/TR/CSP3/#directive-default-src">and more</a>
 			<ul>
+				<li><code>data:</code> used for the placeholder image below</li>
 				<li><code>'self'</code> means current URL's origin (scheme + host + port)</li>
+				<li><code>'nonce-<?= htmlspecialchars($nonce); ?>'</code> means <code>script</code> elements with <code>nonce="<?= htmlspecialchars($nonce); ?>"</code> attribute</li>
 				<li>
 					<code>'report-sample'</code> instructs the browser to include a violation sample, the first 40 characters
 					(valid for CSS, JS only but included in <code>default-src</code> here to keep the header short)
@@ -37,9 +40,18 @@ echo \Can\Has\pageHead('CSPRO report-to');
 	</ul>
 
 	<h2>Try it with images</h2>
-	<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
-	<img src="https://www.michalspacek.cz/i/images/photos/michalspacek-trademark-400x268.jpg" width="100" height="67" alt="Loaded image">
-	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABDAQMAAABQhTKZAAAABlBMVEX////MzMw46qqDAAAAI0lEQVR4AWP4f4D/D4xgGGAeg/0H5v8wYmB5gytcRsNlNFwAFna2DZiUiFYAAAAASUVORK5CYII=" id="image" width="100" height="67" alt="Loaded image">
+	<p>
+		<button id="allowed" class="allowed">Click to load</button>
+		an image from <em>https://www.michalspacek.cz</em> (<span class="allowed">allowed</span>)
+		<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
+		<script nonce="<?= htmlspecialchars($nonce); ?>">
+			document.getElementById('allowed').onclick = function(e) {
+				document.getElementById('image').src = 'https://www.michalspacek.cz/i/images/photos/michalspacek-trademark-400x268.jpg';
+			}
+		</script>
+		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
+	</p>
 	<ul>
 		<li><span class="allowed">allowed</span> even though the image was loaded from <em>https://www.michalspacek.cz</em> and not from <em>this origin</em></li>
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
@@ -50,9 +62,11 @@ echo \Can\Has\pageHead('CSPRO report-to');
 	<p>
 		<button id="insert" class="allowed">Click to insert a text</button> <em id="here"></em>
 		<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
-		<script>
+		<script nonce="<?= htmlspecialchars($nonce); ?>">
 			document.getElementById('insert').onclick = function() {
-				document.getElementById('here').innerHTML = "by JavaScript with <code>document.getElementById('here').innerHTML</code>";
+				const script = document.createElement('script');
+				script.text = 'document.getElementById("here").innerHTML = "by JavaScript with <code>document.getElementById(&apos;here&apos;).innerHTML</code>";';
+				document.getElementById('insert').insertAdjacentElement('afterend', script);
 				alert('Text inserted');
 			}
 		</script>
@@ -61,10 +75,12 @@ echo \Can\Has\pageHead('CSPRO report-to');
 	<ul>
 		<li>
 			<span class="allowed">allowed</span> even though it's inserted by an inline JavaScript (the code between <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code>)
-			and not loaded from <em>this origin</em> (<code>'self'</code> doesn't include inline JavaScript)
+			and not loaded from <em>this origin</em> (<code>'self'</code> doesn't include inline JavaScript),
+			and has no <code>nonce</code> attribute
 		</li>
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
+		<li>see the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="insert"&gt;</code></li>
 	</ul>
 </div>
 </body>

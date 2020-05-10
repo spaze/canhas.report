@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$cspHeader = "Content-Security-Policy-Report-Only: default-src https: 'unsafe-inline'; report-uri " . \Can\Has\reportUrl();;
+$cspHeader = "Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-inline'; report-uri " . \Can\Has\reportUrl();
 header($cspHeader);
 
 echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
@@ -24,6 +24,7 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 			<code>default-src</code>: what's allowed by default, includes images, fonts, JavaScript <a href="https://www.w3.org/TR/CSP3/#directive-default-src">and more</a>
 			<ul>
 				<li><code>https:</code> means HTTPS scheme only</li>
+				<li><code>data:</code> used for the placeholder image below</li>
 				<li><code>'unsafe-inline'</code> means JavaScript, CSS inlined right in the HTML source code, not in external files (e.g. code between <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code>, handlers like <code>onmouseover</code> etc.)</li>
 			</ul>
 		</li>
@@ -31,9 +32,18 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 	</ul>
 
 	<h2>Image mixed content</h2>
-	<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
-	<img src="http://www.michalspacek.cz/i/images/photos/michalspacek-trademark-400x268.jpg" width="100" height="67" alt="Loaded image">
-	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
+	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABDAQMAAABQhTKZAAAABlBMVEX////MzMw46qqDAAAAI0lEQVR4AWP4f4D/D4xgGGAeg/0H5v8wYmB5gytcRsNlNFwAFna2DZiUiFYAAAAASUVORK5CYII=" id="image" width="100" height="67" alt="Loaded image">
+	<p>
+		<button id="allowed" class="allowed">Click to load</button>
+		an image from <em><strong>http://</strong>www.michalspacek.cz</em> (<span class="allowed">allowed</span>)
+		<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
+		<script>
+			document.getElementById('allowed').onclick = function(e) {
+				document.getElementById('image').src = 'http://www.michalspacek.cz/i/images/photos/michalspacek-trademark-400x268.jpg';
+			}
+		</script>
+		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
+	</p>
 	<ul>
 		<li>
 			<span class="allowed">allowed</span> even though the image source points to <em><strong>http://</strong>www.michalspacek.cz</em> and not to <em><strong>https://</strong>www.michalspacek.cz</em>
