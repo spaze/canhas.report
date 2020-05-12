@@ -18,7 +18,7 @@ $reportDirective = 'report-to';
 $reportDirectiveDescription = 'name of the group where to send violation reports to';
 $willTriggerReportHtml = \Can\Has\willTriggerReportToHtml();
 $checkReportsHtml = \Can\Has\checkReportsReportToHtml();
-$additionalHeaderHtml = \Can\Has\reportToHeaderHtml($reportToHeader);
+$additionalHeaderHtml = \Can\Has\reportToHeaderHtml($reportToHeader, 'the same as in the CSP header in the <code>report-to</code> directive');
 
 header($cspHeader);
 header($reportToHeader);

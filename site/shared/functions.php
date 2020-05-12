@@ -125,12 +125,12 @@ function reportToHeader(): string
 }
 
 
-function reportToHeaderHtml(string $header): string
+function reportToHeaderHtml(string $header, string $groupDescriptionHtml): string
 {
 	return '<h2>The <code>Report-To</code> response header:</h2>
 		<pre><code class="json">' . htmlspecialchars($header) . '</code></pre>
 		<ul>
-			<li><code>group</code>: the name of the group, the same as in the CSP header in the <code>report-to</code> directive</li>
+			<li><code>group</code>: the name of the group, ' . $groupDescriptionHtml .  '</li>
 			<li><code>max_age</code>: how long the browser should use the endpoint and report errors to it</li>
 			<li>
 				<code>endpoints</code>: reporting endpoint configuration, can specify multiple endpoints but reports will be sent to just one of them

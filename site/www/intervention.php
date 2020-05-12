@@ -3,17 +3,9 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$reportTo = [
-	'group' => 'default',
-	'max_age' => 60,
-	'endpoints' => [
-		[
-			'url' => \Can\Has\reportUrl(),
-		]
-	],
-	'include_subdomains' => true,
-];
-header('Report-To: ' . json_encode($reportTo, JSON_UNESCAPED_SLASHES));
+$reportToHeader = \Can\Has\reportToHeader();
+header($reportToHeader);
+
 echo \Can\Has\pageHead('Intervention');
 ?>
 <body>
@@ -26,18 +18,8 @@ echo \Can\Has\pageHead('Intervention');
 		The browser may for example block phone vibration unless the user has already interacted with the page somehow.
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
-	<h2>The <code>Report-To</code> response header:</h2>
-	<pre><code class="json"><?= htmlspecialchars(\Can\Has\reportToHeader()); ?></code></pre>
-	<ul>
-		<li><code>group</code>: the name of the group (can be used in a CSP header in the <code>report-to</code> directive, for example)</li>
-		<li><code>max_age</code>: how long the browser should use the endpoint and report errors to it</li>
-		<li>
-			<code>endpoints</code>: reporting endpoint configuration, can specify multiple endpoints but reports will be sent to just one of them
-			<ul>
-				<li><code>url</code>: where to send reports to, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
-			</ul>
-		</li>
-	</ul>
+
+	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
 
 	<h2>Use an "intervened" feature</h2>
 	<p>
