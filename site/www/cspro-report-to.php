@@ -39,6 +39,8 @@ echo \Can\Has\pageHead('CSPRO report-to');
 		<li><code>report-to</code>: name of the group where to send violation reports to</li>
 	</ul>
 
+	<?= \Can\Has\reportToHeaderHtml($reportToHeader); ?>
+
 	<h2>Try it with images</h2>
 	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABDAQMAAABQhTKZAAAABlBMVEX////MzMw46qqDAAAAI0lEQVR4AWP4f4D/D4xgGGAeg/0H5v8wYmB5gytcRsNlNFwAFna2DZiUiFYAAAAASUVORK5CYII=" id="image" width="100" height="67" alt="Loaded image">
 	<p>
