@@ -8,7 +8,7 @@ header($reportToHeader);
 
 $nel = [
 	'report_to' => 'default',
-	'max_age' => 60,
+	'max_age' => 60 * 30,
 	'include_subdomains' => true,
 ];
 // $nel['success_fraction' => 0.5];  // 0.0-1.0

@@ -113,7 +113,7 @@ function reportToHeader(): string
 {
 	$reportTo = [
 		'group' => 'default',
-		'max_age' => 60,
+		'max_age' => 60 * 30,
 		'endpoints' => [
 			[
 				'url' => reportUrl(),
