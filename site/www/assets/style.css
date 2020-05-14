@@ -33,6 +33,7 @@ code {
 	padding: 1px 4px;
 	font-size: 1.1em;
 }
+pre code { padding: 0; }
 button code { background-color: transparent; }
 #tom {
 	color: #FFF;

@@ -37,8 +37,7 @@ if (\Can\Has\who() !== null) {
 	<li><a href="crash.php">Crash</a></li>
 	<li><a href="deprecation.php">Deprecation</a></li>
 	<li><a href="intervention.php">Intervention</a></li>
-	<li><a href="nel.php?do=404">Network Error Logging 404</a></li>
-	<li><a href="nel.php?do=wronghost">Network Error Logging TLS cert wrong host</a></li>
+	<li><a href="nel.php">Network Error Logging</a></li>
 	<li><a href="xss-auditor.php">XSS Auditor</a></li>
 	<li><a href="expect-ct.php">Expect-CT</a></li>
 </ol>

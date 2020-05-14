@@ -67,6 +67,12 @@ function baseOrigin(): string
 }
 
 
+function baseSubdomainOrigin(string $subdomain): string
+{
+	return "https://{$subdomain}.{$_SERVER['CAN_HAS_BASE']}";
+}
+
+
 function reportOrigin(?string $who = null): string
 {
 	return 'https://' . ($who ?? cookie()) . ".{$_SERVER['HAS_BASE']}";
@@ -142,9 +148,22 @@ function reportToHeaderHtml(string $header, string $groupDescriptionHtml): strin
 }
 
 
+function nelHeader(): string
+{
+	$nel = [
+		'report_to' => 'default',
+		'max_age' => 60 * 30,
+		'include_subdomains' => true,
+//	'success_fraction' => 0.5,  // 0.0-1.0, optional, no success reports if not present
+//	'failure_fraction' => 0.5,  // 0.0-1.0, optional, all failure reports if not present
+	];
+	return 'NEL: ' . json_encode($nel, JSON_UNESCAPED_SLASHES);
+}
+
+
 function willTriggerReportToHtml(string $what = 'violation'): string
 {
-	return "will trigger a report that will be sent asynchronously ({$what} visible in Developer Tools only in the <em>Console</em> tab but you can still"
+	return "will trigger a report that will be sent asynchronously ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
 		. ' <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header#chrome-71-and-newer">view the reporting requests</a>)';
 }
 
