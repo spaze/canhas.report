@@ -73,6 +73,40 @@ echo \Can\Has\pageHead('Network Error Logging');
 		<li><?= \Can\Has\willTriggerReportToHtml('resolution error'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>
+
+	<h2>Generate TLS certificate error</h2>
+	<p>
+		Testing TLS NEL reports is a bit difficult and cannot be done with just a few clicks here.
+		The reason is that the browser needs to cache the NEL policy for the host first, and for that it needs a working and secure HTTPS connection (i.e. no errors).
+		And then the same browser needs to encounter an error when loading a page using HTTPS from the same host, not even from the host's subdomain
+		&ndash; that's because <code>include_subdomains: true</code> <a href="https://www.w3.org/TR/network-error-logging/#privacy-considerations">doesn't apply</a> for the <em>connection</em> phase of the request for privacy reasons,
+		and the <em>connection</em> phase is exactly where secure connection establishment errors <a href="https://www.w3.org/TR/network-error-logging/#secure-connection-establishment-errors">occur</a>. But you can&hellip;
+	</p>
+	<h3>Simulate a TLS error with Fiddler</h3>
+	<p>Fiddler is a great HTTP debugging proxy originally written by <a href="https://twitter.com/ericlaw">Eric Lawrence</a> and you can use it to inspect HTTP and HTTPS traffic (and much more). We'll use it to generate a TLS error in your browser:</p>
+	<ol>
+		<li>Get <a href="https://www.telerik.com/fiddler">Fiddler</a></li>
+		<li>Load this page to cache the NEL policy &ndash; somehow I think you've already done this step</li>
+		<li>
+			<a href="https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS">Configure Fiddler to decrypt HTTPS traffic</a>
+			but <strong>DO NOT</strong> <a href="https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/TrustFiddlerRootCert">trust the Fiddler Root Certificate</a>
+		</li>
+		<li>Load this page again and this is what's going to happen:
+			<ul>
+				<li>Your browser will send a request to the Fiddler proxy</li>
+				<li>The proxy will resend it to the server</li>
+				<li>The server will respond to Fiddler, encrypting the traffic with a valid certificate</li>
+				<li>Fiddler will validate the certificate produced by the server and decrypt the traffic</li>
+				<li>Fiddler will re-encrypt the traffic with it's own Root Certificate</li>
+				<li>But your browser doesn't trust the Root Certificate and will show an <em>Invalid Certification Authority</em> error or similar</li>
+				<li>Your browser will also generate the NEL report</li>
+			</ul>
+		</li>
+		<li>Exit Fiddler now (or stop capturing traffic using <em>F12</em>) before your browser will try to actually send the generated report</li>
+		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
+		<li>You should see a <em>network-error</em> report with <code>"type": "tls.cert.authority_invalid"</code>, <code>"phase": "connection"</code></li>
+	</ol>
+
 	<p>See also Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">list of all NEL types</a>.</p>
 </div>
 </body>
