@@ -163,14 +163,14 @@ function nelHeader(): string
 
 function willTriggerReportToHtml(string $what = 'violation'): string
 {
-	return "will trigger a report that will be sent asynchronously ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
+	return "Will trigger a report that will be sent asynchronously ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
 		. ' <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header#chrome-71-and-newer">view the reporting requests</a>)';
 }
 
 
 function checkReportsReportToHtml(): string
 {
-	return 'check your <a href="' . htmlspecialchars(reportOrigin()) . '/">reports</a> (can take some time before the browser sends the report)';
+	return 'Check your <a href="' . htmlspecialchars(reportOrigin()) . '/">reports</a> (can take some time before the browser sends the report)';
 }
 
 

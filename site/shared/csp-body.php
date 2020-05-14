@@ -55,7 +55,7 @@ declare(strict_types = 1);
 		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<ul>
-		<li><span class="blocked">blocked</span></li>
+		<li><span class="blocked">Blocked</span></li>
 		<li><?= $willTriggerReportHtml; ?></li>
 		<li><?= $checkReportsHtml; ?></li>
 	</ul>
@@ -85,10 +85,10 @@ declare(strict_types = 1);
 		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<ul>
-		<li><span class="blocked">blocked</span> because the injected JS tag created by <code>document.createElement()</code> doesn't have a <code>nonce</code></li>
+		<li><span class="blocked">Blocked</span> because the injected JS tag created by <code>document.createElement()</code> doesn't have a <code>nonce</code></li>
 		<li><?= $willTriggerReportHtml; ?></li>
 		<li><?= $checkReportsHtml; ?></li>
-		<li>see the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="inject"&gt;</code></li>
+		<li>See the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="inject"&gt;</code></li>
 	</ul>
 </div>
 </body>

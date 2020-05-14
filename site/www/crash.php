@@ -25,7 +25,7 @@ echo \Can\Has\pageHead('Crash');
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
 		<li>&hellip;if the tab crashes in <code>max_age</code> seconds after receiving the <code>Report-To</code> header, <a href="crash.php">reload</a> the page first to make sure it does (you'll want to use bigger <code>max_age</code> in your real header)</li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
-		<li>reports can contain an optional <code>reason</code>, e.g. <code>oom</code> (Out-of-Memory), <code>unresponsive</code> (killed due to being unresponsive)</li>
+		<li>Reports can contain an optional <code>reason</code>, e.g. <code>oom</code> (Out-of-Memory), <code>unresponsive</code> (killed due to being unresponsive)</li>
 	</ul>
 </div>
 </body>

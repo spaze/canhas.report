@@ -50,7 +50,7 @@ echo \Can\Has\pageHead('Intervention');
 	<ul>
 		<li><?= \Can\Has\willTriggerReportToHtml('intervention'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
-		<li>only three reports per page load will be sent in this demo to not spam you with identical reports, then the handlers will be automatically removed</li>
+		<li>Only three reports per page load will be sent in this demo to not spam you with identical reports, then the handlers will be automatically removed</li>
 	</ul>
 	<p>
 		See Chrome's incomplete <a href="https://www.chromestatus.com/features#intervention">list of interventions</a>

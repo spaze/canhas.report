@@ -28,9 +28,9 @@ echo \Can\Has\pageHead('Network Error Logging');
 		<li>
 			<code>include_subdomains</code>: optional, whether this policy applies to all subdomains of the current domain
 			<ul>
-				<li><a href="https://www.w3.org/TR/network-error-logging/#privacy-considerations">used</a> only for errors that occurred during DNS resolution, not for errors that occurred in other phases (<em>connection</em>, <em>application</em>)</li>
-				<li>this means that even if the browser has an <code>include_subdomains: true</code> NEL policy cached for <code>https://example.com</code>, it will not generate reports for expired certificate on <code>https://expired.example.com</code> because these errors happen in the <em>connection</em> phase</li>
-				<li>but will send a report for an expired certificate on <code>https://example.com</code></li>
+				<li><a href="https://www.w3.org/TR/network-error-logging/#privacy-considerations">Used</a> only for errors that occurred during DNS resolution, not for errors that occurred in other phases (<em>connection</em>, <em>application</em>)</li>
+				<li>This means that even if the browser has an <code>include_subdomains: true</code> NEL policy cached for <code>https://example.com</code>, it will not generate reports for expired certificate on <code>https://expired.example.com</code> because these errors happen in the <em>connection</em> phase</li>
+				<li>&hellip;but will send a report for an expired certificate on <code>https://example.com</code></li>
 			</ul>
 		</li>
 	</ul>
@@ -76,14 +76,17 @@ echo \Can\Has\pageHead('Network Error Logging');
 
 	<h2>Generate TLS certificate error</h2>
 	<p>
-		Testing TLS NEL reports is a bit difficult and cannot be done with just a few clicks here.
+		One of the most useful NEL report types could be TLS error reports. Things like expired certificate sometimes happen even if you automate renewal and NEL offers an easy way to monitor for such issues.
+		Now, testing TLS NEL reports is not exactly easy and cannot be done with just a few clicks here.
 		The reason is that the browser needs to cache the NEL policy for the host first, and for that it needs a working and secure HTTPS connection (i.e. no errors).
 		And then the same browser needs to encounter an error when loading a page using HTTPS from the same host, not even from the host's subdomain
 		&ndash; that's because <code>include_subdomains: true</code> <a href="https://www.w3.org/TR/network-error-logging/#privacy-considerations">doesn't apply</a> for the <em>connection</em> phase of the request for privacy reasons,
 		and the <em>connection</em> phase is exactly where secure connection establishment errors <a href="https://www.w3.org/TR/network-error-logging/#secure-connection-establishment-errors">occur</a>. But you can&hellip;
 	</p>
 	<h3>Simulate a TLS error with Fiddler</h3>
-	<p>Fiddler is a great HTTP debugging proxy originally written by <a href="https://twitter.com/ericlaw">Eric Lawrence</a> and you can use it to inspect HTTP and HTTPS traffic (and much more). We'll use it to generate a TLS error in your browser:</p>
+	<p>
+		Fiddler is a great HTTP debugging proxy originally written by <a href="https://twitter.com/ericlaw">Eric Lawrence</a> and you can use it to inspect HTTP and HTTPS traffic (and much more). We'll use it to generate a TLS error in your browser.
+		Although it would be possible to simulate an expired certificate with Fiddler, let's take the slightly easier path and simulate a certificate issued by an untrusted certification authority:</p>
 	<ol>
 		<li>Get <a href="https://www.telerik.com/fiddler">Fiddler</a></li>
 		<li>Load this page to cache the NEL policy &ndash; somehow I think you've already done this step</li>
@@ -104,7 +107,7 @@ echo \Can\Has\pageHead('Network Error Logging');
 		</li>
 		<li>Exit Fiddler now (or stop capturing traffic using <em>F12</em>) before your browser will try to actually send the generated report</li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
-		<li>You should see a <em>network-error</em> report with <code>"type": "tls.cert.authority_invalid"</code>, <code>"phase": "connection"</code></li>
+		<li>You should see a <em>network-error</em> report with <code>"type": "tls.cert.authority_invalid"</code>, <code>"phase": "connection"</code> and if this would be a report for an expired certificate, you'd see <code>tls.cert.date_invalid</code> type</li>
 	</ol>
 
 	<p>See also Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">list of all NEL types</a>.</p>

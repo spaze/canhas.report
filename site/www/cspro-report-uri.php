@@ -46,15 +46,15 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 	</p>
 	<ul>
 		<li>
-			<span class="allowed">allowed</span> even though the image source points to <em><strong>http://</strong>www.michalspacek.cz</em> and not to <em><strong>https://</strong>www.michalspacek.cz</em>
+			<span class="allowed">Allowed</span> even though the image source points to <em><strong>http://</strong>www.michalspacek.cz</em> and not to <em><strong>https://</strong>www.michalspacek.cz</em>
 			<ul>
-				<li><small>my site supports HTTP Strict Transport Security (HSTS) so the request would be eventually auto-upgraded to HTTPS in browsers that support HSTS but CSP comes first</small></li>
+				<li><small>My site supports HTTP Strict Transport Security (HSTS) so the request would be eventually auto-upgraded to HTTPS in browsers that support HSTS but CSP comes first</small></li>
 				<li><small>Chrome <a href="https://www.chromestatus.com/feature/4926989725073408">plans</a> to auto-upgrade all image mixed content</small></li>
 			</ul>
 		</li>
-		<li>would be blocked if the policy was <em>enforced</em> and not <em>report-only</em></li>
-		<li>will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)</li>
-		<li>check your <a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">reports</a></li>
+		<li>Would be blocked if the policy was <em>enforced</em> and not <em>report-only</em></li>
+		<li>Will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)</li>
+		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">reports</a></li>
 	</ul>
 </div>
 </body>

@@ -55,7 +55,7 @@ echo \Can\Has\pageHead('CSPRO report-to');
 		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
 	<ul>
-		<li><span class="allowed">allowed</span> even though the image was loaded from <em>https://www.michalspacek.cz</em> and not from <em>this origin</em></li>
+		<li><span class="allowed">Allowed</span> even though the image was loaded from <em>https://www.michalspacek.cz</em> and not from <em>this origin</em></li>
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>
@@ -76,13 +76,13 @@ echo \Can\Has\pageHead('CSPRO report-to');
 	</p>
 	<ul>
 		<li>
-			<span class="allowed">allowed</span> even though it's inserted by an inline JavaScript (the code between <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code>)
+			<span class="allowed">Allowed</span> even though it's inserted by an inline JavaScript (the code between <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code>)
 			and not loaded from <em>this origin</em> (<code>'self'</code> doesn't include inline JavaScript),
 			and has no <code>nonce</code> attribute
 		</li>
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
-		<li>see the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="insert"&gt;</code></li>
+		<li>See the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="insert"&gt;</code></li>
 	</ul>
 </div>
 </body>
