@@ -98,8 +98,9 @@ function reports(\PDOStatement $statement): string
 
 		$json = urldecode(json_encode($reports, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 		$who = (isset($row['who']) ? htmlspecialchars($row['who']) : null);
-		$result[] = sprintf('<p>%s <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
+		$result[] = sprintf('<p>%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
 			htmlspecialchars($row['received']),
+			htmlspecialchars(date_default_timezone_get()),
 			htmlspecialchars(implode(' + ', $types)),
 			(is_array($reports) ? ' via <code>Report-To</code>' : ''),
 			(isset($who) ? ' from <code><a href="' . reportOrigin($who) . '"><strong>' . $who . '</strong></a></code>' : ''),
