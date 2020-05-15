@@ -38,11 +38,22 @@ if (\Can\Has\who() !== null) {
 	<li><a href="deprecation.php">Deprecation</a></li>
 	<li><a href="intervention.php">Intervention</a></li>
 	<li><a href="nel.php">Network Error Logging</a></li>
-	<li><a href="xss-auditor.php">XSS Auditor</a></li>
 	<li><a href="expect-ct.php">Expect-CT</a></li>
 </ol>
 
-<h2>Certification Authorities</h2>
+<h3>Removed Browser Reporting</h3>
+<p>Browsers used to send some reports but don't anymore as these features have been (mostly) removed:</p>
+<ul>
+	<li>
+		<em>XSS Auditor</em>: designed to help stop <em>Reflected Cross-Site Scripting</em> attacks but often exploited to extract information from pages.
+		Introduced in Internet Explorer 8 back in 2009 as <em>XSS Filter</em> and in Chrome 4 in 2010, controlled by the <code>X-XSS-Protection</code> HTTP header.
+		The feature was completely <a href="https://www.chromestatus.com/feature/5021976655560704">removed in Chrome 78</a>
+		and in <a href="https://blogs.windows.com/windowsexperience/2018/07/25/announcing-windows-10-insider-preview-build-17723-and-build-18204/">Microsoft Edge in 2018</a>.
+		Chrome was the only browser with XSS Auditor reporting (enabled with the <code>report</code> field in the <code>X-XSS-Protection: 1; report=&lt;url&gt;</code> header).
+	</li>
+</ul>
+
+	<h2>Certification Authorities</h2>
 <ol>
 	<li><a href="https://toolbox.googleapps.com/apps/dig/#CAA/michalspacek.cz">Certification Authority Authorization (CAA)</a> <em>iodef</em> in DNS</li>
 </ol>
