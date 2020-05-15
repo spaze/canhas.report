@@ -51,6 +51,12 @@ if (\Can\Has\who() !== null) {
 		and in <a href="https://blogs.windows.com/windowsexperience/2018/07/25/announcing-windows-10-insider-preview-build-17723-and-build-18204/">Microsoft Edge in 2018</a>.
 		Chrome was the only browser with XSS Auditor reporting (enabled with the <code>report</code> field in the <code>X-XSS-Protection: 1; report=&lt;url&gt;</code> header).
 	</li>
+	<li>
+		<em>HTTP-based Public Key Pinning (HPKP)</em>: allowed websites to send an HTTP header that tells the browser to "pin" one or more of the public keys and then to reject responses
+		that came with a different public key, protecting against spoofed but still valid TLS certificates. It was a massive footgun, creating risks of denial of service, and as such was
+		<a href="https://www.chromestatus.com/feature/5903385005916160">removed in Chrome 72</a> and disabled by default <a href="https://groups.google.com/d/msg/mozilla.dev.platform/AyMlrNHYepE/B5bgjjsiBwAJ">in Firefox 72</a>.
+		Chrome was the only browser that supported reporting via the <code>report-uri="&lt;url&gt;"</code> field of the <code>Public-Key-Pins</code> or <code>Public-Key-Pins-Report-Only</code> headers.
+	</li>
 </ul>
 
 	<h2>Certification Authorities</h2>
