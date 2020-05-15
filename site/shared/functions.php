@@ -116,11 +116,17 @@ function reports(\PDOStatement $statement): string
 }
 
 
+function maxAge(): int
+{
+	return 30 * 60;
+}
+
+
 function reportToHeader(): string
 {
 	$reportTo = [
 		'group' => 'default',
-		'max_age' => 60 * 30,
+		'max_age' => maxAge(),
 		'endpoints' => [
 			[
 				'url' => reportUrl(),
@@ -153,7 +159,7 @@ function nelHeader(): string
 {
 	$nel = [
 		'report_to' => 'default',
-		'max_age' => 60 * 30,
+		'max_age' => maxAge(),
 		'include_subdomains' => true,
 //	'success_fraction' => 0.5,  // 0.0-1.0, optional, no success reports if not present
 //	'failure_fraction' => 0.5,  // 0.0-1.0, optional, all failure reports if not present
