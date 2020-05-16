@@ -50,7 +50,7 @@ function cookie(): string
 {
 	$name = cookieName();
 	$who = $_COOKIE[$name] ?? null;
-	if ($who === null) {
+	if ($who === null || preg_match('/^[a-z0-9-]+$/', $who) !== 1) {
 		$_COOKIE[$name] = $who = randomSubdomain();
 		\setcookie($name, $who, [
 			'expires' => strtotime('1 year'),
