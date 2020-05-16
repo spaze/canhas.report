@@ -40,15 +40,21 @@ function redirectToBase(): void
 }
 
 
+function cookieName(): string
+{
+	return 'who';
+}
+
+
 function cookie(): string
 {
-	$who = $_COOKIE['who'] ?? null;
+	$name = cookieName();
+	$who = $_COOKIE[$name] ?? null;
 	if ($who === null) {
-		$_COOKIE['who'] = $who = randomSubdomain();
-		\setcookie('who', $who, [
+		$_COOKIE[$name] = $who = randomSubdomain();
+		\setcookie($name, $who, [
 			'expires' => strtotime('1 year'),
 			'secure' => true,
-			'httponly' => true,
 		]);
 	}
 	return $who;

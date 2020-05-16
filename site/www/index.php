@@ -73,7 +73,10 @@ if (\Can\Has\who() !== null) {
 <h2>Meta</h2>
 <ul>
 	<li><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">View your reports</a></li>
-	<li>Your reporting subdomain is <code><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/"><?= htmlspecialchars(\Can\Has\cookie()) ?></a></code></li>
+	<li>
+		Your reporting subdomain is <code><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/"><?= htmlspecialchars(\Can\Has\cookie()) ?></a></code>
+		<button id="subdomain" data-cookie="<?= htmlspecialchars(\Can\Has\cookieName()); ?>" data-subdomain="<?= htmlspecialchars(\Can\Has\cookie()) ?>">Change</button>
+	</li>
 	<li><a href="https://github.com/spaze/canhas.report/tree/master/site">Source code</a></li>
 	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">All NEL types</a></li>
 	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/frame/deprecation.cc?q=GetDeprecationInfo">All Chrome deprecations and invalid features</a></li>

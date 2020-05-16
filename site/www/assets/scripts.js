@@ -21,4 +21,19 @@ document.addEventListener('DOMContentLoaded', function () {
 			source.hidden = !source.hidden;
 		}
 	}
+	const changeSubdomain = document.getElementById('subdomain');
+	if (changeSubdomain) {
+		changeSubdomain.onclick = function () {
+			const subdomain = prompt('Set your reporting subdomain, empty for a new random one', this.dataset.subdomain);
+			const cookie = encodeURIComponent(this.dataset.cookie);
+			if (subdomain === '') {
+				document.cookie = cookie + '=';
+			} else if (subdomain !== null) {
+				document.cookie = cookie + '=' + encodeURIComponent(subdomain);
+			}
+			if (subdomain !== null) {
+				location.reload();
+			}
+		};
+	}
 });
