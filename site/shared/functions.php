@@ -102,7 +102,7 @@ function reports(\PDOStatement $statement): string
 		}
 		$reports = json_decode($row['report']);
 
-		$json = urldecode(json_encode($reports, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+		$json = rawurldecode(json_encode($reports, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
 		$who = (isset($row['who']) ? htmlspecialchars($row['who']) : null);
 		$result[] = sprintf('<p>%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
 			htmlspecialchars($row['received']),
