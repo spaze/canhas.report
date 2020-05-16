@@ -44,19 +44,8 @@ if (\Can\Has\who() !== null) {
 <h3>Removed Browser Reporting</h3>
 <p>Browsers used to send some reports but don't anymore as these features have been (mostly) removed:</p>
 <ul>
-	<li>
-		<em>XSS Auditor</em>: designed to help stop <em>Reflected Cross-Site Scripting</em> attacks but often exploited to extract information from pages.
-		Introduced in Internet Explorer 8 back in 2009 as <em>XSS Filter</em> and in Chrome 4 in 2010, controlled by the <code>X-XSS-Protection</code> HTTP header.
-		The feature was completely <a href="https://www.chromestatus.com/feature/5021976655560704">removed in Chrome 78</a>
-		and in <a href="https://blogs.windows.com/windowsexperience/2018/07/25/announcing-windows-10-insider-preview-build-17723-and-build-18204/">Microsoft Edge in 2018</a>.
-		Chrome was the only browser with XSS Auditor reporting (enabled with the <code>report</code> field in the <code>X-XSS-Protection: 1; report=&lt;url&gt;</code> header).
-	</li>
-	<li>
-		<em>HTTP-based Public Key Pinning (HPKP)</em>: allowed websites to send an HTTP header that tells the browser to "pin" one or more of the public keys and then to reject responses
-		that came with a different public key, protecting against spoofed but still valid TLS certificates. It was a massive footgun, creating risks of denial of service, and as such was
-		<a href="https://www.chromestatus.com/feature/5903385005916160">removed in Chrome 72</a> and disabled by default <a href="https://groups.google.com/d/msg/mozilla.dev.platform/AyMlrNHYepE/B5bgjjsiBwAJ">in Firefox 72</a>.
-		Chrome was the only browser that supported reporting via the <code>report-uri="&lt;url&gt;"</code> field of the <code>Public-Key-Pins</code> or <code>Public-Key-Pins-Report-Only</code> headers.
-	</li>
+	<li><a href="xss-auditor.php">XSS Auditor</a></li>
+	<li><a href="hpkp.php">HTTP-based Public Key Pinning</a></li>
 </ul>
 
 	<h2>Certification Authorities</h2>
