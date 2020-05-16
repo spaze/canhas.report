@@ -44,7 +44,7 @@ function cookie(): string
 {
 	$who = $_COOKIE['who'] ?? null;
 	if ($who === null) {
-		$who = randomSubdomain();
+		$_COOKIE['who'] = $who = randomSubdomain();
 		\setcookie('who', $who, [
 			'expires' => strtotime('1 year'),
 			'secure' => true,
