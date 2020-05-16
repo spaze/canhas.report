@@ -24,11 +24,10 @@ if (\Can\Has\who() !== null) {
 	This is a live reporting demo tool. You'll not dive deep into the technologies mentioned below, instead we'll focus on the reporting side of things.
 	The headers shown here are real headers sent by the server and received by your browser, with real values. You can click around and see how things behave and how reporting works.
 	These demos also work on smaller screens and mobile devices, although sometimes it might be handy to use a desktop browser to open developer tools (F12, Ctrl/Cmd+Shift+I) and watch the Console and Network tabs.
-</p>
-<p>
 	In Chrome, you can also use <a href="chrome://net-export/">chrome://net-export/</a> (copy/paste the link) to see "hidden" asynchronous reports in exported logs.
 	See my <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header">article about how to read the logs</a>.
 </p>
+<p>Not all of these use Reporting API, some are proprietary reporting mechanisms and you'll notice them easily &ndash; they don't use the <code>Report-To</code> header.</p>
 <ol>
 	<li><a href="csp-report-uri.php">Content Security Policy <code>report-uri</code></a></li>
 	<li><a href="csp-report-to.php">Content Security Policy <code>report-to</code></a></li>
