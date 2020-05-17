@@ -3,7 +3,7 @@ try {
 } catch (e) {
 	if (e instanceof ReferenceError) {
 		document.addEventListener('DOMContentLoaded', function () {
-			const list = document.getElementsByClassName('not-supported');
+			const list = document.getElementsByClassName('reporting-api not-supported');
 			for (let element of list) {
 				element.classList.remove('hidden');
 			}

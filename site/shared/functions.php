@@ -91,6 +91,18 @@ function reportUrl(): string
 }
 
 
+function jsonReportHtml(array $data): string
+{
+	return htmlspecialchars(
+		preg_replace(
+			'/^(  +?)\\1(?=[^ ])/m',
+			'$1',
+			rawurldecode(json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE))
+		)
+	);
+}
+
+
 function reports(\PDOStatement $statement): string
 {
 	$result = [];
@@ -100,17 +112,15 @@ function reports(\PDOStatement $statement): string
 		foreach ($counts as $type => $count) {
 			$types[] = "{$count}× $type";
 		}
-		$reports = json_decode($row['report']);
-
-		$json = rawurldecode(json_encode($reports, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+		$reports = json_decode($row['report'], true);
 		$who = (isset($row['who']) ? htmlspecialchars($row['who']) : null);
 		$result[] = sprintf('<p>%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
 			htmlspecialchars($row['received']),
 			htmlspecialchars(date_default_timezone_get()),
 			htmlspecialchars(implode(' + ', $types)),
-			(is_array($reports) ? ' via <code>Report-To</code>' : ''),
+			(isset($reports[0]) && is_array($reports[0]) ? ' via Reporting API' : ''),
 			(isset($who) ? ' from <code><a href="' . reportOrigin($who) . '"><strong>' . $who . '</strong></a></code>' : ''),
-			htmlspecialchars(preg_replace('/^(  +?)\\1(?=[^ ])/m', '$1', $json))
+			jsonReportHtml($reports)
 		);
 	}
 
@@ -189,7 +199,7 @@ function checkReportsReportToHtml(): string
 
 function reportingApiNotSupportedHtml(string $messageSuffix = 'reporting will not work'): string
 {
-	return '<div class="not-supported hidden">'
+	return '<div class="reporting-api not-supported hidden">'
 		. '😥 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API#Browser_compatibility">does not support</a> Reporting API, '
 		. $messageSuffix
 		. '</div>';

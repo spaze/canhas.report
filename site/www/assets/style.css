@@ -106,6 +106,9 @@ pre {
 .view-source .arrow {
 	opacity: 0.25;
 }
+.disabled {
+	opacity: 0.5;
+}
 @media (max-width: 680px) {
 	body > div {
 		padding: 1em;
