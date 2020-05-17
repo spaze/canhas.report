@@ -43,5 +43,39 @@ echo \Can\Has\pageHead('Expect-CT');
 		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>">reports</a></li>
 		<li>You'll find one <code>expect-ct-report</code> test report for <code>expect-ct-report.test</code> host, no <code>scts</code> and empty certificate chains</li>
 	</ol>
+
+	<h2>Example Expect-CT report</h2>
+	<p>This is how the full report would look like:</p>
+	<pre><code class="json"><?= \Can\Has\jsonReportHtml([
+		'expect-ct-report' => [
+			'port' => 443,
+			'scts' => [
+				[
+					'serialized_sct' => '<Base64 Signed Certificate Timestamp data>',
+					'source' => 'embedded',
+					'status' => 'unknown',
+					'version' => 1,
+				],
+				[
+					'serialized_sct' => '<Base64 Signed Certificate Timestamp data>',
+					'source' => 'embedded',
+					'status' => 'unknown',
+					'version' => 1,
+				],
+			],
+			'hostname' => 'expect-ct-report.test',
+			'date-time' => '2020-05-15T23:16:25.889Z',
+			'served-certificate-chain' => [
+				"-----BEGIN CERTIFICATE-----\n<PEM certificate data>\n-----END CERTIFICATE-----\n",
+				"-----BEGIN CERTIFICATE-----\n<PEM certificate data>\n-----END CERTIFICATE-----\n",
+			],
+			'effective-expiration-date' => '2020-05-15T23:16:25.889Z',
+			'validated-certificate-chain' => [
+				"-----BEGIN CERTIFICATE-----\n<PEM certificate data>\n-----END CERTIFICATE-----\n",
+				"-----BEGIN CERTIFICATE-----\n<PEM certificate data>\n-----END CERTIFICATE-----\n",
+				"-----BEGIN CERTIFICATE-----\n<PEM certificate data>\n-----END CERTIFICATE-----\n",
+			],
+		],
+	]); ?></code></pre>
 </div>
 </body>
