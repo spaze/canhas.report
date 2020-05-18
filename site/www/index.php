@@ -14,6 +14,12 @@ if (\Can\Has\who() !== null) {
 		<img src="tom/minority.gif" alt="Minority Report(s)" width="444" height="202">
 	</picture>
 	<p>Michal Špaček <small>(not me⤴)</small> &mdash;&nbsp;<code>@spazef0rze</code> &mdash;&nbsp;www.michalspacek.cz</p>
+	<div id="supported-by">
+		<a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">
+			<strong>Supported by</strong>
+			<img src="<?= htmlspecialchars(\Can\Has\baseOrigin()); ?>/assets/report-uri.svg" alt="report-uri.com logo" width="152" height="27">
+		</a>
+	</div>
 </div>
 
 <div>
@@ -58,13 +64,42 @@ if (\Can\Has\who() !== null) {
 	<li><a href="https://toolbox.googleapps.com/apps/dig/#TXT/_smtp._tls.michalspacek.cz">SMTP TLS Reporting</a> <em>rua</em> in DNS</li>
 </ol>
 
-<h2>Meta</h2>
+<h2>Your Reports</h2>
 <ul>
-	<li><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">View your reports</a></li>
+	<li><a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>/">View your reports</a></li>
+	<?php if (\Can\Has\reportToReportUri()) { ?>
+		<li>Reports sent to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">Report URI</a> subdomain <code><?= htmlspecialchars(\Can\Has\cookieReportUri()) ?></code> <button id="change-endpoint" data-endpoint="<?= htmlspecialchars(\Can\Has\cookieNameEndpoint()); ?>">Change to <em>canhas.report</em></button></li>
+	<?php } ?>
 	<li>
-		Your reporting subdomain is <code><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/"><?= htmlspecialchars(\Can\Has\cookie()) ?></a></code>
+		Your <em>canhas.report</em> reporting subdomain is <code><a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/"><?= htmlspecialchars(\Can\Has\cookie()) ?></a></code>
 		<button id="subdomain" data-cookie="<?= htmlspecialchars(\Can\Has\cookieName()); ?>" data-subdomain="<?= htmlspecialchars(\Can\Has\cookie()) ?>">Change</button>
 	</li>
+	<li>
+		<?php if (\Can\Has\reportToReportUri()) { ?>
+			To send reports to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">Report URI</a> report aggregator and monitoring platform:
+		<?php } else { ?>
+			Instead, you can send reports to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">Report URI</a> report aggregator and monitoring platform:
+		<?php } ?>
+		<ol>
+			<li><a href="https://report-uri.com/register" target="_blank" rel="noreferrer noopener">Register</a> or <a href="https://report-uri.com/login" target="_blank" rel="noreferrer noopener">sign in</a></li>
+			<li>Add <code><?= htmlspecialchars(\Can\Has\baseHostname()); ?></code> to <em>Global Report Filters</em> &gt; <em>Sites to collect reports for</em> in <a href="https://report-uri.com/account/filters/" target="_blank" rel="noreferrer noopener"><em>Filters</em></a></li>
+			<li>Go to <a href="https://report-uri.com/account/setup/" target="_blank" rel="noreferrer noopener"><em>Setup</em></a> &gt; <em>Custom subdomain</em> and copy <em>Your current subdomain</em> (ends with <em>.report-uri.com</em>), you can also customize it first</li>
+			<li>
+				<button
+					id="report-uri"
+					data-cookie="<?= htmlspecialchars(\Can\Has\cookieNameReportUri()); ?>"
+					data-subdomain="<?= \Can\Has\cookieReportUri() ? htmlspecialchars(\Can\Has\cookieReportUri()) : ''; ?>"
+					data-endpoint="<?= htmlspecialchars(\Can\Has\cookieNameEndpoint()); ?>"
+					data-endpoint-report-uri="<?= htmlspecialchars(\Can\Has\cookieValueEndpointReportUri()); ?>"
+				><?= \Can\Has\reportToReportUri() && \Can\Has\cookieReportUri() ? 'Change Report URI subdomain' : 'Setup reporting to Report URI'; ?></button>
+			</li>
+		</ol>
+	</li>
+
+</ul>
+
+<h2>Meta</h2>
+<ul>
 	<li><a href="https://github.com/spaze/canhas.report/tree/master/site">Source code</a></li>
 	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">All NEL types</a></li>
 	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/frame/deprecation.cc?q=GetDeprecationInfo">All Chrome deprecations and invalid features</a></li>
@@ -108,6 +143,10 @@ if (\Can\Has\who() !== null) {
 	<li><a href="https://securityheaders.com/">securityheaders.com</a> Yet another one</li>
 </ul>
 
-<p><em>By <a href="https://www.michalspacek.cz">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">spazef0rze</a></em></p>
+<p><em>
+	By <a href="https://www.michalspacek.cz">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">spazef0rze</a>,
+	supported by <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><img src="<?= htmlspecialchars(\Can\Has\baseOrigin()); ?>/assets/report-uri.svg" alt="report-uri.com logo" width="120" height="21" class="supported-by-inline"></a></a>
+	&ndash; real time security monitoring and error tracking
+</em></p>
 </div>
 </body>

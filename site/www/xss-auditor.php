@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$xxpHeader = 'X-XSS-Protection: 1; report=' . \Can\Has\reportUrl();
+$xxpHeader = 'X-XSS-Protection: 1; report=' . \Can\Has\reportUrlCanHas();
 header($xxpHeader);
 
 echo \Can\Has\pageHead('XSS Auditor');
@@ -21,6 +21,9 @@ echo \Can\Has\pageHead('XSS Auditor');
 		It currently works in Safari and WebKit-based browsers (any browser on iOS) only.
 	</em></p>
 	<div class="browser not-supported hidden">🍌 Your browser doesn't support XSS Auditor, no reports will be sent</div>
+	<?php if (\Can\Has\reportToReportUri()) { ?>
+		<div class="not-supported">🙈 XSS Auditor reports are not supported by Report URI anymore, sending eventual reports to <em>canhas.report</em></div>
+	<?php } ?>
 	<h2>The <code>X-XSS-Protection</code> response header:</h2>
 	<pre><code><?= htmlspecialchars($xxpHeader); ?></code></pre>
 	<ul>

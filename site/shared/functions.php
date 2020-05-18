@@ -12,7 +12,7 @@ function bookmarks(string ...$links): string
 				$hrefs[] = '<a href="' . htmlspecialchars(baseOrigin()) . '/">↩ Back</a>';
 				break;
 			case 'reports':
-				$hrefs[] = '<a href="' . htmlspecialchars(reportOrigin()) . '/">Reports</a>';
+				$hrefs[] = sprintf('<a href="%s/">%s</a>', htmlspecialchars(reportViewer()), reportToReportUri() ? 'Report URI Reports' : 'Reports');
 				break;
 		}
 	} 
@@ -46,6 +46,31 @@ function cookieName(): string
 }
 
 
+function cookieNameReportUri(): string
+{
+	return 'report-uri';
+}
+
+
+function cookieNameEndpoint(): string
+{
+	return 'endpoint';
+}
+
+
+function cookieValueEndpointReportUri(): string
+{
+	return 'report-uri';
+}
+
+
+function reportToReportUri(): bool
+{
+	$value = $_COOKIE[cookieNameEndpoint()] ?? null;
+	return $value === cookieValueEndpointReportUri() && cookieReportUri() !== null;
+}
+
+
 function cookie(): string
 {
 	$name = cookieName();
@@ -61,33 +86,78 @@ function cookie(): string
 }
 
 
+function cookieReportUri(): ?string
+{
+	$name = cookieNameReportUri();
+	$who = $_COOKIE[$name] ?? null;
+	if ($who !== null && preg_match('/^[a-z0-9]+$/', $who) !== 1) {
+		$_COOKIE[$name] = $who = null;
+	}
+	return $who;
+}
+
+
 function who(): ?string
 {
 	return $_SERVER['HAS_SUBDOMAIN'] ?: null;
 }
 
 
+function baseHostname(): string
+{
+	return $_SERVER['CAN_HAS_BASE'];
+}
+
+
+function baseHostnameReportUri(): string
+{
+	return 'report-uri.com';
+}
+
+
 function baseOrigin(): string
 {
-	return "https://{$_SERVER['CAN_HAS_BASE']}";
+	return 'https://' . baseHostname();
 }
 
 
 function baseSubdomainOrigin(string $subdomain): string
 {
-	return "https://{$subdomain}.{$_SERVER['CAN_HAS_BASE']}";
+	return "https://{$subdomain}." . baseHostname();
 }
 
 
-function reportOrigin(?string $who = null): string
+function reportOrigin(): string
 {
-	return 'https://' . ($who ?? cookie()) . ".{$_SERVER['HAS_BASE']}";
+	return 'https://' . cookie() . ".{$_SERVER['HAS_BASE']}";
 }
 
 
-function reportUrl(): string
+function reportCanHasOrigin(string $who): string
+{
+	return "https://{$who}.{$_SERVER['HAS_BASE']}";
+}
+
+
+function reportViewer(): string
+{
+	return reportToReportUri() ? 'https://' . baseHostnameReportUri() . '/account' : reportOrigin();
+}
+
+
+function reportUrlCanHas(): string
 {
 	return reportOrigin() . '/report.php';
+}
+
+
+function reportUrl(?string $type = null): string
+{
+	if (reportToReportUri()) {
+		return 'https://' . cookieReportUri() . '.' . baseHostnameReportUri() . '/' . ($type === null ? 'a/d/g' : "r/d/{$type}");
+	} else {
+		return reportUrlCanHas();
+	}
 }
 
 
@@ -119,7 +189,7 @@ function reports(\PDOStatement $statement): string
 			htmlspecialchars(date_default_timezone_get()),
 			htmlspecialchars(implode(' + ', $types)),
 			(isset($reports[0]) && is_array($reports[0]) ? ' via Reporting API' : ''),
-			(isset($who) ? ' from <code><a href="' . reportOrigin($who) . '"><strong>' . $who . '</strong></a></code>' : ''),
+			(isset($who) ? ' from <code><a href="' . reportCanHasOrigin($who) . '"><strong>' . $who . '</strong></a></code>' : ''),
 			jsonReportHtml($reports)
 		);
 	}
@@ -193,7 +263,7 @@ function willTriggerReportToHtml(string $what = 'violation'): string
 
 function checkReportsReportToHtml(): string
 {
-	return 'Check your <a href="' . htmlspecialchars(reportOrigin()) . '/">reports</a> (can take some time before the browser sends the report)';
+	return 'Check your <a href="' . htmlspecialchars(reportViewer()) . '/">reports</a> (can take some time before the browser sends the report)';
 }
 
 

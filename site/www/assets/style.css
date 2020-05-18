@@ -1,6 +1,9 @@
 p, ol, h2 {
 	margin-top: 2em;
 }
+ul ol {
+	margin-top: 0;
+}
 h1 {
 	clear: both;
 	margin-top: 1.4em;
@@ -28,6 +31,10 @@ ul li:before {
 	color: #CCC;
 	font-size: 1.1em;
 }
+ol li { list-style: inherit; }
+ol li:before {
+	content:none;
+}
 code {
 	background-color: #EFEFEF;
 	padding: 1px 4px;
@@ -48,6 +55,22 @@ button code { background-color: transparent; }
 	padding: inherit;
 }
 #tom h1 { margin-top: 0; }
+#supported-by {
+	max-width: 444px;
+	line-height: 27px;
+	text-align: center;
+}
+#supported-by a {
+	color: #FFF;
+	text-decoration: none;
+}
+#supported-by img {
+	vertical-align: bottom;
+}
+.supported-by-inline {
+	vertical-align: middle;
+	margin: auto 3px;
+}
 #reports p {
 	margin-top: 3em;
 }

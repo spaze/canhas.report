@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$expectCtHeader = 'Expect-CT: max-age=' . \Can\Has\maxAge() . ', enforce, report-uri="' . \Can\Has\reportUrl() . '"';
+$expectCtHeader = 'Expect-CT: max-age=' . \Can\Has\maxAge() . ', enforce, report-uri="' . \Can\Has\reportUrl('ct/enforce') . '"';
 header($expectCtHeader);
 
 echo \Can\Has\pageHead('Expect-CT');
@@ -36,11 +36,19 @@ echo \Can\Has\pageHead('Expect-CT');
 	<h2>Test Expect-CT reporting</h2>
 	<p>It would be quite a feat to get a certificate that would violate for example Chrome's CT policy so there's no "click here to generate the report" button here. Luckily, Chrome offers to send a test Expect-CT report:</p>
 	<ol>
+		<?php if (\Can\Has\reportToReportUri()) { ?>
+			<li>While in Report URI, add <code>expect-ct-report.test</code> to <em>Global Report Filters</em> &gt; <em>Sites to collect reports for</em> in <a href="https://report-uri.com/account/filters/"><em>Filters</em></a></li>
+		<?php } ?>
 		<li>Go to Chrome's Domain Security Policy debug page: <a href="chrome://net-internals/#hsts">chrome://net-internals/#hsts</a> (you need to copy & paste the link)</li>
 		<li>Scroll down to <em>Send test Expect-CT report</em></li>
-		<li>Enter your custom reporting endpoint address <a href="<?= htmlspecialchars(\Can\Has\reportUrl()); ?>"><?= htmlspecialchars(\Can\Has\reportUrl()); ?></a> (copy & paste) to the <em>Report URI</em> field</li>
-		<li>Hit <em>Send</em> and you should see that the <em>Test report succeeded</em></li>
-		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>">reports</a></li>
+		<li>Enter your custom reporting endpoint address <a href="<?= htmlspecialchars(\Can\Has\reportUrl('ct/enforce')); ?>"><?= htmlspecialchars(\Can\Has\reportUrl('ct/enforce')); ?></a> (copy & paste) to the <em>Report URI</em> field</li>
+
+		<?php if (\Can\Has\reportToReportUri()) { ?>
+			<li>Hit <em>Send</em> and you should see that the <em>Test report failed</em> but don't worry, that's ok &ndash; Report URI returns HTTP 201, not 200, and that's treated as failure here</li>
+		<?php } else { ?>
+			<li>Hit <em>Send</em> and you should see that the <em>Test report succeeded</em></li>
+		<?php } ?>
+		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>">reports</a></li>
 		<li>You'll find one <code>expect-ct-report</code> test report for <code>expect-ct-report.test</code> host, no <code>scts</code> and empty certificate chains</li>
 	</ol>
 

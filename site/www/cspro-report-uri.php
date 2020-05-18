@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$cspHeader = "Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-inline'; report-uri " . \Can\Has\reportUrl();
+$cspHeader = "Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-inline'; report-uri " . \Can\Has\reportUrl('csp/reportOnly');
 header($cspHeader);
 
 echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
@@ -54,7 +54,7 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 		</li>
 		<li>Would be blocked if the policy was <em>enforced</em> and not <em>report-only</em></li>
 		<li>Will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)</li>
-		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">reports</a></li>
+		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>/">reports</a></li>
 	</ul>
 </div>
 </body>
