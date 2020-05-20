@@ -84,5 +84,7 @@ echo \Can\Has\pageHead('CSPRO report-to');
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 		<li>See the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="insert"&gt;</code></li>
 	</ul>
+
+	<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

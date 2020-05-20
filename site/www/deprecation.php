@@ -62,5 +62,7 @@ echo \Can\Has\pageHead('Deprecation');
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>
 	<p>See Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/frame/deprecation.cc?q=GetDeprecationInfo">source code</a> for more deprecated and invalid features.</p>
+
+	<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

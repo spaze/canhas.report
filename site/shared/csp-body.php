@@ -90,5 +90,7 @@ declare(strict_types = 1);
 		<li><?= $checkReportsHtml; ?></li>
 		<li>See the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="inject"&gt;</code></li>
 	</ul>
+
+	<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

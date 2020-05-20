@@ -70,5 +70,7 @@ echo \Can\Has\pageHead('XSS Auditor');
 			'request-body' => '<post data, if any>',
 		],
 	]); ?></code></pre>
+
+	<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

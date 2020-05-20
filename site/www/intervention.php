@@ -56,5 +56,7 @@ echo \Can\Has\pageHead('Intervention');
 		See Chrome's incomplete <a href="https://www.chromestatus.com/features#intervention">list of interventions</a>
 		(the above-mentioned <a href="https://www.chromestatus.com/feature/5644273861001216">phone vibrate intervention</a> is not included in this list for some reason).
 	</p>
+
+	<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

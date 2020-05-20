@@ -40,5 +40,7 @@ echo \Can\Has\pageHead('HPKP');
 			"-----BEGIN CERTIFICATE-----\n<PEM certificate data>\n-----END CERTIFICATE-----",
 		],
 	]); ?></code></pre>
+
+	<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

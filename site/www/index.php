@@ -143,10 +143,6 @@ if (\Can\Has\who() !== null) {
 	<li><a href="https://securityheaders.com/">securityheaders.com</a> Yet another one</li>
 </ul>
 
-<p><em>
-	By <a href="https://www.michalspacek.cz">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">spazef0rze</a>,
-	supported by <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><img src="<?= htmlspecialchars(\Can\Has\baseOrigin()); ?>/assets/report-uri.svg" alt="report-uri.com logo" width="120" height="21" class="supported-by-inline"></a></a>
-	&ndash; real time security monitoring and error tracking
-</em></p>
+<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

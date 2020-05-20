@@ -56,5 +56,7 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 		<li>Will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)</li>
 		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>/">reports</a></li>
 	</ul>
+
+	<?= \Can\Has\footerHtml(); ?>
 </div>
 </body>

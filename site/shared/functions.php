@@ -33,6 +33,16 @@ function pageHead(?string $title = null): string
 }
 
 
+function footerHtml(): string
+{
+	return '<p><em>
+		By <a href="https://www.michalspacek.com">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">@spazef0rze</a>,
+		supported by <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><img src="' . htmlspecialchars(baseOrigin()) . '/assets/report-uri.svg" alt="report-uri.com logo" width="120" height="21" class="supported-by-inline"></a></a>
+		&ndash; real time security monitoring and error tracking
+	</em></p>';
+}
+
+
 function redirectToBase(): void
 {
 	header('Location: ' . baseOrigin() . '/');
