@@ -9,14 +9,14 @@ function bookmarks(string ...$links): string
 	foreach ($links as $link) {
 		switch ($link) {
 			case 'index':
-				$hrefs[] = '<a href="' . htmlspecialchars(baseOrigin()) . '/">↩ Back</a>';
+				$hrefs[] = '<a href="' . \htmlspecialchars(baseOrigin()) . '/">↩ Back</a>';
 				break;
 			case 'reports':
-				$hrefs[] = sprintf('<a href="%s/">%s</a>', htmlspecialchars(reportViewer()), reportToReportUri() ? 'Report URI Reports' : 'Reports');
+				$hrefs[] = \sprintf('<a href="%s/">%s</a>', \htmlspecialchars(reportViewer()), reportToReportUri() ? 'Report URI Reports' : 'Reports');
 				break;
 		}
 	} 
-	return '<div id="bookmarks"><div>' . implode(' ', $hrefs) . '</div></div>';
+	return '<div id="bookmarks"><div>' . \implode(' ', $hrefs) . '</div></div>';
 }
 
 
@@ -25,23 +25,23 @@ function pageHead(?string $title = null): string
 	return '<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>' . ($title ? " {$title} | " : '') . 'Reporting API Demos</title>
-		<link rel="stylesheet" href="' . htmlspecialchars(baseOrigin()) . '/assets/style.css">
-		<script src="' . htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>
-		<script src="' . htmlspecialchars(baseOrigin()) . '/assets/highlight.pack.js"></script>
-		<script src="' . htmlspecialchars(baseOrigin()) . '/assets/highlight-init.js"></script>
+		<link rel="stylesheet" href="' . \htmlspecialchars(baseOrigin()) . '/assets/style.css">
+		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>
+		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight.pack.js"></script>
+		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight-init.js"></script>
 		</head>';
 }
 
 
 function smallReportUriLogoHtml(): string
 {
-	return '<a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><img src="' . htmlspecialchars(baseOrigin()) . '/assets/report-uri.svg" alt="report-uri.com logo" width="120" height="21" class="supported-by-inline"></a>';
+	return '<a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><img src="' . \htmlspecialchars(baseOrigin()) . '/assets/report-uri.svg" alt="report-uri.com logo" width="120" height="21" class="supported-by-inline"></a>';
 }
 
 
 function headerHtml(string $header): string
 {
-	return '<div id="header"><a href="' . htmlspecialchars(baseOrigin()) . '/"><strong>' . htmlspecialchars($header) . '</strong></a> <span><span class="separator">&mdash;</span><span class="separator-break"></span> Supported by ' . smallReportUriLogoHtml() . '</span></div>';
+	return '<div id="header"><a href="' . \htmlspecialchars(baseOrigin()) . '/"><strong>' . \htmlspecialchars($header) . '</strong></a> <span><span class="separator">&mdash;</span><span class="separator-break"></span> Supported by ' . smallReportUriLogoHtml() . '</span></div>';
 }
 
 
@@ -56,7 +56,7 @@ function footerHtml(): string
 
 function redirectToBase(): void
 {
-	header('Location: ' . baseOrigin() . '/');
+	\header('Location: ' . baseOrigin() . '/');
 	exit;
 }
 
@@ -96,10 +96,10 @@ function cookie(): string
 {
 	$name = cookieName();
 	$who = $_COOKIE[$name] ?? null;
-	if ($who === null || preg_match('/^[a-z0-9-]+$/', $who) !== 1) {
+	if ($who === null || \preg_match('/^[a-z0-9-]+$/', $who) !== 1) {
 		$_COOKIE[$name] = $who = randomSubdomain();
 		\setcookie($name, $who, [
-			'expires' => strtotime('1 year'),
+			'expires' => \strtotime('1 year'),
 			'secure' => true,
 		]);
 	}
@@ -111,7 +111,7 @@ function cookieReportUri(): ?string
 {
 	$name = cookieNameReportUri();
 	$who = $_COOKIE[$name] ?? null;
-	if ($who !== null && preg_match('/^[a-z0-9]+$/', $who) !== 1) {
+	if ($who !== null && \preg_match('/^[a-z0-9]+$/', $who) !== 1) {
 		$_COOKIE[$name] = $who = null;
 	}
 	return $who;
@@ -184,11 +184,11 @@ function reportUrl(?string $type = null): string
 
 function jsonReportHtml(array $data): string
 {
-	return htmlspecialchars(
-		preg_replace(
+	return \htmlspecialchars(
+		\preg_replace(
 			'/^(  +?)\\1(?=[^ ])/m',
 			'$1',
-			rawurldecode(json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE))
+			\rawurldecode(\json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE))
 		)
 	);
 }
@@ -198,18 +198,18 @@ function reports(\PDOStatement $statement): string
 {
 	$result = [];
 	foreach ($statement as $row) {
-		$counts = array_count_values(json_decode($row['types']));
+		$counts = \array_count_values(\json_decode($row['types']));
 		$types = [];
 		foreach ($counts as $type => $count) {
 			$types[] = "{$count}× $type";
 		}
-		$reports = json_decode($row['report'], true);
-		$who = (isset($row['who']) ? htmlspecialchars($row['who']) : null);
-		$result[] = sprintf('<p>%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
-			htmlspecialchars($row['received']),
-			htmlspecialchars(date_default_timezone_get()),
-			htmlspecialchars(implode(' + ', $types)),
-			(isset($reports[0]) && is_array($reports[0]) ? ' via Reporting API' : ''),
+		$reports = \json_decode($row['report'], true);
+		$who = (isset($row['who']) ? \htmlspecialchars($row['who']) : null);
+		$result[] = \sprintf('<p>%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
+			\htmlspecialchars($row['received']),
+			\htmlspecialchars(\date_default_timezone_get()),
+			\htmlspecialchars(\implode(' + ', $types)),
+			(isset($reports[0]) && \is_array($reports[0]) ? ' via Reporting API' : ''),
 			(isset($who) ? ' from <code><a href="' . reportCanHasOrigin($who) . '"><strong>' . $who . '</strong></a></code>' : ''),
 			jsonReportHtml($reports)
 		);
@@ -218,7 +218,7 @@ function reports(\PDOStatement $statement): string
 	if ($statement->rowCount() === 0) {
 		return '<p>No reports yet</p>';
 	} else {
-		return implode("\n", $result);
+		return \implode("\n", $result);
 	}
 }
 
@@ -241,14 +241,14 @@ function reportToHeader(): string
 		],
 		'include_subdomains' => true,
 	];
-	return 'Report-To: ' . json_encode($reportTo, JSON_UNESCAPED_SLASHES);
+	return 'Report-To: ' . \json_encode($reportTo, JSON_UNESCAPED_SLASHES);
 }
 
 
 function reportToHeaderHtml(string $header, string $groupDescriptionHtml): string
 {
 	return '<h2>The <code>Report-To</code> response header:</h2>
-		<pre><code class="json">' . htmlspecialchars($header) . '</code></pre>
+		<pre><code class="json">' . \htmlspecialchars($header) . '</code></pre>
 		<ul>
 			<li><code>group</code>: the name of the group, ' . $groupDescriptionHtml .  '</li>
 			<li><code>max_age</code>: how long the browser should use the endpoint and report errors to it</li>
@@ -271,7 +271,7 @@ function nelHeader(): string
 //	'success_fraction' => 0.5,  // 0.0-1.0, optional, no success reports if not present
 //	'failure_fraction' => 0.5,  // 0.0-1.0, optional, all failure reports if not present
 	];
-	return 'NEL: ' . json_encode($nel, JSON_UNESCAPED_SLASHES);
+	return 'NEL: ' . \json_encode($nel, JSON_UNESCAPED_SLASHES);
 }
 
 
@@ -284,7 +284,7 @@ function willTriggerReportToHtml(string $what = 'violation'): string
 
 function checkReportsReportToHtml(): string
 {
-	return 'Check your <a href="' . htmlspecialchars(reportViewer()) . '/">reports</a> (can take some time before the browser sends the report)';
+	return 'Check your <a href="' . \htmlspecialchars(reportViewer()) . '/">reports</a> (can take some time before the browser sends the report)';
 }
 
 
@@ -303,27 +303,27 @@ function scriptSourceHtmlStart(string $class, string $language = 'html'): bool
 
 	return \ob_start(function (string $source) use ($class, $language, &$counter): string {
 		// Remove the "global" indentation
-		preg_match('/^(\t*)/', $source, $matches);
-		$source = preg_replace("/^{$matches[1]}/m", '', $source);
+		\preg_match('/^(\t*)/', $source, $matches);
+		$source = \preg_replace("/^{$matches[1]}/m", '', $source);
 		// Convert tabs to spaces
 		do {
-			$source = preg_replace("/^( *){$matches[1][0]}/m", '$1  ', $source, -1, $count);
+			$source = \preg_replace("/^( *){$matches[1][0]}/m", '$1  ', $source, -1, $count);
 		} while ($count > 0);
 
-		return $source . '<p><a href="#source' . ++$counter . '" class="view-source ' . htmlspecialchars($class) . '" data-text-hide="hide the code" data-text-show="show the code" data-arrow-hide="▲" data-arrow-show="▼"><span class="text">show the code</span> <span class="arrow">▼</span></a></p>
-			<pre id="source' . $counter . '" hidden><code class="' . htmlspecialchars($language) . '">' . htmlspecialchars($source) . '</code></pre>';
+		return $source . '<p><a href="#source' . ++$counter . '" class="view-source ' . \htmlspecialchars($class) . '" data-text-hide="hide the code" data-text-show="show the code" data-arrow-hide="▲" data-arrow-show="▼"><span class="text">show the code</span> <span class="arrow">▼</span></a></p>
+			<pre id="source' . $counter . '" hidden><code class="' . \htmlspecialchars($language) . '">' . \htmlspecialchars($source) . '</code></pre>';
 	});
 }
 
 
 function scriptSourceHtmlEnd(): bool
 {
-	return ob_end_flush();
+	return \ob_end_flush();
 }
 
 
 function randomSubdomain(): string
 {
 	$subdomains = require __DIR__ . '/subdomains.php';
-	return $subdomains[array_rand($subdomains)];
+	return $subdomains[\array_rand($subdomains)];
 }
