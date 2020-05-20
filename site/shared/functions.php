@@ -297,11 +297,11 @@ function reportingApiNotSupportedHtml(string $messageSuffix = 'reporting will no
 }
 
 
-function scriptSourceHtmlStart(string $class, string $language = 'html'): bool
+function scriptSourceHtmlStart(string $class): bool
 {
 	static $counter = 0;
 
-	return \ob_start(function (string $source) use ($class, $language, &$counter): string {
+	return \ob_start(function (string $source) use ($class, &$counter): string {
 		// Remove the "global" indentation
 		\preg_match('/^(\t*)/', $source, $matches);
 		$source = \preg_replace("/^{$matches[1]}/m", '', $source);
@@ -311,7 +311,7 @@ function scriptSourceHtmlStart(string $class, string $language = 'html'): bool
 		} while ($count > 0);
 
 		return $source . '<p><a href="#source' . ++$counter . '" class="view-source ' . \htmlspecialchars($class) . '" data-text-hide="hide the code" data-text-show="show the code" data-arrow-hide="▲" data-arrow-show="▼"><span class="text">show the code</span> <span class="arrow">▼</span></a></p>
-			<pre id="source' . $counter . '" hidden><code class="' . \htmlspecialchars($language) . '">' . \htmlspecialchars($source) . '</code></pre>';
+			<pre id="source' . $counter . '" hidden><code class="html">' . \htmlspecialchars($source) . '</code></pre>';
 	});
 }
 

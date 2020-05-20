@@ -36,6 +36,7 @@ if (\Can\Has\who() !== null) {
 <ol>
 	<li><a href="csp-report-uri.php">Content Security Policy <code>report-uri</code></a></li>
 	<li><a href="csp-report-to.php">Content Security Policy <code>report-to</code></a></li>
+	<li><a href="csp-urls.php">More CSP <code>report-to</code> &ndash; load resources by specified URL, submit forms</a></li>
 	<li><a href="cspro-report-uri.php">CSP Report-Only <code>report-uri</code> &ndash; mixed content detection</a></li>
 	<li><a href="cspro-report-to.php">CSP Report-Only <code>report-to</code></a></li>
 	<li><a href="crash.php">Crash</a></li>
