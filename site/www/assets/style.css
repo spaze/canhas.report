@@ -71,7 +71,19 @@ button code { background-color: transparent; }
 	vertical-align: middle;
 	margin: auto 3px;
 }
-#reports p {
+#header {
+	color: #FFF;
+	background-color: #000;
+}
+#header span {
+	color: #777;
+	white-space: nowrap;
+}
+#header a {
+	color: #FFF;
+	text-decoration: none;
+}
+ #reports p {
 	margin-top: 3em;
 }
 pre {
@@ -135,5 +147,13 @@ pre {
 @media (max-width: 680px) {
 	body > div {
 		padding: 1em;
+	}
+}
+@media (max-width: 500px) {
+	.separator {
+		display: none;
+	}
+	.separator-break {
+		display: block;
 	}
 }

@@ -9,6 +9,7 @@ header($xxpHeader);
 echo \Can\Has\pageHead('XSS Auditor');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 

@@ -6,6 +6,7 @@ require __DIR__ . '/../shared/functions.php';
 echo \Can\Has\pageHead('HPKP');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 

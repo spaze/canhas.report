@@ -12,6 +12,7 @@ header($reportToHeader);
 echo \Can\Has\pageHead('CSPRO report-to');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>Content Security Policy <em>Report-Only</em> with <code>report-to</code></h1>

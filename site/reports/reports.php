@@ -18,6 +18,7 @@ $statement->execute([$who]);
 echo \Can\Has\pageHead('Received Reports');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div id="reports">
 <?= \Can\Has\bookmarks('index'); ?>
 <h1>Received Reports</h1>

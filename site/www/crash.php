@@ -9,6 +9,7 @@ header($reportToHeader);
 echo \Can\Has\pageHead('Crash');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>Crash reports with <code>report-to</code></h1>

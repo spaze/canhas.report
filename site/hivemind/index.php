@@ -13,6 +13,7 @@ $statement->execute();
 echo \Can\Has\pageHead('All Received Reports');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div id="reports">
 	<?= \Can\Has\bookmarks('index'); ?>
 	<h1>All Received Reports</h1>

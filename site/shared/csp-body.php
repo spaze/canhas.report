@@ -2,6 +2,7 @@
 declare(strict_types = 1);
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1><?= $pageHeaderHtml; ?></h1>

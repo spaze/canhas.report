@@ -9,6 +9,7 @@ header($expectCtHeader);
 echo \Can\Has\pageHead('Expect-CT');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 

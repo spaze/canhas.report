@@ -9,6 +9,7 @@ header($cspHeader);
 echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>Content Security Policy <em>Report-Only</em> with <code>report-uri</code> &ndash; mixed content detection</h1>

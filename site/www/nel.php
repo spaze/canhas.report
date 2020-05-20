@@ -11,6 +11,7 @@ header($nelHeader);
 echo \Can\Has\pageHead('Network Error Logging');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 

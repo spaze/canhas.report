@@ -33,12 +33,23 @@ function pageHead(?string $title = null): string
 }
 
 
+function smallReportUriLogoHtml(): string
+{
+	return '<a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><img src="' . htmlspecialchars(baseOrigin()) . '/assets/report-uri.svg" alt="report-uri.com logo" width="120" height="21" class="supported-by-inline"></a>';
+}
+
+
+function headerHtml(string $header): string
+{
+	return '<div id="header"><a href="' . htmlspecialchars(baseOrigin()) . '/"><strong>' . htmlspecialchars($header) . '</strong></a> <span><span class="separator">&mdash;</span><span class="separator-break"></span> Supported by ' . smallReportUriLogoHtml() . '</span></div>';
+}
+
+
 function footerHtml(): string
 {
 	return '<p><em>
 		By <a href="https://www.michalspacek.com">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">@spazef0rze</a>,
-		supported by <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><img src="' . htmlspecialchars(baseOrigin()) . '/assets/report-uri.svg" alt="report-uri.com logo" width="120" height="21" class="supported-by-inline"></a></a>
-		&ndash; real time security monitoring and error tracking
+		supported by ' . smallReportUriLogoHtml() . ' &ndash; real time security monitoring and error tracking
 	</em></p>';
 }
 

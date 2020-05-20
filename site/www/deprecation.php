@@ -9,6 +9,7 @@ header($reportToHeader);
 echo \Can\Has\pageHead('Deprecation');
 ?>
 <body>
+<?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
