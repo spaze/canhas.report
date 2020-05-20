@@ -11,15 +11,14 @@ if (\Can\Has\who() !== null) {
 	<h1><small>Minority</small> Reporting API Demos</h1>
 	<picture>
 		<source srcset="tom/minority.webp" type="image/webp">
-		<img src="tom/minority.gif" alt="Minority Report(s)" width="444" height="202">
+		<img src="tom/minority.gif" alt="Minority Report(s)" title="This is not Scott Helme" width="444" height="202">
 	</picture>
-	<p>Michal Špaček <small>(not me⤴)</small> &mdash;&nbsp;<code>@spazef0rze</code> &mdash;&nbsp;www.michalspacek.cz</p>
-	<div id="supported-by">
+	<p id="supported-by">
 		<a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">
 			<strong>Supported by</strong>
 			<img src="<?= htmlspecialchars(\Can\Has\baseOrigin()); ?>/assets/report-uri.svg" alt="report-uri.com logo" width="152" height="27">
 		</a>
-	</div>
+	</p>
 </div>
 
 <div>
