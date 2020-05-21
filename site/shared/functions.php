@@ -94,16 +94,23 @@ function reportToReportUri(): bool
 }
 
 
+function setCookie(string $name, string $value, bool $httpOnly): void
+{
+	\setcookie($name, $value, [
+		'expires' => \strtotime('1 year'),
+		'secure' => true,
+		'httponly' => $httpOnly,
+	]);
+}
+
+
 function cookie(): string
 {
 	$name = cookieName();
 	$who = $_COOKIE[$name] ?? null;
 	if ($who === null || \preg_match('/^[a-z0-9-]+$/', $who) !== 1) {
 		$_COOKIE[$name] = $who = randomSubdomain();
-		\setcookie($name, $who, [
-			'expires' => \strtotime('1 year'),
-			'secure' => true,
-		]);
+		setCookie($name, $who, false);
 	}
 	return $who;
 }
@@ -196,10 +203,14 @@ function jsonReportHtml(array $data): string
 }
 
 
-function reports(\PDOStatement $statement): string
+function reports(\PDOStatement $statement, ?int &$seen): string
 {
 	$result = [];
+	$cookieSeen = $_COOKIE['seen'] ?? 0;
 	foreach ($statement as $row) {
+		if ($seen === null) {
+			$seen = \strtotime($row['received']);
+		}
 		$counts = \array_count_values(\json_decode($row['types']));
 		$types = [];
 		foreach ($counts as $type => $count) {
@@ -207,7 +218,8 @@ function reports(\PDOStatement $statement): string
 		}
 		$reports = \json_decode($row['report'], true);
 		$who = (isset($row['who']) ? \htmlspecialchars($row['who']) : null);
-		$result[] = \sprintf('<p>%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
+		$result[] = \sprintf('<p>%s%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
+			(strtotime($row['received']) > $cookieSeen ? '🆕 ' : ''),
 			\htmlspecialchars($row['received']),
 			\htmlspecialchars(\date_default_timezone_get()),
 			\htmlspecialchars(\implode(' + ', $types)),

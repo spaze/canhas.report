@@ -10,6 +10,13 @@ header("Content-Security-Policy: default-src 'none'; script-src {$baseOrigin}; i
 $database = new PDO("mysql:host=$dbHost;dbname=$dbSchema", $dbUsername, $dbPassword);
 $statement = $database->prepare('SELECT received, types, report, who FROM reports ORDER BY received DESC');
 $statement->execute();
+
+$seen = null;
+$reportsHtml = \Can\Has\reports($statement, $seen);
+if ($seen) {
+	\Can\Has\setCookie('seen', (string)$seen, true);
+}
+
 echo \Can\Has\pageHead('All Received Reports');
 ?>
 <body>
@@ -17,7 +24,7 @@ echo \Can\Has\pageHead('All Received Reports');
 <div id="reports">
 	<?= \Can\Has\bookmarks('index'); ?>
 	<h1>All Received Reports</h1>
-	<?= \Can\Has\reports($statement); ?>
+	<?= $reportsHtml; ?>
 	<p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a></p>
 	<?= \Can\Has\footerHtml(); ?>
 </div>

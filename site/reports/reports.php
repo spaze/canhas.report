@@ -15,6 +15,13 @@ if ($who === null) {
 $database = new PDO("mysql:host=$dbHost;dbname=$dbSchema", $dbUsername, $dbPassword);
 $statement = $database->prepare('SELECT received, types, report FROM reports WHERE who = ? ORDER BY received DESC');
 $statement->execute([$who]);
+
+$seen = null;
+$reportsHtml = \Can\Has\reports($statement, $seen);
+if ($seen) {
+	\Can\Has\setCookie('seen', (string)$seen, true);
+}
+
 echo \Can\Has\pageHead('Received Reports');
 ?>
 <body>
@@ -22,7 +29,7 @@ echo \Can\Has\pageHead('Received Reports');
 <div id="reports">
 <?= \Can\Has\bookmarks('index'); ?>
 <h1>Received Reports</h1>
-<?= \Can\Has\reports($statement); ?>
+<?= $reportsHtml; ?>
 <p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a></p>
 <?= \Can\Has\footerHtml(); ?>
 </div>
