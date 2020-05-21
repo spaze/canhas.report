@@ -49,10 +49,10 @@ function headerHtml(string $header): string
 
 function footerHtml(): string
 {
-	return '<p><em>
+	return '<div id="footer">
 		By <a href="https://www.michalspacek.com">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">@spazef0rze</a>,
 		supported by ' . smallReportUriLogoHtml() . ' &ndash; real time security monitoring and error tracking
-	</em></p>';
+	</div>';
 }
 
 

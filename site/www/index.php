@@ -143,6 +143,6 @@ if (\Can\Has\who() !== null) {
 	<li><a href="https://securityheaders.com/">securityheaders.com</a> Yet another one</li>
 </ul>
 
-<?= \Can\Has\footerHtml(); ?>
 </div>
+<?= \Can\Has\footerHtml(); ?>
 </body>

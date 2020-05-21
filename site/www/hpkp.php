@@ -42,6 +42,6 @@ echo \Can\Has\pageHead('HPKP');
 		],
 	]); ?></code></pre>
 
-	<?= \Can\Has\footerHtml(); ?>
 </div>
+<?= \Can\Has\footerHtml(); ?>
 </body>

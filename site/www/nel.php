@@ -113,6 +113,6 @@ echo \Can\Has\pageHead('Network Error Logging');
 
 	<p>See also Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">list of all NEL types</a>.</p>
 
-	<?= \Can\Has\footerHtml(); ?>
 </div>
+<?= \Can\Has\footerHtml(); ?>
 </body>

@@ -136,6 +136,6 @@ echo \Can\Has\pageHead('More CSP reports');
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?> &ndash; if blocked, a report will be sent</li>
 	</ul>
 
-	<?= \Can\Has\footerHtml(); ?>
 </div>
+<?= \Can\Has\footerHtml(); ?>
 </body>

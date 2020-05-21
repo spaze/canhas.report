@@ -26,6 +26,6 @@ echo \Can\Has\pageHead('All Received Reports');
 	<h1>All Received Reports</h1>
 	<?= $reportsHtml; ?>
 	<p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a></p>
-	<?= \Can\Has\footerHtml(); ?>
 </div>
+<?= \Can\Has\footerHtml(); ?>
 </body>

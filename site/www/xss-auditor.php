@@ -72,6 +72,6 @@ echo \Can\Has\pageHead('XSS Auditor');
 		],
 	]); ?></code></pre>
 
-	<?= \Can\Has\footerHtml(); ?>
 </div>
+<?= \Can\Has\footerHtml(); ?>
 </body>
