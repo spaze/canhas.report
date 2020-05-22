@@ -1,8 +1,6 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/../shared/functions.php';
-
 $nonce = base64_encode(random_bytes(16));
 $cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self'; form-action 'self'; report-to default";
 $reportToHeader = \Can\Has\reportToHeader();
@@ -16,7 +14,7 @@ echo \Can\Has\pageHead('More CSP reports');
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>More Content Security Policy with <code>report-to</code></h1>
-	<p><em>Sending even more Content Security Policy (CSP) violation reports with <code>report-to</code>, asynchronously and possibly grouping more reports together. Read <a href="csp-report-to.php">general CSP reporting</a> description for more details.</em></p>
+	<p><em>Sending even more Content Security Policy (CSP) violation reports with <code>report-to</code>, asynchronously and possibly grouping more reports together. Read <a href="csp-report-to">general CSP reporting</a> description for more details.</em></p>
 
 	<h2>The CSP response header:</h2>
 	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>

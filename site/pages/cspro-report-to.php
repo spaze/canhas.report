@@ -1,8 +1,6 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/../shared/functions.php';
-
 $nonce = base64_encode(random_bytes(16));
 $cspHeader = "Content-Security-Policy-Report-Only: default-src data: 'self' 'nonce-{$nonce}' 'report-sample'; report-to default";
 $reportToHeader = \Can\Has\reportToHeader();

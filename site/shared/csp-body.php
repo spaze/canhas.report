@@ -92,7 +92,7 @@ declare(strict_types = 1);
 		<li>See the inserted JS tag in <em>Developer tools</em>, right after <code>&lt;button id="inject"&gt;</code></li>
 	</ul>
 
-	There's <a href="csp-urls.php">more CSP demos to try</a>, where you can load any resources by URL and even submit forms.
+	There's <a href="csp-urls">more CSP demos to try</a>, where you can load any resources by URL and even submit forms.
 
 </div>
 <?= \Can\Has\footerHtml(); ?>

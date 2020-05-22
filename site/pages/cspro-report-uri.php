@@ -1,8 +1,6 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/../shared/functions.php';
-
 $cspHeader = "Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-inline'; report-uri " . \Can\Has\reportUrl('csp/reportOnly');
 header($cspHeader);
 

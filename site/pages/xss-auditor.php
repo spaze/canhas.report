@@ -1,8 +1,6 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/../shared/functions.php';
-
 $xxpHeader = 'X-XSS-Protection: 1; report=' . \Can\Has\reportUrlCanHas();
 header($xxpHeader);
 

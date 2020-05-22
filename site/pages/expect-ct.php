@@ -1,8 +1,6 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/../shared/functions.php';
-
 $expectCtHeader = 'Expect-CT: max-age=' . \Can\Has\maxAge() . ', enforce, report-uri="' . \Can\Has\reportUrl('ct/enforce') . '"';
 header($expectCtHeader);
 

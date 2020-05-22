@@ -1,8 +1,6 @@
 <?php
 declare(strict_types = 1);
 
-require __DIR__ . '/../shared/functions.php';
-
 $reportToHeader = \Can\Has\reportToHeader();
 header($reportToHeader);
 
@@ -24,7 +22,7 @@ echo \Can\Has\pageHead('Crash');
 	</p>
 	<ul>
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
-		<li>&hellip;if the tab crashes in <code>max_age</code> seconds after receiving the <code>Report-To</code> header, <a href="crash.php">reload</a> the page first to make sure it does (you'll want to use bigger <code>max_age</code> in your real header)</li>
+		<li>&hellip;if the tab crashes in <code>max_age</code> seconds after receiving the <code>Report-To</code> header, <a href="crash">reload</a> the page first to make sure it does (you'll want to use bigger <code>max_age</code> in your real header)</li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 		<li>Reports can contain an optional <code>reason</code>, e.g. <code>oom</code> (Out-of-Memory, try with <a href="chrome://memory-exhaust/">chrome://memory-exhaust/</a>), <code>unresponsive</code> (killed due to being unresponsive)</li>
 	</ul>
