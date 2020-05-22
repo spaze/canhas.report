@@ -5,9 +5,14 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$uri = $_SERVER['REQUEST_URI'] === '/' ? '/index' : $_SERVER['REQUEST_URI'];
-$file = __DIR__ . '/../pages/' . basename($uri) . '.php';
+$pathinfo = pathinfo($_SERVER['REQUEST_URI'] === '/' ? '/index' : $_SERVER['REQUEST_URI']);
+if (isset($pathinfo['extension']) && $pathinfo['extension'] === 'php') {
+	header('Location: /' . $pathinfo['filename'], true, 301);
+	echo 'Redirecting to <a href="/' . htmlspecialchars($pathinfo['filename']) . '">/' . htmlspecialchars($pathinfo['filename']) . '</a>';
+	exit();
+}
 
+$file = __DIR__ . '/../pages/' . $pathinfo['filename'] . '.php';
 if (is_readable($file)) {
 	require $file;
 } else {
