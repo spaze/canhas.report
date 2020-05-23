@@ -334,6 +334,25 @@ function trustedTypesNotSupportedHtml(string $messageSuffix = 'the demo will not
 }
 
 
+function permissionsPolicyBehindFlagHtml(): string
+{
+	return <<< 'EOT'
+		Right now, the policy violation reporting part of Permissions Policy <strong>must be manually enabled</strong> in Chrome by setting the
+			<a href="chrome://flags/#enable-experimental-web-platform-features">Experimental Web Platform features</a> flag (copy & paste the link), otherwise you'll get no reports.
+		Also, only first-party reports will be sent, no reports for violations that happened in embedded iframes.
+	EOT;
+}
+
+
+function permissionsPolicyNotSupportedHtml(string $messageSuffix = 'no reports will be sent'): string
+{
+	return '<div class="permissions-policy not-supported hidden">'
+		. '🍌 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy#browser_compatibility">does not</a> support Permissions Policy</a>, '
+		. $messageSuffix
+		. '</div>';
+}
+
+
 function scriptSourceHtmlStart(string $class): bool
 {
 	static $counter = 0;
@@ -470,6 +489,15 @@ function specsHtml(string ...$specs): string
 				$hrefs[] = '<a href="https://w3c.github.io/webappsec-trusted-types/dist/spec/">Trusted Types</a> Editor\'s Draft';
 				$hrefs[] = '<a href="https://web.dev/trusted-types/">Prevent DOM-based cross-site scripting vulnerabilities with Trusted Types</a> on web.dev';
 				$hrefs[] = '<a href="https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API">Trusted Types API</a> on MDN';
+				break;
+			case 'permissions-policy':
+				$hrefs[] = <<< 'EOT'
+					<a href="https://www.w3.org/TR/permissions-policy/">Permissions Policy</a> Working Draft
+					<ul>
+						<li><small><a href="https://w3c.github.io/webappsec-permissions-policy/">Permissions Policy</a> Editor's Draft</small></li>
+					</ul>
+				EOT;
+				$hrefs[] = '<a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/permissions-policy-explainer.md">Permissions Policy explainer</a>';
 				break;
 		}
 	}

@@ -26,6 +26,9 @@
 	if (!window.trustedTypes) {
 		showElements('trusted-types not-supported');
 	}
+	if (typeof (document.permissionsPolicy ?? document.featurePolicy) === 'undefined') {
+		showElements('permissions-policy not-supported');
+	}
 })();
 document.addEventListener('DOMContentLoaded', function () {
 	const list = document.getElementsByClassName('view-source');
