@@ -101,9 +101,6 @@ if (\Can\Has\who() !== null) {
 <h2>Meta</h2>
 <ul>
 	<li><a href="https://github.com/spaze/canhas.report/tree/master/site">Source code</a></li>
-	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">All NEL types</a></li>
-	<li><a href="https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/frame/deprecation.cc?q=GetDeprecationInfo">All Chrome deprecations and invalid features</a></li>
-	<li><a href="https://www.chromestatus.com/features#intervention">Chrome interventions, incomplete list</a></li>
 	<li>The domain name <em>can has</em> is a reference to <a href="https://cheezburger.com/875511040/original-cat-meme-that-started-cheezburger">this meme</a></li>
 </ul>
 
