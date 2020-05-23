@@ -55,7 +55,7 @@ if (\Can\Has\who() !== null) {
 
 	<h2>Certification Authorities</h2>
 <ol>
-	<li><a href="https://toolbox.googleapps.com/apps/dig/#CAA/michalspacek.cz">Certification Authority Authorization (CAA)</a> <em>iodef</em> in DNS</li>
+	<li><a href="caa">Certification Authority Authorization (CAA)</a></li>
 </ol>
 
 <h2>Email Reporting</h2>
