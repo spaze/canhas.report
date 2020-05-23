@@ -44,6 +44,7 @@ if (\Can\Has\who() !== null) {
 	<li><a href="intervention">Intervention</a></li>
 	<li><a href="nel">Network Error Logging</a></li>
 	<li><a href="expect-ct">Expect-CT</a></li>
+	<li><a href="feature-policy">Feature-Policy</a></li>
 </ol>
 
 <h3>Removed Browser Reporting</h3>
@@ -129,6 +130,12 @@ if (\Can\Has\who() !== null) {
 		</ul>
 	</li>
 	<li><a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft</li>
+	<li>
+		<a href="https://www.w3.org/TR/feature-policy/">Feature Policy</a> Working Draft
+		<ul>
+			<li><small><a href="https://w3c.github.io/webappsec-feature-policy/">Feature Policy</a> Editor's Draft</small></li>
+		</ul>
+	</li>
 	<li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-expect-ct">Expect-CT Extension for HTTP</a> Internet-Draft</li>
 	<li><a href="https://tools.ietf.org/html/rfc8659">DNS Certification Authority Authorization (CAA) Resource Record</a> (RFC 8659)</li>
 	<li><a href="https://tools.ietf.org/html/rfc7489">Domain-based Message Authentication, Reporting, and Conformance (DMARC)</a> (RFC 7489)</li>
