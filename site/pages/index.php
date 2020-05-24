@@ -61,7 +61,7 @@ if (\Can\Has\who() !== null) {
 <h2>Email Reporting</h2>
 <ol>
 	<li><a href="dmarc">Domain-based Message Authentication, Reporting and Conformance (DMARC)</a> <em>rua</em>, <em>ruf</em> in DNS</li>
-	<li><a href="https://toolbox.googleapps.com/apps/dig/#TXT/_smtp._tls.michalspacek.cz">SMTP TLS Reporting</a> <em>rua</em> in DNS</li>
+	<li><a href="smtp-tlsrpt">SMTP TLS Reporting (SMTP TLSRPT)</a> <em>rua</em> in DNS</li>
 </ol>
 
 <h2>Your Reports</h2>
