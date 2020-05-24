@@ -102,6 +102,12 @@ pre {
 	background-color: #EFEFEF;
 	overflow-x: auto;
 }
+.hljs-meta {
+	color: #4C81C9;
+}
+.hljs-tag, .hljs-name {
+	color: #0048AB;
+}
 .hljs-attr {
 	color: #055;
 }
