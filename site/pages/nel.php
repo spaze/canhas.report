@@ -94,7 +94,7 @@ echo \Can\Has\pageHead('Network Error Logging');
 			but <strong>DO NOT</strong> <a href="https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/TrustFiddlerRootCert">trust the Fiddler Root Certificate</a>
 		</li>
 		<li>Load this page again and this is what's going to happen:
-			<ul>
+			<ol>
 				<li>Your browser will send a request to the Fiddler proxy</li>
 				<li>The proxy will resend it to the server</li>
 				<li>The server will respond to Fiddler, encrypting the traffic with a valid certificate</li>
@@ -102,7 +102,7 @@ echo \Can\Has\pageHead('Network Error Logging');
 				<li>Fiddler will re-encrypt the traffic with it's own Root Certificate</li>
 				<li>But your browser doesn't trust the Root Certificate and will show an <em>Invalid Certification Authority</em> error or similar</li>
 				<li>Your browser will also generate the NEL report</li>
-			</ul>
+			</ol>
 		</li>
 		<li>Exit Fiddler now (or stop capturing traffic using <em>F12</em>) before your browser will try to actually send the generated report</li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>

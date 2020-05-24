@@ -1,7 +1,7 @@
 p, ol, h2 {
 	margin-top: 2em;
 }
-ul ol {
+ul ol, ol ol {
 	margin-top: 0;
 }
 h1 {
