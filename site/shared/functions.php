@@ -100,6 +100,7 @@ function setCookie(string $name, string $value, bool $httpOnly): void
 		'expires' => \strtotime('1 year'),
 		'secure' => true,
 		'httponly' => $httpOnly,
+		'samesite' => 'Lax',
 	]);
 }
 
