@@ -34,6 +34,7 @@ echo \Can\Has\pageHead('Certification Authority Authorization (CAA)');
 		Let me know if you are a CA sending CAA reports or if you know about one.
 	</p>
 
+	<?= \Can\Has\specsHtml('caa'); ?>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

@@ -100,34 +100,6 @@ if (\Can\Has\who() !== null) {
 	<li>The domain name <em>can has</em> is a reference to <a href="https://cheezburger.com/875511040/original-cat-meme-that-started-cheezburger">this meme</a></li>
 </ul>
 
-<h2>Specs</h2>
-<ul>
-	<li>
-		<a href="https://www.w3.org/TR/CSP3/">Content Security Policy Level 3</a> Working Draft
-		<ul>
-			<li><small><a href="https://www.w3.org/TR/CSP2/">Content Security Policy Level 2</a></small></li>
-			<li><small><a href="https://www.w3.org/TR/CSP1/">Content Security Policy 1.0</a> (discontinued)</small></li>
-		</ul>
-	</li>
-	<li>
-		<a href="https://www.w3.org/TR/reporting/">Reporting API</a> Working Draft
-		<ul>
-			<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a Working Draft, followed by a Recommendation eventually)</small></li>
-			<li><small>
-				Notable changes in the Editor's Draft are switching to structured headers (<code>Reporting-Endpoints</code> instead of <code>Report-To</code>) and moving out concrete reports into the following separate Draft Community Group Reports:
-				<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a>,
-				<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a>,
-				<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a>
-			</small></li>
-		</ul>
-	</li>
-	<li><a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft</li>
-	<li><a href="https://tools.ietf.org/html/draft-ietf-httpbis-expect-ct">Expect-CT Extension for HTTP</a> Internet-Draft</li>
-	<li><a href="https://tools.ietf.org/html/rfc8659">DNS Certification Authority Authorization (CAA) Resource Record</a> (RFC 8659)</li>
-	<li><a href="https://tools.ietf.org/html/rfc7489">Domain-based Message Authentication, Reporting, and Conformance (DMARC)</a> (RFC 7489)</li>
-	<li><a href="https://tools.ietf.org/html/rfc8460">SMTP TLS Reporting</a> (RFC 8460)</li>
-</ul>
-
 <h2>Tools</h2>
 <ul>
 	<li><a href="https://report-uri.com/">report-uri.com</a> Browser reporting aggregator ← I work on this one</li>

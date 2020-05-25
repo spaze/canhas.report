@@ -85,6 +85,7 @@ echo \Can\Has\pageHead('Expect-CT');
 		],
 	]); ?></code></pre>
 
+	<?= \Can\Has\specsHtml('expect-ct'); ?>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

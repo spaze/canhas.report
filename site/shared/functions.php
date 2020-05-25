@@ -341,3 +341,69 @@ function randomSubdomain(): string
 	$subdomains = require __DIR__ . '/subdomains.php';
 	return $subdomains[\array_rand($subdomains)];
 }
+
+
+function specsHtml(string ...$specs): string
+{
+	$hrefs = [];
+	foreach ($specs as $spec) {
+		switch ($spec) {
+			case 'csp':
+				$hrefs[] = <<<'EOT'
+					<a href="https://www.w3.org/TR/CSP3/">Content Security Policy Level 3</a> Working Draft
+					<ul>
+						<li><small><a href="https://www.w3.org/TR/CSP2/">Content Security Policy Level 2</a></small></li>
+						<li><small><a href="https://www.w3.org/TR/CSP1/">Content Security Policy 1.0</a> (discontinued)</small></li>
+					</ul>
+				EOT;
+				break;
+			case 'reporting-api':
+				$hrefs[] = <<< 'EOT'
+					<a href="https://www.w3.org/TR/reporting/">Reporting API</a> Working Draft
+					<ul>
+						<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a Working Draft, followed by a Recommendation eventually)</small></li>
+						<li><small>
+							Notable changes in the Editor's Draft are switching to structured headers (<code>Reporting-Endpoints</code> instead of <code>Report-To</code>) and moving out concrete reports into the following separate Draft Community Group Reports:
+							<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a>,
+							<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a>,
+							<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a>
+						</small></li>
+					</ul>
+				EOT;
+				break;
+			case 'nel':
+				$hrefs[] = '<a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft';
+				break;
+			case 'expect-ct':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/draft-ietf-httpbis-expect-ct">Expect-CT Extension for HTTP</a> Internet-Draft';
+				break;
+			case 'caa':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc8659">DNS Certification Authority Authorization (CAA) Resource Record</a> (RFC 8659)';
+				break;
+			case 'dmarc':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc7489">Domain-based Message Authentication, Reporting, and Conformance (DMARC)</a> (RFC 7489)';
+				break;
+			case 'smtp-tlsrpt':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc8460">SMTP TLS Reporting</a> (RFC 8460)';
+				break;
+			case 'spf':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc7208">Sender Policy Framework (SPF)</a> (RFC 7208)';
+				break;
+			case 'dkim':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc6376">DomainKeys Identified Mail (DKIM)</a> (RFC 6376)';
+				break;
+			case 'mta-sts':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc8461">SMTP MTA Strict Transport Security (MTA-STS)</a> (RFC 8461)';
+				break;
+			case 'dane':
+				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc6698">DNS-Based Authentication of Named Entities (DANE)</a> (RFC 6698)';
+				break;
+		}
+	}
+	$output = '';
+	foreach ($hrefs as $href) {
+		$output .= "<li>{$href}</li>";
+	}
+
+	return "<h2>Related specs</h2><ul>{$output}</ul>";
+}

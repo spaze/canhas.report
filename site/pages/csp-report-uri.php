@@ -16,6 +16,7 @@ $reportDirectiveDescription = 'where to send violation reports to';
 $willTriggerReportHtml = 'Will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)';
 $checkReportsHtml = 'Check your <a href="' . htmlspecialchars(\Can\Has\reportViewer()) . '/">reports</a>';
 $additionalHeaderHtml = null;
+$specs = ['csp'];
 
 header($cspHeader);
 echo \Can\Has\pageHead('CSP report-uri');

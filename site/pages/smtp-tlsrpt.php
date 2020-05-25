@@ -63,6 +63,7 @@ echo \Can\Has\pageHead('SMTP TLS Reporting (SMTP TLSRPT)');
 		],
 	]); ?></code></pre>
 
+	<?= \Can\Has\specsHtml('smtp-tlsrpt', 'mta-sts', 'dane'); ?>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

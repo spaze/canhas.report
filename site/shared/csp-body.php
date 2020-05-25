@@ -94,6 +94,7 @@ declare(strict_types = 1);
 
 	There's <a href="csp-urls">more CSP demos to try</a>, where you can load any resources by URL and even submit forms.
 
+	<?= \Can\Has\specsHtml(...$specs); ?>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
