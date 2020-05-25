@@ -91,7 +91,7 @@ if (\Can\Has\who() !== null) {
 			</li>
 		</ol>
 	</li>
-
+	<li>Reports are kept for <?= htmlspecialchars((string)\Can\Has\dataRetentionDays()); ?> days</li>
 </ul>
 
 <h2>Meta</h2>

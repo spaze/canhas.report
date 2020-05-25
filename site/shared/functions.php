@@ -343,6 +343,12 @@ function randomSubdomain(): string
 }
 
 
+function dataRetentionDays(): int
+{
+	return 30;
+}
+
+
 function specsHtml(string ...$specs): string
 {
 	$hrefs = [];
