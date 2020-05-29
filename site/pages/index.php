@@ -62,7 +62,12 @@ if (\Can\Has\who() !== null) {
 
 <h2>Your Reports</h2>
 <ul>
-	<li><a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>/">View your reports</a></li>
+	<li>
+		<a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>/">View your reports</a>
+		<?php if (!\Can\Has\reportToReportUri()) { ?>
+			(kept for <?= htmlspecialchars((string)\Can\Has\dataRetentionDays()); ?> days)
+		<?php } ?>
+	</li>
 	<?php if (\Can\Has\reportToReportUri()) { ?>
 		<li>Reports sent to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">Report URI</a> subdomain <code><?= htmlspecialchars(\Can\Has\cookieReportUri()) ?></code> <button id="change-endpoint" data-endpoint="<?= htmlspecialchars(\Can\Has\cookieNameEndpoint()); ?>">Change to <em>canhas.report</em></button></li>
 	<?php } ?>
@@ -91,7 +96,6 @@ if (\Can\Has\who() !== null) {
 			</li>
 		</ol>
 	</li>
-	<li>Reports are kept for <?= htmlspecialchars((string)\Can\Has\dataRetentionDays()); ?> days</li>
 </ul>
 
 <h2>Meta</h2>
