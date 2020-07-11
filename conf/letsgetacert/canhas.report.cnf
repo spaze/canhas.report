@@ -5,3 +5,4 @@ SUBJECT="/C=CZ/ST=Prague/L=Prague/O=canhas.report/emailAddress=$SUBJECT_EMAIL/CN
 WEBROOT_DIR=/srv/www/$CN/site
 DOMAINS="www=canhas.report,www.canhas.report;reports=has.report,*.has.report;hivemind=icanhas.report,www.icanhas.report"
 CHALLENGE="dns-01"
+CERTBOT_DNS_CHALLENGE_OPTS="--dns-cloudflare --dns-cloudflare-credentials /root/.secrets/certbot/cloudflare-canhas.report.ini"
