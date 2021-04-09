@@ -60,7 +60,7 @@ if (\Can\Has\who() !== null) {
 	<li><a href="smtp-tlsrpt">SMTP TLS Reporting (SMTP TLSRPT)</a></li>
 </ol>
 
-<h2>Your Reports</h2>
+<h2 id="reports">Your Reports</h2>
 <ul>
 	<li>
 		<a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>/">View your reports</a>
@@ -77,9 +77,9 @@ if (\Can\Has\who() !== null) {
 	</li>
 	<li>
 		<?php if (\Can\Has\reportToReportUri()) { ?>
-			To send reports to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">Report URI</a> report aggregator and monitoring platform:
+			To send reports to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><strong>Report URI</strong></a> report aggregator and monitoring platform:
 		<?php } else { ?>
-			Instead, you can send reports to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">Report URI</a> report aggregator and monitoring platform:
+			Instead, you can send reports to <a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener"><strong>Report URI</strong></a> report aggregator and monitoring platform:
 		<?php } ?>
 		<ol>
 			<li><a href="https://report-uri.com/register" target="_blank" rel="noreferrer noopener">Register</a> or <a href="https://report-uri.com/login" target="_blank" rel="noreferrer noopener">sign in</a></li>

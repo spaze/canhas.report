@@ -29,6 +29,10 @@ echo \Can\Has\pageHead('Received Reports');
 <div id="reports">
 <?= \Can\Has\bookmarks('index'); ?>
 <h1>Received Reports</h1>
+<p>
+	Want better reporting and graphs? Try <?= \Can\Has\smallReportUriLogoHtml(); ?>
+	&mdash; <a href="https://report-uri.com/register">sign up</a> and send your test reports there! <a href="<?= htmlspecialchars($baseOrigin) ?>#reports">How?</a>
+</p>
 <?= $reportsHtml; ?>
 <p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a></p>
 </div>
