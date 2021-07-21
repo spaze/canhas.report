@@ -118,11 +118,27 @@ echo \Can\Has\pageHead('More CSP reports');
 			document.getElementById('prompt-form').onclick = function() {
 				const url = prompt('Enter a URL where to submit a form to', 'https://');
 				if (url) {
-					const form = document.createElement('form');
-					form.method = 'post';
-					form.action = url;
-					document.getElementById('prompt-form').insertAdjacentElement('afterend', form);
-					form.submit();
+					const form = document.getElementById('submitForm');
+					if (form) {
+						form.setAttribute('action', url);
+						form.submit();
+					} else {
+						const form = document.createElement('form');
+						form.setAttribute('method', 'post');
+						form.setAttribute('class', 'hidden');
+						form.setAttribute('action', url);
+						form.setAttribute('id', 'submitForm');
+						const text = document.createElement('input');
+						text.setAttribute('type', 'text');
+						text.setAttribute('value', 'text value');
+						form.appendChild(text);
+						const hidden = document.createElement('input');
+						hidden.setAttribute('type', 'hidden');
+						hidden.setAttribute('value', 'hidden value');
+						form.appendChild(hidden);
+						document.getElementById('prompt-form').insertAdjacentElement('afterend', form);
+						form.submit();
+					}
 					alert('Submitted a form to ' + url);
 				}
 			}
