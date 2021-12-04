@@ -206,6 +206,10 @@ function jsonReportHtml(array $data): string
 
 function reports(\PDOStatement $statement, ?int &$seen): string
 {
+	if ($statement->rowCount() === 0) {
+		return '<p>No reports yet</p>';
+	}
+
 	$result = [];
 	$cookieSeen = $_COOKIE['seen'] ?? 0;
 	foreach ($statement as $row) {
@@ -229,12 +233,9 @@ function reports(\PDOStatement $statement, ?int &$seen): string
 			jsonReportHtml($reports)
 		);
 	}
+	unset($row, $counts, $types, $count, $type, $reports, $who);
 
-	if ($statement->rowCount() === 0) {
-		return '<p>No reports yet</p>';
-	} else {
-		return \implode("\n", $result);
-	}
+	return \implode("\n", $result);
 }
 
 
