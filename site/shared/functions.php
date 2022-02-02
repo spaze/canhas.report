@@ -20,7 +20,7 @@ function bookmarks(string ...$links): string
 }
 
 
-function pageHead(?string $title = null): string
+function pageHead(?string $title = null, ?bool $highlight = true): string
 {
 	return '<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,10 +28,13 @@ function pageHead(?string $title = null): string
 		<link rel="icon" type="image/svg+xml" href="' . \htmlspecialchars(baseOrigin()) . '/assets/favicon.svg">
 		<link rel="alternate icon" href="' . \htmlspecialchars(baseOrigin()) . '/assets/favicon.png">
 		<link rel="stylesheet" href="' . \htmlspecialchars(baseOrigin()) . '/assets/style.css">
-		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>
-		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight.pack.js"></script>
-		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight-init.js"></script>
-		</head>';
+		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>'
+		. (
+			$highlight ?
+				'<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight.pack.js"></script><script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight-init.js"></script>'
+				: ''
+		)
+		. '</head>';
 }
 
 
