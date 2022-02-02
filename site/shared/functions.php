@@ -31,7 +31,7 @@ function pageHead(?string $title = null, ?bool $highlight = true): string
 		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>'
 		. (
 			$highlight ?
-				'<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight.pack.js"></script><script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight-init.js"></script>'
+				'<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight.min.js"></script><script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight-init.js"></script>'
 				: ''
 		)
 		. '</head>';
