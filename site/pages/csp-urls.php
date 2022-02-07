@@ -17,7 +17,7 @@ echo \Can\Has\pageHead('More CSP reports');
 	<p><em>Sending even more Content Security Policy (CSP) violation reports with <code>report-to</code>, asynchronously and possibly grouping more reports together. Read <a href="csp-report-to">general CSP reporting</a> description for more details.</em></p>
 
 	<h2>The CSP response header:</h2>
-	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
+	<pre><code><?= \Can\Has\highlight($cspHeader); ?></code></pre>
 	<ul>
 		<li><code>default-src</code>: what's allowed by default, includes images, fonts, JavaScript <a href="https://www.w3.org/TR/CSP3/#directive-default-src">and more</a></li>
 		<li>

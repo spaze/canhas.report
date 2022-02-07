@@ -22,7 +22,7 @@ echo \Can\Has\pageHead('Expect-CT');
 		Apple has a <a href="https://support.apple.com/en-us/HT205280">similar CT policy</a>.
 	</em></p>
 	<h2>The <code>Expect-CT</code> response header:</h2>
-	<pre><code class="json"><?= htmlspecialchars($expectCtHeader); ?></code></pre>
+	<pre><code><?= \Can\Has\highlight($expectCtHeader); ?></code></pre>
 	<ul>
 		<li><code>max-age</code>: for how many seconds should the browser remember to send violation reports, or enforce the policy</li>
 		<li>
@@ -53,7 +53,7 @@ echo \Can\Has\pageHead('Expect-CT');
 
 	<h2>Example Expect-CT report</h2>
 	<p>This is how the full report would look like:</p>
-	<pre><code class="json"><?= \Can\Has\jsonReportHtml([
+	<pre><code><?= \Can\Has\jsonReportHtml([
 		'expect-ct-report' => [
 			'port' => 443,
 			'scts' => [
