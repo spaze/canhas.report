@@ -61,6 +61,7 @@ if (\Can\Has\who() !== null) {
 </ol>
 
 <h2>Trusted Types DOM-based XSS Prevention & Reporting</h2>
+<?= \Can\Has\trustedTypesNotSupportedHtml("the following demos won't work") ?>
 <ol>
 	<li><a href="trusted-types-cspro">Injection Sinks Detection with Trusted Types and CSPRO</a></li>
 	<li><a href="trusted-types">Prevent DOM-XSS with Trusted Types and a custom policy</a></li>

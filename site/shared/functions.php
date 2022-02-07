@@ -325,6 +325,15 @@ function reportingApiNotSupportedHtml(string $messageSuffix = 'reporting will no
 }
 
 
+function trustedTypesNotSupportedHtml(string $messageSuffix = 'the demo will not work'): string
+{
+	return '<div class="trusted-types not-supported hidden">'
+		. '😥 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML#browser_compatibility">does not support</a> Trusted Types, '
+		. $messageSuffix
+		. '</div>';
+}
+
+
 function scriptSourceHtmlStart(string $class): bool
 {
 	static $counter = 0;

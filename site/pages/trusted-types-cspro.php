@@ -11,7 +11,7 @@ echo \Can\Has\pageHead('Require Trusted Types with CSPRO', false);  // highlight
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>DOM-based XSS Injection Sinks Detection with Trusted Types and Content Security Policy with <code>report-uri</code></h1>
-
+	<?= \Can\Has\trustedTypesNotSupportedHtml(); ?>
 	<h2>The CSPRO (CSP Report-Only) response header:</h2>
 	<pre><code><?= \Can\Has\highlight($cspHeader); ?></code></pre>
 

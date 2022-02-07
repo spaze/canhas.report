@@ -1,14 +1,20 @@
+const showElements = function (classNames) {
+	document.addEventListener('DOMContentLoaded', function () {
+		const list = document.getElementsByClassName(classNames);
+		for (let element of list) {
+			element.classList.remove('hidden');
+		}
+	});
+}
 try {
 	new ReportingObserver(() => {});
 } catch (e) {
 	if (e instanceof ReferenceError) {
-		document.addEventListener('DOMContentLoaded', function () {
-			const list = document.getElementsByClassName('reporting-api not-supported');
-			for (let element of list) {
-				element.classList.remove('hidden');
-			}
-		});
+		showElements('reporting-api not-supported');
 	}
+}
+if (!window.trustedTypes) {
+	showElements('trusted-types not-supported');
 }
 document.addEventListener('DOMContentLoaded', function () {
 	const list = document.getElementsByClassName('view-source');
