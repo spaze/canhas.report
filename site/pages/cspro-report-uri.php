@@ -17,7 +17,7 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 		This Report-Only mode works with both <code>report-uri</code> and <code>report-to</code> directives, and is usually used for policy upgrades &ndash; an app can send both <code>Content-Security-Policy</code> and <code>Content-Security-Policy-Report-Only</code> headers with different policies.
 	</em></p>
 	<h2>The CSPRO (CSP Report-Only) response header:</h2>
-	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
+	<pre><code><?= \Can\Has\highlight($cspHeader); ?></code></pre>
 	<ul>
 		<li>
 			<code>default-src</code>: what's allowed by default, includes images, fonts, JavaScript <a href="https://www.w3.org/TR/CSP3/#directive-default-src">and more</a>

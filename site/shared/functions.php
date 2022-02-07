@@ -28,13 +28,8 @@ function pageHead(?string $title = null, ?bool $highlight = true): string
 		<link rel="icon" type="image/svg+xml" href="' . \htmlspecialchars(baseOrigin()) . '/assets/favicon.svg">
 		<link rel="alternate icon" href="' . \htmlspecialchars(baseOrigin()) . '/assets/favicon.png">
 		<link rel="stylesheet" href="' . \htmlspecialchars(baseOrigin()) . '/assets/style.css">
-		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>'
-		. (
-			$highlight ?
-				'<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight.min.js"></script><script src="' . \htmlspecialchars(baseOrigin()) . '/assets/highlight-init.js"></script>'
-				: ''
-		)
-		. '</head>';
+		<script src="' . \htmlspecialchars(baseOrigin()) . '/assets/scripts.js"></script>
+		</head>';
 }
 
 
@@ -197,7 +192,7 @@ function reportUrl(?string $type = null): string
 
 function jsonReportHtml(array $data): string
 {
-	return \htmlspecialchars(
+	return highlight(
 		\preg_replace(
 			'/^(  +?)\\1(?=[^ ])/m',
 			'$1',
@@ -226,7 +221,7 @@ function reports(\PDOStatement $statement, ?int &$seen): string
 		}
 		$reports = \json_decode($row['report'], true);
 		$who = (isset($row['who']) ? \htmlspecialchars($row['who']) : null);
-		$result[] = \sprintf('<p>%s%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code class="json">%s</code></pre>',
+		$result[] = \sprintf('<p>%s%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code>%s</code></pre>',
 			(strtotime($row['received']) > $cookieSeen ? '🆕 ' : ''),
 			\htmlspecialchars($row['received']),
 			\htmlspecialchars(\date_default_timezone_get()),
@@ -267,7 +262,7 @@ function reportToHeader(): string
 function reportToHeaderHtml(string $header, string $groupDescriptionHtml): string
 {
 	return '<h2>The <code>Report-To</code> response header:</h2>
-		<pre><code class="json">' . \htmlspecialchars($header) . '</code></pre>
+		<pre><code>' . highlight($header) . '</code></pre>
 		<ul>
 			<li><code>group</code>: the name of the group, ' . $groupDescriptionHtml .  '</li>
 			<li><code>max_age</code>: how long the browser should use the endpoint and report errors to it</li>
@@ -330,7 +325,7 @@ function scriptSourceHtmlStart(string $class): bool
 		} while ($count > 0);
 
 		return $source . '<p><a href="#source' . ++$counter . '" class="view-source ' . \htmlspecialchars($class) . '" data-text-hide="hide the code" data-text-show="show the code" data-arrow-hide="▲" data-arrow-show="▼"><span class="text">show the code</span> <span class="arrow">▼</span></a></p>
-			<pre id="source' . $counter . '" hidden><code class="html">' . \htmlspecialchars($source) . '</code></pre>';
+			<pre id="source' . $counter . '" hidden><code>' . highlight($source) . '</code></pre>';
 	});
 }
 
@@ -338,6 +333,38 @@ function scriptSourceHtmlStart(string $class): bool
 function scriptSourceHtmlEnd(): bool
 {
 	return \ob_end_flush();
+}
+
+
+/**
+ * Is this a good idea?
+ *
+ * Probably isn't but the site also has CSP in case escaping goes sideways.
+ * @param string $text
+ * @return string
+ */
+function highlight(string $text): string
+{
+	// hl-* classes not enclosed in " to avoid escaping them
+	$replace = [
+		'/&/' => '&amp;',
+		'/ (\w+=)/' => " \x11$1\x11",
+		'/>/' => "&gt;\x12/span>",
+		'~<~' => '&lt;',
+		'~&lt;(/?\w+)~' => '<span class=hl-tag>&lt;$1',
+		"~\x12/span>~" => '</span>',
+		"/\x11([^\x11]+)\x11/" => '<span class=hl-attr>$1</span>',
+		'/(\d+[\d.]*)/' => '<span class=hl-number>$1</span>',
+		"/'([^']+)'/" => '<span class=hl-string>&apos;$1&apos;</span>',
+		'/"([^"]+)":/' => '<span class=hl-key>&quot;$1&quot;:</span>',
+		'/\\\\"/' => '\&quot;',
+		'/"([^"]*)"/' => '<span class=hl-string>&quot;$1&quot;</span>',
+		'/^([a-z0-9-]+:)/i' => '<span class=hl-header>$1</span>',
+		// need to escape unpaired quotes too
+		"/'/" => '&apos;',
+		'/"/' => '&quot;',
+	];
+	return preg_replace(array_keys($replace), $replace, $text);
 }
 
 
