@@ -21,7 +21,7 @@ echo \Can\Has\pageHead('CSPRO report-to');
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 	<h2>The CSPRO (CSP Report-Only) response header:</h2>
-	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
+	<pre><code><?= \Can\Has\highlight($cspHeader); ?></code></pre>
 	<ul>
 		<li>
 			<code>default-src</code>: what's allowed by default, includes images, fonts, JavaScript <a href="https://www.w3.org/TR/CSP3/#directive-default-src">and more</a>

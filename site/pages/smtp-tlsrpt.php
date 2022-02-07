@@ -32,7 +32,7 @@ echo \Can\Has\pageHead('SMTP TLS Reporting (SMTP TLSRPT)');
 
 	<h2>Example SMTP TLSRPT report</h2>
 	<p>This is an aggregated report for <em>example.com</em> sent by Google:</p>
-	<pre><code class="json"><?= \Can\Has\jsonReportHtml([
+	<pre><code><?= \Can\Has\jsonReportHtml([
 		'organization-name' => 'Google Inc.',
 		'date-range' => [
 			'start-datetime' => '2020-05-22T00:00:00Z',

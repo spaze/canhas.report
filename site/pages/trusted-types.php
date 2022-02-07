@@ -13,7 +13,7 @@ echo \Can\Has\pageHead('Require Trusted Types with CSP', false);  // highlight.j
 	<h1>Prevent DOM-based XSS with Trusted Types and Content Security Policy with <code>report-uri</code></h1>
 
 	<h2>The CSP response header:</h2>
-	<pre><code class="csp"><?= htmlspecialchars($cspHeader); ?></code></pre>
+	<pre><code><?= \Can\Has\highlight($cspHeader); ?></code></pre>
 
 	<h2>Trusted Types with a custom policy</h2>
 	<p>

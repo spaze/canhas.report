@@ -63,7 +63,7 @@ echo \Can\Has\pageHead('XSS Auditor');
 
 	<h2>Example XSS Auditor report</h2>
 	<p>This is how the report looks like (or looked like in case of Chrome):</p>
-	<pre><code class="json"><?= \Can\Has\jsonReportHtml([
+	<pre><code><?= \Can\Has\jsonReportHtml([
 		'xss-report' => [
 			'request-url' => '<URL>',
 			'request-body' => '<post data, if any>',
