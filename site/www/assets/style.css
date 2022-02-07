@@ -108,7 +108,7 @@ pre {
 .hl-tag {
 	color: #0048AB;
 }
-.hl-tag .hl-attr, .hl-key, .hl-header {
+.hl-tag .hl-attr, .hl-key, .hl-header, .hl-dmarc .hl-string .hl-attr {
 	color: #055;
 }
 .hl-number {

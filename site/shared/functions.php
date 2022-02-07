@@ -297,6 +297,12 @@ function caaRecord(): string
 }
 
 
+function dmarcRecord(): string
+{
+	return 'TXT "v=DMARC1; p=quarantine; rua=mailto:example@dmarc.report-uri.com,mailto:security@example.com; ruf=mailto:security@example.com"';
+}
+
+
 function willTriggerReportToHtml(string $what = 'violation'): string
 {
 	return "Will trigger a report that will be sent asynchronously, possibly grouped with other reports ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
@@ -356,7 +362,7 @@ function highlight(string $text): string
 	// hl-* classes not enclosed in " to avoid escaping them
 	$replace = [
 		'/&/' => '&amp;',
-		'/ (\w+=)/' => " \x11$1\x11",
+		'/([ "])(\w+=)/' => "$1\x11$2\x11",
 		'/>/' => "&gt;\x12/span>",
 		'~<~' => '&lt;',
 		'~&lt;(/?\w+)~' => '<span class=hl-tag>&lt;$1',

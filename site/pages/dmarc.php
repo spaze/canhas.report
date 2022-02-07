@@ -16,7 +16,7 @@ echo \Can\Has\pageHead('Domain-based Message Authentication, Reporting and Confo
 	</em></p>
 
 	<h2>Example DMARC DNS record for the <em>example.com</em> domain</h2>
-	<pre><code>TXT "v=DMARC1; p=quarantine; rua=mailto:example@dmarc.report-uri.com,mailto:security@example.com; ruf=mailto:security@example.com"</code></pre>
+	<pre><code class="hl-dmarc"><?= \Can\Has\highlight(\Can\Has\dmarcRecord()) ?></code></pre>
 	<ul>
 		<li><code>v=DMARC1</code>: this TXT DNS record is a DMARC policy record</li>
 		<li><code>p=quarantine</code>: mail receivers should quarantine messages from example.com that fail authentication, usually means "place into spam folder", other policies are <code>none</code> and <code>reject</code></li>
