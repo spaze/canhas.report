@@ -15,7 +15,7 @@ function bookmarks(string ...$links): string
 				$hrefs[] = \sprintf('<a href="%s/">%s</a>', \htmlspecialchars(reportViewer()), reportToReportUri() ? 'Report URI Reports' : 'Reports');
 				break;
 		}
-	} 
+	}
 	return '<div id="bookmarks"><div>' . \implode(' ', $hrefs) . '</div></div>';
 }
 
