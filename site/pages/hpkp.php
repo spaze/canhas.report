@@ -18,7 +18,7 @@ echo \Can\Has\pageHead('HPKP');
 
 	<h2>Example HPKP report</h2>
 	<p>This is how the report looked like:</p>
-	<pre><code class="json"><?= \Can\Has\jsonReportHtml([
+	<pre><code><?= \Can\Has\jsonReportHtml([
 		'date-time' => '2018-09-02T15:31:07.231Z',
 		'effective-expiration-date' => '2018-10-02T15:31:02.188Z',
 		'hostname' => 'www.example.com',
