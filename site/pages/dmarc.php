@@ -37,7 +37,7 @@ echo \Can\Has\pageHead('Domain-based Message Authentication, Reporting and Confo
 
 	<h2>Example DMARC report</h2>
 	<p>This is an aggregated report for <em>example.com</em> sent by Google, with two actual reports, one that has passed authentication and the other has failed both DKIM and SPF checks:</p>
-	<pre><code><?= htmlspecialchars(file_get_contents(__DIR__ . '/../shared/dmarc-example.xml')); ?></code></pre>
+	<pre><code><?= \Can\Has\highlight(file_get_contents(__DIR__ . '/../shared/dmarc-example.xml')); ?></code></pre>
 
 	<?= \Can\Has\specsHtml('dmarc', 'spf', 'dkim'); ?>
 </div>

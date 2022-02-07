@@ -361,6 +361,7 @@ function highlight(string $text): string
 		'~<~' => '&lt;',
 		'~&lt;(/?\w+)~' => '<span class=hl-tag>&lt;$1',
 		"~\x12/span>~" => '</span>',
+		'/(&lt;\?[^?]+\?&gt;)/' => '<span class=hl-meta>$1</span>',
 		"/\x11(.+)\x11/" => '<span class=hl-attr>$1</span>',
 		'/(\d+[\d.]*)/' => '<span class=hl-number>$1</span>',
 		"/'([^']+)'/" => '<span class=hl-string>&apos;$1&apos;</span>',
