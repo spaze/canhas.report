@@ -289,6 +289,14 @@ function nelHeader(): string
 }
 
 
+function caaRecord(): string
+{
+	return 'CAA 0 issue "letsencrypt.org"' . "\n"
+		. 'CAA 0 issue "example.com"' . "\n"
+		. 'CAA 0 iodef "mailto:security@example.net"';
+}
+
+
 function willTriggerReportToHtml(string $what = 'violation'): string
 {
 	return "Will trigger a report that will be sent asynchronously, possibly grouped with other reports ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
