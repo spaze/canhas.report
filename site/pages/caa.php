@@ -15,7 +15,7 @@ echo \Can\Has\pageHead('Certification Authority Authorization (CAA)');
 	</em></p>
 
 	<h2>Example CAA DNS record</h2>
-	<pre><code>CAA 0 issue "letsencrypt.org"<br>CAA 0 issue "example.com"<br>CAA 0 iodef "mailto:security@example.net"</code></pre>
+	<pre><code><?= \Can\Has\highlight(\Can\Has\caaRecord()); ?></code></pre>
 	<ul>
 		<li><code>0</code>: "Critical Flag" intended to introduce new properties in the future, at the moment only <code>0</code> is allowed</li>
 		<li>
