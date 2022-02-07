@@ -105,16 +105,16 @@ pre {
 .hljs-meta {
 	color: #4C81C9;
 }
-.hljs-tag, .hljs-name {
+.hl-tag {
 	color: #0048AB;
 }
-.hljs-attr {
+.hl-tag .hl-attr, .hl-key, .hl-header {
 	color: #055;
 }
-.hljs-number {
+.hl-number {
 	color: #008;
 }
-.hljs-string {
+.hl-string, .hl-string .hl-number, .hl-string .hl-tag {
 	color: #194;
 }
 #bookmarks {
