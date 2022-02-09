@@ -5,6 +5,13 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
+if (($requestSize = strpos($_SERVER['REQUEST_URI'], '?')) !== false) {
+    $request = substr($_SERVER['REQUEST_URI'], 0, $requestSize);
+    header('Location: /' . $request, true, 301);
+    echo 'Redirecting to <a href="/' . htmlspecialchars($request) . '">/' . htmlspecialchars($request) . '</a>';
+    exit();
+}
+
 $pathinfo = pathinfo($_SERVER['REQUEST_URI'] === '/' ? '/index' : $_SERVER['REQUEST_URI']);
 if (isset($pathinfo['extension']) && $pathinfo['extension'] === 'php') {
 	header('Location: /' . $pathinfo['filename'], true, 301);
