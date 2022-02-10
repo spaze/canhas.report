@@ -8,25 +8,25 @@
 			// Let'em track'em
 		}
 	}
-})();
-const showElements = function (classNames) {
-	document.addEventListener('DOMContentLoaded', function () {
-		const list = document.getElementsByClassName(classNames);
-		for (let element of list) {
-			element.classList.remove('hidden');
-		}
-	});
-}
-try {
-	new ReportingObserver(() => {});
-} catch (e) {
-	if (e instanceof ReferenceError) {
-		showElements('reporting-api not-supported');
+	const showElements = function (classNames) {
+		document.addEventListener('DOMContentLoaded', function () {
+			const list = document.getElementsByClassName(classNames);
+			for (let element of list) {
+				element.classList.remove('hidden');
+			}
+		});
 	}
-}
-if (!window.trustedTypes) {
-	showElements('trusted-types not-supported');
-}
+	try {
+		new ReportingObserver(() => {});
+	} catch (e) {
+		if (e instanceof ReferenceError) {
+			showElements('reporting-api not-supported');
+		}
+	}
+	if (!window.trustedTypes) {
+		showElements('trusted-types not-supported');
+	}
+})();
 document.addEventListener('DOMContentLoaded', function () {
 	const list = document.getElementsByClassName('view-source');
 	for (let element of list) {
