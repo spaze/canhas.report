@@ -1,21 +1,32 @@
-const showElements = function (classNames) {
-	document.addEventListener('DOMContentLoaded', function () {
-		const list = document.getElementsByClassName(classNames);
-		for (let element of list) {
-			element.classList.remove('hidden');
+(function() {
+	if (location.search.indexOf('fbclid=') !== -1) {
+		try {
+			const url = new URL(location);
+			url.searchParams.delete('fbclid');
+			history.replaceState(null, '', url.href);
+		} catch (ex) {
+			// Let'em track'em
 		}
-	});
-}
-try {
-	new ReportingObserver(() => {});
-} catch (e) {
-	if (e instanceof ReferenceError) {
-		showElements('reporting-api not-supported');
 	}
-}
-if (!window.trustedTypes) {
-	showElements('trusted-types not-supported');
-}
+	const showElements = function (classNames) {
+		document.addEventListener('DOMContentLoaded', function () {
+			const list = document.getElementsByClassName(classNames);
+			for (let element of list) {
+				element.classList.remove('hidden');
+			}
+		});
+	}
+	try {
+		new ReportingObserver(() => {});
+	} catch (e) {
+		if (e instanceof ReferenceError) {
+			showElements('reporting-api not-supported');
+		}
+	}
+	if (!window.trustedTypes) {
+		showElements('trusted-types not-supported');
+	}
+})();
 document.addEventListener('DOMContentLoaded', function () {
 	const list = document.getElementsByClassName('view-source');
 	for (let element of list) {

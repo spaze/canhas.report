@@ -5,7 +5,8 @@ declare(strict_types = 1);
 
 require __DIR__ . '/../shared/functions.php';
 
-$pathinfo = pathinfo($_SERVER['REQUEST_URI'] === '/' ? '/index' : $_SERVER['REQUEST_URI']);
+$requestUri = preg_replace('~\?.*$~', '', $_SERVER['REQUEST_URI']);
+$pathinfo = pathinfo($requestUri === '/' ? '/index' : $requestUri);
 if (isset($pathinfo['extension']) && $pathinfo['extension'] === 'php') {
 	header('Location: /' . $pathinfo['filename'], true, 301);
 	echo 'Redirecting to <a href="/' . htmlspecialchars($pathinfo['filename']) . '">/' . htmlspecialchars($pathinfo['filename']) . '</a>';
