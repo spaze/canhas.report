@@ -1,3 +1,14 @@
+(function() {
+	if (location.search.indexOf('fbclid=') !== -1) {
+		try {
+			const url = new URL(location);
+			url.searchParams.delete('fbclid');
+			history.replaceState(null, '', url.href);
+		} catch (ex) {
+			// Let'em track'em
+		}
+	}
+})();
 const showElements = function (classNames) {
 	document.addEventListener('DOMContentLoaded', function () {
 		const list = document.getElementsByClassName(classNames);
