@@ -60,7 +60,7 @@ if (\Can\Has\who() !== null) {
 	<li><a href="smtp-tlsrpt">SMTP TLS Reporting (SMTP TLSRPT)</a></li>
 </ol>
 
-<h2>Trusted Types DOM-based XSS Prevention & Reporting</h2>
+<h2 id="trusted-types-dom-based-prevention-reporting">Trusted Types DOM-based XSS Prevention & Reporting</h2>
 <?= \Can\Has\trustedTypesNotSupportedHtml("the following demos won't work") ?>
 <ol>
 	<li><a href="trusted-types-cspro">Injection Sinks Detection with Trusted Types and CSPRO</a></li>
