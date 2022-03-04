@@ -407,7 +407,7 @@ function dataRetentionDays(): int
 
 function randomNonce(): string
 {
-	return base64_encode(random_bytes(16));
+	return base64_encode(random_bytes(18));
 }
 
 
