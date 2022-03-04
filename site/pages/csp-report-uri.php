@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-$nonce = base64_encode(random_bytes(16));
+$nonce = \Can\Has\randomNonce();
 $cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self'; report-uri " . \Can\Has\reportUrl('csp/enforce');
 $pageHeaderHtml = 'Content Security Policy with <code>report-uri</code>';
 $pageDescriptionHtml = 'Sending Content Security Policy (CSP) violation reports.<br><br>
