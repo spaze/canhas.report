@@ -405,6 +405,12 @@ function dataRetentionDays(): int
 }
 
 
+function randomNonce(): string
+{
+	return base64_encode(random_bytes(16));
+}
+
+
 function specsHtml(string ...$specs): string
 {
 	$hrefs = [];

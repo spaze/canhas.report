@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-$nonce = base64_encode(random_bytes(16));
+$nonce = \Can\Has\randomNonce();
 $cspHeader = "Content-Security-Policy-Report-Only: default-src data: 'self' 'nonce-{$nonce}' 'report-sample'; report-to default";
 $reportToHeader = \Can\Has\reportToHeader();
 header($cspHeader);
