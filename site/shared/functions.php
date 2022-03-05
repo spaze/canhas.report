@@ -176,7 +176,7 @@ function reportViewer(): string
 
 function reportUrlCanHas(): string
 {
-	return reportOrigin() . '/report.php';
+	return reportOrigin() . '/report';
 }
 
 
