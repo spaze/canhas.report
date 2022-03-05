@@ -33,6 +33,8 @@ echo \Can\Has\pageHead('Require Trusted Types with CSP', false);  // highlight.j
 		</script>
 		<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	</p>
+
+	<?= \Can\Has\specsHtml('trusted-types'); ?>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

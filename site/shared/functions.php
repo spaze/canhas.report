@@ -466,6 +466,11 @@ function specsHtml(string ...$specs): string
 			case 'dane':
 				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc6698">DNS-Based Authentication of Named Entities (DANE)</a> (RFC 6698)';
 				break;
+			case 'trusted-types':
+				$hrefs[] = '<a href="https://w3c.github.io/webappsec-trusted-types/dist/spec/">Trusted Types</a> Editor\'s Draft';
+				$hrefs[] = '<a href="https://web.dev/trusted-types/">Prevent DOM-based cross-site scripting vulnerabilities with Trusted Types</a> on web.dev';
+				$hrefs[] = '<a href="https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API">Trusted Types API</a> on MDN';
+				break;
 		}
 	}
 	$output = '';
@@ -473,5 +478,5 @@ function specsHtml(string ...$specs): string
 		$output .= "<li>{$href}</li>";
 	}
 
-	return "<h2>Related specs</h2><ul>{$output}</ul>";
+	return "<h2>Related specs & documents</h2><ul>{$output}</ul>";
 }
