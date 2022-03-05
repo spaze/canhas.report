@@ -12,3 +12,6 @@ ij_php_blank_lines_around_class = 1
 ij_php_blank_lines_around_constants = 1
 ij_php_blank_lines_around_field = 1
 ij_php_blank_lines_around_method = 2
+
+[conf/nginx/*.conf]
+indent_style = space
