@@ -69,7 +69,7 @@ echo \Can\Has\pageHead('Permissions Policy');
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li><span class="blocked">Blocked</span> by the current policy <code>geolocation=()</code>, the feature is disabled in all contexts everywhere, in all frames</li>
-		<li>The report will be sent only when the <code>chrome://flags/#enable-experimental-web-platform-features</code> flag is enabled</li>
+		<li><?= \Can\Has\enableExperimentalFeaturesHtml(); ?></li>
 		<li><?= \Can\Has\willTriggerReportToHtml('no violation'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>
@@ -87,7 +87,7 @@ echo \Can\Has\pageHead('Permissions Policy');
 	<iframe src="https://www.youtube-nocookie.com/embed/twqSIvSPQW0" frameborder="0" allow="fullscreen"></iframe>
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 
-	<h2>List of all features supported by your browser</h2>
+	<h2 id="supported-features">List of all features supported by your browser</h2>
 	<ul id="features">
 	</ul>
 	<script>

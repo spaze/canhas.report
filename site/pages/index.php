@@ -45,6 +45,7 @@ if (\Can\Has\who() !== null) {
 	<li><a href="nel">Network Error Logging</a></li>
 	<li><a href="expect-ct">Expect-CT</a></li>
 	<li><a href="permissions-policy">Permissions Policy</a></li>
+	<li><a href="permissions-policy-report-only">Permissions Policy Report-Only</a></li>
 </ol>
 
 <h3>Removed Browser Reporting</h3>

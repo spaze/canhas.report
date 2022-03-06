@@ -334,6 +334,12 @@ function trustedTypesNotSupportedHtml(string $messageSuffix = 'the demo will not
 }
 
 
+function enableExperimentalFeaturesHtml(): string
+{
+	return 'The report will be sent only when the <code>chrome://flags/#enable-experimental-web-platform-features</code> flag is enabled';
+}
+
+
 function permissionsPolicyBehindFlagHtml(): string
 {
 	return <<< 'EOT'
