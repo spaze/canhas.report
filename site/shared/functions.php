@@ -350,7 +350,7 @@ function permissionsPolicyBehindFlagHtml(): string
 }
 
 
-function permissionsPolicyNotSupportedHtml(string $messageSuffix = 'no reports will be sent'): string
+function permissionsPolicyNotSupportedHtml(string $messageSuffix = 'all features will work as usual'): string
 {
 	return '<div class="permissions-policy not-supported hidden">'
 		. '🍌 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy#browser_compatibility">does not</a> support Permissions Policy</a>, '
