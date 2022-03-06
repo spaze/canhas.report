@@ -13,7 +13,7 @@ echo \Can\Has\pageHead('Permissions Policy Report-Only');
 <div>
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
-	<h1>Permissions Policy report-only reports</h1>
+	<h1>Permissions Policy <em>Report-Only</em> reports</h1>
 	<p><em>
 		All Permission Policy features <a href="permissions-policy#supported-features">supported</a> by your browser will function as usual, without any restrictions.
 		If the policy would be violated, a report will be sent (with <code>"disposition": "report"</code> rather than <code>"disposition": "enforce"</code>).
