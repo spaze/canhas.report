@@ -5,9 +5,10 @@ $reportToHeader = \Can\Has\reportToHeader();
 $permissionsPolicyHeader = 'Permissions-Policy-Report-Only: fullscreen=()';
 header($reportToHeader);
 header($permissionsPolicyHeader);
-
-echo \Can\Has\pageHead('Permissions Policy Report-Only');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Permissions Policy Report-Only'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
@@ -70,3 +71,4 @@ echo \Can\Has\pageHead('Permissions Policy Report-Only');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

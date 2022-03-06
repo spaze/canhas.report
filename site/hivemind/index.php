@@ -17,9 +17,10 @@ $reportsHtml = \Can\Has\reports($statement, $seen);
 if ($seen) {
 	\Can\Has\setCookie('seen', (string)$seen, true);
 }
-
-echo \Can\Has\pageHead('All Received Reports');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('All Received Reports'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div id="reports">
@@ -30,3 +31,4 @@ echo \Can\Has\pageHead('All Received Reports');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

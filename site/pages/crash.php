@@ -3,9 +3,10 @@ declare(strict_types = 1);
 
 $reportToHeader = \Can\Has\reportToHeader();
 header($reportToHeader);
-
-echo \Can\Has\pageHead('Crash');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Crash'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
@@ -31,3 +32,4 @@ echo \Can\Has\pageHead('Crash');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

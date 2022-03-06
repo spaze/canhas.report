@@ -6,9 +6,10 @@ $cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https:
 $reportToHeader = \Can\Has\reportToHeader();
 header($cspHeader);
 header($reportToHeader);
-
-echo \Can\Has\pageHead('More CSP reports');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('More CSP reports'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
@@ -154,3 +155,4 @@ echo \Can\Has\pageHead('More CSP reports');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

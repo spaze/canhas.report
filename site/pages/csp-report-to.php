@@ -21,6 +21,11 @@ $specs = ['csp', 'reporting-api'];
 
 header($cspHeader);
 header($reportToHeader);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php
 echo \Can\Has\pageHead('CSP report-to');
-
 require __DIR__ . '/../shared/csp-body.php';
+?>
+</html>

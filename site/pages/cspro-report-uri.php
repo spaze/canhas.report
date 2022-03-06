@@ -3,9 +3,10 @@ declare(strict_types = 1);
 
 $cspHeader = "Content-Security-Policy-Report-Only: default-src https: data: 'unsafe-inline'; report-uri " . \Can\Has\reportUrl('csp/reportOnly');
 header($cspHeader);
-
-echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
@@ -60,3 +61,4 @@ echo \Can\Has\pageHead('CSPRO report-uri &ndash; mixed content detection');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

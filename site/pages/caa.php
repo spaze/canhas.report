@@ -1,8 +1,9 @@
 <?php
 declare(strict_types = 1);
-
-echo \Can\Has\pageHead('Certification Authority Authorization (CAA)');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Certification Authority Authorization (CAA)'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting Demos'); ?>
 <div>
@@ -38,3 +39,4 @@ echo \Can\Has\pageHead('Certification Authority Authorization (CAA)');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

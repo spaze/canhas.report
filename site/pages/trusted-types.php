@@ -3,9 +3,10 @@ declare(strict_types = 1);
 
 $cspHeader = "Content-Security-Policy: require-trusted-types-for 'script'; report-uri " . \Can\Has\reportUrl('csp/enforce');
 header($cspHeader);
-
-echo \Can\Has\pageHead('Require Trusted Types with CSP');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Require Trusted Types with CSP');  ?>
 <body>
 <?= \Can\Has\headerHtml('DOM-XSS Prevention with Trusted Types and CSPRO'); ?>
 <div>
@@ -40,3 +41,4 @@ echo \Can\Has\pageHead('Require Trusted Types with CSP');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

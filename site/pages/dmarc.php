@@ -1,8 +1,9 @@
 <?php
 declare(strict_types = 1);
-
-echo \Can\Has\pageHead('Domain-based Message Authentication, Reporting and Conformance (DMARC)');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Domain-based Message Authentication, Reporting and Conformance (DMARC)'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting Demos'); ?>
 <div>
@@ -43,3 +44,4 @@ echo \Can\Has\pageHead('Domain-based Message Authentication, Reporting and Confo
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

@@ -6,9 +6,10 @@ $cspHeader = "Content-Security-Policy-Report-Only: default-src data: 'self' 'non
 $reportToHeader = \Can\Has\reportToHeader();
 header($cspHeader);
 header($reportToHeader);
-
-echo \Can\Has\pageHead('CSPRO report-to');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('CSPRO report-to'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
@@ -88,3 +89,4 @@ echo \Can\Has\pageHead('CSPRO report-to');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

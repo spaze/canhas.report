@@ -18,8 +18,10 @@ if (is_readable($file)) {
 	require $file;
 } else {
 	http_response_code(404);
-	echo \Can\Has\pageHead('Not Found');
 ?>
+	<!DOCTYPE html>
+	<html lang="en">
+	<?= \Can\Has\pageHead('Not Found'); ?>
 	<body>
 	<?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 	<div>
@@ -30,5 +32,6 @@ if (is_readable($file)) {
 	</div>
 	<?= \Can\Has\footerHtml(); ?>
 	</body>
+	</html>
 <?php
 }

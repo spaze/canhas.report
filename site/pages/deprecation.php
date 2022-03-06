@@ -3,9 +3,10 @@ declare(strict_types = 1);
 
 $reportToHeader = \Can\Has\reportToHeader();
 header($reportToHeader);
-
-echo \Can\Has\pageHead('Deprecation');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Deprecation'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
@@ -66,3 +67,4 @@ echo \Can\Has\pageHead('Deprecation');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

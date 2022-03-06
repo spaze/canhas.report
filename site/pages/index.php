@@ -5,6 +5,8 @@ if (\Can\Has\who() !== null) {
 	\Can\Has\redirectToBase();
 }
 ?>
+<!DOCTYPE html>
+<html lang="en">
 <?= \Can\Has\pageHead(); ?>
 <body>
 <div id="tom">
@@ -124,3 +126,4 @@ if (\Can\Has\who() !== null) {
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

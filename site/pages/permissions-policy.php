@@ -5,9 +5,10 @@ $reportToHeader = \Can\Has\reportToHeader();
 $permissionsPolicyHeader = 'Permissions-Policy: geolocation=(), fullscreen=(self "https://www.michalspacek.cz")';
 header($reportToHeader);
 header($permissionsPolicyHeader);
-
-echo \Can\Has\pageHead('Permissions Policy');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Permissions Policy'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
@@ -119,3 +120,4 @@ echo \Can\Has\pageHead('Permissions Policy');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

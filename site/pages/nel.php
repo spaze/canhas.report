@@ -5,9 +5,10 @@ $reportToHeader = \Can\Has\reportToHeader();
 $nelHeader = \Can\Has\nelHeader();
 header($reportToHeader);
 header($nelHeader);
-
-echo \Can\Has\pageHead('Network Error Logging');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Network Error Logging'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div>
@@ -115,3 +116,4 @@ echo \Can\Has\pageHead('Network Error Logging');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

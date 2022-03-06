@@ -1,8 +1,9 @@
 <?php
 declare(strict_types = 1);
-
-echo \Can\Has\pageHead('HPKP');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('HPKP'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
@@ -43,3 +44,4 @@ echo \Can\Has\pageHead('HPKP');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

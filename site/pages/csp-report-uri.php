@@ -19,6 +19,11 @@ $additionalHeaderHtml = null;
 $specs = ['csp'];
 
 header($cspHeader);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<?php
 echo \Can\Has\pageHead('CSP report-uri');
-
 require __DIR__ . '/../shared/csp-body.php';
+?>
+</html>

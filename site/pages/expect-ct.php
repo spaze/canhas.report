@@ -3,9 +3,10 @@ declare(strict_types = 1);
 
 $expectCtHeader = 'Expect-CT: max-age=' . \Can\Has\maxAge() . ', enforce, report-uri="' . \Can\Has\reportUrl('ct/enforce') . '"';
 header($expectCtHeader);
-
-echo \Can\Has\pageHead('Expect-CT');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('Expect-CT'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
@@ -89,3 +90,4 @@ echo \Can\Has\pageHead('Expect-CT');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

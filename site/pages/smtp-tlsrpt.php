@@ -1,8 +1,9 @@
 <?php
 declare(strict_types = 1);
-
-echo \Can\Has\pageHead('SMTP TLS Reporting (SMTP TLSRPT)');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('SMTP TLS Reporting (SMTP TLSRPT)'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting Demos'); ?>
 <div>
@@ -67,3 +68,4 @@ echo \Can\Has\pageHead('SMTP TLS Reporting (SMTP TLSRPT)');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>

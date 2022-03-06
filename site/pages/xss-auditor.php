@@ -3,9 +3,10 @@ declare(strict_types = 1);
 
 $xxpHeader = 'X-XSS-Protection: 1; report=' . \Can\Has\reportUrlCanHas();
 header($xxpHeader);
-
-echo \Can\Has\pageHead('XSS Auditor');
 ?>
+<!DOCTYPE html>
+<html lang="en">
+<?= \Can\Has\pageHead('XSS Auditor'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
@@ -73,3 +74,4 @@ echo \Can\Has\pageHead('XSS Auditor');
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
+</html>
