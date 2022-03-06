@@ -24,7 +24,7 @@ if (\Can\Has\who() !== null) {
 <div>
 <?= \Can\Has\bookmarks('reports'); ?>
 <h2>Browser Reporting</h2>
-<?= \Can\Has\reportingApiNotSupportedHtml('the following reports will not be sent: <abbr title="Content Security Policy">CSP</abbr> <code>report-to</code>, Crash, Deprecation, Intervention, <abbr title="Network Error Logging">NEL</abbr>') ?>
+<?= \Can\Has\reportingApiNotSupportedHtml('the following reports will not be sent: <abbr title="Content Security Policy">CSP</abbr> <code>report-to</code>, Crash, Deprecation, Intervention, <abbr title="Network Error Logging">NEL</abbr>, Permissions Policy') ?>
 <p>
 	This is a live reporting demo tool. Although you'll dive deep into the technologies mentioned below, you'll not dive <em>very deep</em>, and instead, we'll focus on the reporting side of things.
 	The headers shown here are real headers sent by the server and received by your browser, with real values. You can click around and see how things behave and how reporting works.
