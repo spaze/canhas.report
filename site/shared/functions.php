@@ -20,7 +20,7 @@ function bookmarks(string ...$links): string
 }
 
 
-function pageHead(?string $title = null, ?bool $highlight = true): string
+function pageHead(?string $title = null): string
 {
 	return '<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
