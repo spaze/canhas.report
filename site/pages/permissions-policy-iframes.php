@@ -29,7 +29,7 @@ header($permissionsPolicyHeader);
 			<code>fullscreen</code>: which origins can go fullscreen
 			<ul>
 				<li><code>self</code>: current origin (scheme + host + port)</li>
-				<li><code>"https://exploited.cz"</code>: or anything embedded in an iframe loaded from my other site but not an embedded YouTube video for example</li>
+				<li><code>"https://exploited.cz"</code>: or anything embedded in an iframe loaded from my other site but not an embedded YouTube video for example, must be quoted</li>
 			</ul>
 		</li>
 	</ul>
