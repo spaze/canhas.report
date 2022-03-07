@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 $reportToHeader = \Can\Has\reportToHeader();
-$permissionsPolicyHeader = 'Permissions-Policy: geolocation=(), fullscreen=(self "https://www.michalspacek.cz")';
+$permissionsPolicyHeader = 'Permissions-Policy: geolocation=(), fullscreen=(self "https://exploited.cz")';
 header($reportToHeader);
 header($permissionsPolicyHeader);
 ?>
@@ -31,8 +31,8 @@ header($permissionsPolicyHeader);
 		The migration is not fully finished yet and the old name still has to be used in scripts.
 	</em></p>
 	<p><em><?= \Can\Has\permissionsPolicyBehindFlagHtml(); ?></em></p>
-	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
-	<?= \Can\Has\permissionsPolicyNotSupportedHtml() ?>
+	<?= \Can\Has\reportingApiNotSupportedHtml(); ?>
+	<?= \Can\Has\permissionsPolicyNotSupportedHtml(); ?>
 	<h2>The <code>Permissions-Policy</code> response header:</h2>
 	<pre><code class="json"><?= \Can\Has\highlight($permissionsPolicyHeader); ?></code></pre>
 	<ul>
@@ -46,7 +46,7 @@ header($permissionsPolicyHeader);
 			<code>fullscreen</code>: which origins can go fullscreen
 			<ul>
 				<li><code>self</code>: current origin (scheme + host + port)</li>
-				<li><code>"https://www.michalspacek.cz"</code>: or anything embedded in an iframe loaded from my site but not an embedded YouTube video for example</li>
+				<li><code>"https://exploited.cz"</code>: or anything embedded in an iframe loaded from my other site but not an embedded YouTube video for example</li>
 			</ul>
 		</li>
 	</ul>
@@ -79,16 +79,22 @@ header($permissionsPolicyHeader);
 
 	<h2>Embedded frame cannot go fullscreen</h2>
 	<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
-	<iframe src="https://www.youtube-nocookie.com/embed/twqSIvSPQW0" frameborder="0"></iframe>
+	<iframe src="https://exploited.cz/frames/fullscreen/fullscreen.html"></iframe>
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li>Fullscreen <span class="blocked">blocked</span> by the current <code>fullscreen</code> policy</li>
+		<li>Currently, no reports will be sent for <code>fullscreen</code> violations even when the flag is enabled</li>
+		<li>Violations will be visible in Developer Tools in the <em>Console</em> tab</li>
 	</ul>
 
 	<p>Fullscreen and other <em>features</em> can be allowed on a per-iframe basis with an <code>allow</code> attribute provided the <code>Permissions-Policy</code> header also contains the origin:</p>
 	<?php \Can\Has\scriptSourceHtmlStart('allowed'); ?>
-	<iframe src="https://www.youtube-nocookie.com/embed/twqSIvSPQW0" frameborder="0" allow="fullscreen"></iframe>
+	<iframe src="https://exploited.cz/frames/fullscreen/fullscreen.html" allow="fullscreen"></iframe>
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
+	<ul>
+		<li><span class="allowed">Allowed</span> because the <code>Permissions-Policy</code> header's <code>fullscreen</code> policy contains <code>https://exploited.cz</code></li>
+		<li>… <strong>and</strong> the iframe's <code>allow</code> attribute contains <code>fullscreen</code></li></li>
+	</ul>
 
 	<h2 id="supported-features">List of all features supported by your browser</h2>
 	<ul id="features">
