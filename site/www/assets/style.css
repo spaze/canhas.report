@@ -67,7 +67,7 @@ button code { background-color: transparent; }
 .content {
 	padding: 3em;
 }
-#reports {
+div#reports {
 	flex: 1 0 auto;
 }
 #header {
