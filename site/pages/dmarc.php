@@ -6,7 +6,8 @@ declare(strict_types = 1);
 <?= \Can\Has\pageHead('Domain-based Message Authentication, Reporting and Conformance (DMARC)'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index'); ?>
 
 	<h1>Domain-based Message Authentication, Reporting and Conformance (DMARC) reports</h1>
@@ -41,6 +42,7 @@ declare(strict_types = 1);
 	<pre><code><?= \Can\Has\highlight(file_get_contents(__DIR__ . '/../shared/dmarc-example.xml')); ?></code></pre>
 
 	<?= \Can\Has\specsHtml('dmarc', 'spf', 'dkim'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

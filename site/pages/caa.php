@@ -6,7 +6,8 @@ declare(strict_types = 1);
 <?= \Can\Has\pageHead('Certification Authority Authorization (CAA)'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index'); ?>
 
 	<h1>Certification Authority Authorization (CAA) reports</h1>
@@ -36,6 +37,7 @@ declare(strict_types = 1);
 	</p>
 
 	<?= \Can\Has\specsHtml('caa'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

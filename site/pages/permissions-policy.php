@@ -11,7 +11,8 @@ header($permissionsPolicyHeader);
 <?= \Can\Has\pageHead('Permissions Policy'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
 	<h1>Permissions Policy reports</h1>
@@ -117,6 +118,7 @@ header($permissionsPolicyHeader);
 	</script>
 
 	<?= \Can\Has\specsHtml('permissions-policy', 'reporting-api'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

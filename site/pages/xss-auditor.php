@@ -9,7 +9,8 @@ header($xxpHeader);
 <?= \Can\Has\pageHead('XSS Auditor'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
 	<h1>XSS Auditor reports</h1>
@@ -70,7 +71,7 @@ header($xxpHeader);
 			'request-body' => '<post data, if any>',
 		],
 	]); ?></code></pre>
-
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

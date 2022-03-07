@@ -23,11 +23,13 @@ if ($seen) {
 <?= \Can\Has\pageHead('All Received Reports'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
-<div id="reports">
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index'); ?>
 	<h1>All Received Reports</h1>
 	<?= $reportsHtml; ?>
 	<p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a></p>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

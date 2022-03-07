@@ -9,7 +9,8 @@ header($cspHeader);
 <?= \Can\Has\pageHead('Require Trusted Types with CSPRO'); ?>
 <body>
 <?= \Can\Has\headerHtml('DOM-XSS Injection Sinks Detection with Trusted Types and CSPRO'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>DOM-based XSS Injection Sinks Detection with Trusted Types and Content Security Policy with <code>report-uri</code></h1>
 	<?= \Can\Has\trustedTypesNotSupportedHtml(); ?>
@@ -33,6 +34,7 @@ header($cspHeader);
 	</p>
 
 	<?= \Can\Has\specsHtml('trusted-types'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

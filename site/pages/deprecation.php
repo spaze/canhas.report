@@ -9,7 +9,8 @@ header($reportToHeader);
 <?= \Can\Has\pageHead('Deprecation'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
 	<h1>Deprecation reports</h1>
@@ -64,6 +65,7 @@ header($reportToHeader);
 	<p>See Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/master:third_party/blink/renderer/core/frame/deprecation.cc?q=GetDeprecationInfo">source code</a> for more deprecated and invalid features.</p>
 
 	<?= \Can\Has\specsHtml('reporting-api'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

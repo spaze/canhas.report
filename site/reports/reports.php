@@ -27,7 +27,8 @@ if ($seen) {
 <?= \Can\Has\pageHead('Received Reports'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
-<div id="reports">
+<div id="main">
+<div class="content">
 <?= \Can\Has\bookmarks('index'); ?>
 <h1>Received Reports</h1>
 <p>
@@ -36,6 +37,7 @@ if ($seen) {
 </p>
 <?= $reportsHtml; ?>
 <p><a href="<?= htmlspecialchars($baseOrigin) ?>">↩ Back</a></p>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

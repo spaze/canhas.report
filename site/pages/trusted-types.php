@@ -9,7 +9,8 @@ header($cspHeader);
 <?= \Can\Has\pageHead('Require Trusted Types with CSP');  ?>
 <body>
 <?= \Can\Has\headerHtml('DOM-XSS Prevention with Trusted Types and CSPRO'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>Prevent DOM-based XSS with Trusted Types and Content Security Policy with <code>report-uri</code></h1>
 	<?= \Can\Has\trustedTypesNotSupportedHtml(); ?>
@@ -38,6 +39,7 @@ header($cspHeader);
 	</p>
 
 	<?= \Can\Has\specsHtml('trusted-types'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
