@@ -9,12 +9,8 @@ if (\Can\Has\who() !== null) {
 <html lang="en">
 <?= \Can\Has\pageHead(); ?>
 <body>
-<div id="tom">
-	<h1><small>Minority</small> Reporting API Demos</h1>
-	<picture>
-		<source srcset="<?= htmlspecialchars(\Can\Has\baseOrigin()); ?>/assets/minority.webp" type="image/webp">
-		<img src="<?= htmlspecialchars(\Can\Has\baseOrigin()); ?>/assets/minority.gif" alt="Minority Report(s)" title="This is not Scott Helme" width="444" height="202">
-	</picture>
+<div id="header">
+	<h1>Reporting API Demos</h1>
 	<p id="supported-by">
 		<a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">
 			<strong>Supported by</strong>
