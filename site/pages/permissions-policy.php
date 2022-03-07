@@ -55,6 +55,7 @@ header($permissionsPolicyHeader);
 
 	<h2>Try getting the current location of the device</h2>
 	<button id="geolocation" class="blocked">Get current geolocation</button>
+	<span class="permissions-policy not-supported hidden">🍌 Geolocation will work, your browser doesn't support Permissions Policy</span>
 	<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
 	<script>
 		document.getElementById('geolocation').onclick = function() {
