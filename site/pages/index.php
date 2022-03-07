@@ -10,6 +10,7 @@ if (\Can\Has\who() !== null) {
 <?= \Can\Has\pageHead(); ?>
 <body>
 <div id="header">
+	<div class="content">
 	<h1>Reporting API Demos</h1>
 	<p id="supported-by">
 		<a href="https://report-uri.com/" target="_blank" rel="noreferrer noopener">
@@ -17,9 +18,11 @@ if (\Can\Has\who() !== null) {
 			<img src="<?= htmlspecialchars(\Can\Has\baseOrigin()); ?>/assets/report-uri.svg" alt="report-uri.com logo" width="152" height="27">
 		</a>
 	</p>
+	</div>
 </div>
 
 <div>
+<div class="content">
 <?= \Can\Has\bookmarks('reports'); ?>
 <h2>Browser Reporting</h2>
 <?= \Can\Has\reportingApiNotSupportedHtml('the following reports will not be sent: <abbr title="Content Security Policy">CSP</abbr> <code>report-to</code>, Crash, Deprecation, Intervention, <abbr title="Network Error Logging">NEL</abbr>, Permissions Policy') ?>
@@ -119,6 +122,7 @@ if (\Can\Has\who() !== null) {
 	<li>Other testers: <a href="https://hardenize.com/">hardenize.com</a>, <a href="https://observatory.mozilla.org/">observatory.mozilla.org</a></li>
 </ul>
 
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
