@@ -49,6 +49,9 @@ code {
 }
 pre code { padding: 0; }
 button code { background-color: transparent; }
+iframe {
+	border-width: 1px;
+}
 #supported-by {
 	line-height: 27px;
 	text-align: center;
