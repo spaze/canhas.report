@@ -6,7 +6,8 @@ declare(strict_types = 1);
 <?= \Can\Has\pageHead('HPKP'); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
 	<h1>HTTP-based Public Key Pinning (HPKP)</h1>
@@ -40,7 +41,7 @@ declare(strict_types = 1);
 			"-----BEGIN CERTIFICATE-----\n<PEM certificate data>\n-----END CERTIFICATE-----",
 		],
 	]); ?></code></pre>
-
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

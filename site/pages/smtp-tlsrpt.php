@@ -6,7 +6,8 @@ declare(strict_types = 1);
 <?= \Can\Has\pageHead('SMTP TLS Reporting (SMTP TLSRPT)'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index'); ?>
 
 	<h1>SMTP TLS Reporting (SMTP TLSRPT)</h1>
@@ -65,6 +66,7 @@ declare(strict_types = 1);
 	]); ?></code></pre>
 
 	<?= \Can\Has\specsHtml('smtp-tlsrpt', 'mta-sts', 'dane'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

@@ -9,7 +9,8 @@ header($reportToHeader);
 <?= \Can\Has\pageHead('Intervention'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
 	<h1>Intervention reports</h1>
@@ -58,6 +59,7 @@ header($reportToHeader);
 	</p>
 
 	<?= \Can\Has\specsHtml('reporting-api'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

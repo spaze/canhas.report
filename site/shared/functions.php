@@ -41,15 +41,21 @@ function smallReportUriLogoHtml(): string
 
 function headerHtml(string $header): string
 {
-	return '<div id="header"><a href="' . \htmlspecialchars(baseOrigin()) . '/"><strong>' . \htmlspecialchars($header) . '</strong></a> <span><span class="separator">&mdash;</span><span class="separator-break"></span> Supported by ' . smallReportUriLogoHtml() . '</span></div>';
+	return '<div id="header">
+		<div class="content">
+		<a href="' . \htmlspecialchars(baseOrigin()) . '/"><strong>' . \htmlspecialchars($header) . '</strong></a> <span><span class="separator">&mdash;</span><span class="separator-break"></span> Supported by ' . smallReportUriLogoHtml() . '</span>
+		</div>
+		</div>';
 }
 
 
 function footerHtml(): string
 {
 	return '<div id="footer">
+		<div class="content">
 		By <a href="https://www.michalspacek.com">Michal Špaček</a>, <a href="https://twitter.com/spazef0rze">@spazef0rze</a>,
 		supported by ' . smallReportUriLogoHtml() . ' &ndash; real time security monitoring and error tracking
+		</div>
 	</div>';
 }
 

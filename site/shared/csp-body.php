@@ -4,6 +4,7 @@ declare(strict_types = 1);
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div>
+	<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1><?= $pageHeaderHtml; ?></h1>
 	<p><em><?= $pageDescriptionHtml; ?></em></p>
@@ -95,6 +96,7 @@ declare(strict_types = 1);
 	There's <a href="csp-urls">more CSP demos to try</a>, where you can load any resources by URL and even submit forms.
 
 	<?= \Can\Has\specsHtml(...$specs); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

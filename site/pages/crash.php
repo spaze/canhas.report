@@ -9,7 +9,8 @@ header($reportToHeader);
 <?= \Can\Has\pageHead('Crash'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 	<h1>Crash reports with <code>report-to</code></h1>
 	<p><em>Sending reports about browser or tab (where tab means one of the browser processes) crashes with Reporting API using the <code>Report-To</code> header (and only the <code>Report-To</code> header, no other header required), asynchronously.</em></p>
@@ -29,6 +30,7 @@ header($reportToHeader);
 	</ul>
 
 	<?= \Can\Has\specsHtml('reporting-api'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>

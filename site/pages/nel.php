@@ -11,7 +11,8 @@ header($nelHeader);
 <?= \Can\Has\pageHead('Network Error Logging'); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
-<div>
+<div id="main">
+<div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
 	<h1>Network Error Logging reports</h1>
@@ -113,6 +114,7 @@ header($nelHeader);
 	<p>See also Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/master:net/network_error_logging/network_error_logging_service.cc?q=kErrorTypes">list of all NEL types</a>.</p>
 
 	<?= \Can\Has\specsHtml('nel', 'reporting-api'); ?>
+</div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
 </body>
