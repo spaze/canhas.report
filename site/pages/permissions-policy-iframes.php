@@ -40,8 +40,8 @@ header($permissionsPolicyHeader);
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li>Fullscreen <span class="blocked">blocked</span> by the current <code>fullscreen</code> policy</li>
-		<li>Currently, no reports will be sent for <code>fullscreen</code> violations even when the flag is enabled</li>
-		<li>Violations will be visible in Developer Tools in the <em>Console</em> tab</li>
+		<li>No report will be sent, because the violation happened in an embedded iframe, and only first-party reports are sent</li>
+		<li>Violation will be visible in Developer Tools in the <em>Console</em> tab</li>
 	</ul>
 
 	<p>Fullscreen and other <em>features</em> can be allowed on a per-iframe basis with an <code>allow</code> attribute provided the <code>Permissions-Policy</code> header also contains the origin:</p>
