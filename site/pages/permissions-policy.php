@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 $reportToHeader = \Can\Has\reportToHeader();
-$permissionsPolicyHeader = 'Permissions-Policy: geolocation=(), fullscreen=()';
+$permissionsPolicyHeader = 'Permissions-Policy: geolocation=(), fullscreen=(), camera=(self "https://www.michalspacek.com"), midi=*';
 header($reportToHeader);
 header($permissionsPolicyHeader);
 ?>
@@ -39,13 +39,26 @@ header($permissionsPolicyHeader);
 		<li>
 			<code>geolocation</code>: which origins can get the current location of the user's device
 			<ul>
-				<li><em>empty</em>: no sites, not even iframes can query the location</li>
+				<li><em>empty</em>: no sites, not even this one, not even iframes can query the location</li>
 			</ul>
 		</li>
 		<li>
-			<code>fullscreen</code>: which origins can go fullscreen, see <a href="permissions-policy-iframes">demo</a>
+			<code>fullscreen</code>: which origins can go fullscreen
 			<ul>
-				<li><em>empty</em>: content from no sites, not even from iframes, can switch to full screen</li>
+				<li><em>empty</em>: content from no sites, not even from iframes (see <a href="permissions-policy-iframes">demo</a>), can switch to full screen</li>
+			</ul>
+		</li>
+		<li>
+			<code>camera</code>: which origins can use your camera, if you'll allow it (<em>listed only as a syntax example</em>)
+			<ul>
+				<li><code>self</code>: this very site</li>
+				<li><code>"https://www.michalspacek.com"</code>: my other site, even when in an iframe; the value must be quoted</li>
+			</ul>
+		</li>
+		<li>
+			<code>midi</code>: which origins can use your <abbr title="Musical Instrument Digital Interface">MIDI</abbr> devices through Web MIDI API (<em>listed only as a syntax example</em>)
+			<ul>
+				<li><code>*</code>: all sites <em>because why not</em></li>
 			</ul>
 		</li>
 	</ul>
@@ -75,6 +88,28 @@ header($permissionsPolicyHeader);
 		<li><?= \Can\Has\willTriggerReportToHtml('no violation'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>
+
+	<h2>Try going full screen</h2>
+	<button id="fullscreen" class="blocked">Go full screen</button>
+	<span class="permissions-policy not-supported hidden">🍌 It will work, your browser doesn't support Permissions Policy</span>
+	<span id="fullscreen-message" class="blocked"></span>
+	<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
+	<script>
+		document.getElementById('fullscreen').onclick = function() {
+			const message = document.getElementById('fullscreen-message');
+			document.getElementsByTagName('html')[0].requestFullscreen()
+				.catch(error => { message.innerText = error.message; });
+		}
+	</script>
+	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
+	<ul>
+		<li><span class="blocked">Blocked</span> by the current policy <code>fullscreen=()</code>, the feature is not allowed even in iframes</li>
+		<li><?= \Can\Has\enableExperimentalFeaturesHtml(); ?></li>
+		<li><?= \Can\Has\willTriggerReportToHtml('no violation'); ?></li>
+		<li>This is a first-party report, the violation happened on this page, not in an embedded iframe</li>
+		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
+	</ul>
+
 
 	<h2 id="supported-features">List of all features supported by your browser</h2>
 	<ul id="features">
