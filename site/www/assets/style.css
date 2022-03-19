@@ -114,7 +114,7 @@ pre {
 .hl-number {
 	color: #008;
 }
-.hl-string, .hl-string .hl-number, .hl-string .hl-tag {
+.hl-string, .hl-string .hl-number, .hl-string .hl-tag, .hl-string .hl-attr {
 	color: #194;
 }
 #bookmarks {
