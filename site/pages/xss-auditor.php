@@ -19,12 +19,9 @@ header($xxpHeader);
 		Introduced in Internet Explorer 8 back in 2009 as <em>XSS Filter</em> and in Chrome 4 in 2010, controlled by the <code>X-XSS-Protection</code> HTTP header.
 		The feature was completely <a href="https://www.chromestatus.com/feature/5021976655560704">removed in Chrome 78</a>
 		and in <a href="https://blogs.windows.com/windowsexperience/2018/07/25/announcing-windows-10-insider-preview-build-17723-and-build-18204/">Microsoft Edge in 2018</a>.
-		It currently works in Safari and WebKit-based browsers (any browser on iOS) only.
+		Apple removed XSS Auditor <a href="https://webkit.org/blog/12445/new-webkit-features-in-safari-15-4/#security">in Safari 15.4</a>.
 	</em></p>
-	<div class="browser not-supported hidden">🍌 Your browser doesn't support XSS Auditor, no reports will be sent</div>
-	<?php if (\Can\Has\reportToReportUri()) { ?>
-		<div class="not-supported">🙈 XSS Auditor reports are not supported by Report URI anymore, sending eventual reports to <em>canhas.report</em></div>
-	<?php } ?>
+	<div class="not-supported">🍌 Your browser doesn't support XSS Auditor, no reports will be sent</div>
 	<h2>The <code>X-XSS-Protection</code> response header:</h2>
 	<pre><code><?= htmlspecialchars($xxpHeader); ?></code></pre>
 	<ul>
@@ -42,29 +39,19 @@ header($xxpHeader);
 	<form action="?auditor=triggered" method="post">
 		<input type="hidden" name="some" value="input">
 		<input type="hidden" name="trigger" value="<?= htmlspecialchars("<script>console.log('Send this to the page I dare you, I double dare you!');</script>"); ?>">
-		<button id="trigger" class="blocked">Trigger the XSS Auditor</button>
-		<span class="browser not-supported hidden">🍌 Not supported in your browser</span>
+		<button disabled class="blocked disabled">Trigger the XSS Auditor</button>
+		<span class="not-supported">🍌 Not supported in your browser</span>
+		<small>but you can try <button>anyway</button></small>
 	</form>
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
-		<li><span class="blocked">Blocked</span>, the JavaScript will not run</li>
-		<li>Will trigger a report</li>
+		<li>Would be <span class="blocked">blocked</span> if supported by your browser, the JavaScript wouldn't run</li>
+		<li>Would trigger a report in supported browsers</li>
 		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportOrigin()); ?>/">reports</a></li>
 	</ul>
-	<script>
-		if (!navigator.vendor.match(/apple computer/i)) {
-			const list = document.getElementsByClassName('browser not-supported');
-			for (let element of list) {
-				element.classList.remove('hidden');
-			}
-			const button = document.getElementById('trigger');
-			button.disabled = true;
-			button.classList.add('disabled');
-		}
-	</script>
 
 	<h2>Example XSS Auditor report</h2>
-	<p>This is how the report looks like (or looked like in case of Chrome):</p>
+	<p>This is how the report looked like:</p>
 	<pre><code><?= \Can\Has\jsonReportHtml([
 		'xss-report' => [
 			'request-url' => '<URL>',
