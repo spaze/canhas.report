@@ -1,0 +1,41 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+    steps:
+    - name: OS info
+      run: cat /etc/os-release
+    - run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-version }}
+    - name: PHP info
+      run: |
+        php -v
+        php -m
+
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+    steps:
+    - uses: actions/checkout@v2
+    - run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-version }}
+    - run: find -name *.php -exec php -l {} \; 2>&1 1>/dev/null | if grep "^.*error:"; then exit 1; else exit 0; fi
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version:
+          - "8.1"
+    steps:
+    - uses: actions/checkout@v2
+    - run: sudo update-alternatives --set php /usr/bin/php${{ matrix.php-version }}
+    - run: php site/tests/test.php
