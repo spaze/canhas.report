@@ -44,7 +44,6 @@ if (\Can\Has\who() !== null) {
 	<li><a href="deprecation">Deprecation</a></li>
 	<li><a href="intervention">Intervention</a></li>
 	<li><a href="nel">Network Error Logging</a></li>
-	<li><a href="expect-ct">Expect-CT</a></li>
 	<li><a href="permissions-policy">Permissions Policy</a></li>
 	<li><a href="permissions-policy-iframes">Permissions Policy in iframes</a></li>
 	<li><a href="permissions-policy-report-only">Permissions Policy Report-Only</a></li>
@@ -55,6 +54,7 @@ if (\Can\Has\who() !== null) {
 <ul>
 	<li><a href="xss-auditor">XSS Auditor</a></li>
 	<li><a href="hpkp">HTTP-based Public Key Pinning</a></li>
+	<li><a href="expect-ct">Expect-CT</a></li>
 </ul>
 
 <h2>Other Reporting</h2>

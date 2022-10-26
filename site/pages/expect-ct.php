@@ -15,14 +15,13 @@ header($expectCtHeader);
 
 	<h1>Expect-CT reports</h1>
 	<p><em>
-		Get a report when a browser loads your site with a TLS certificate that doesn't meet the requirements of the browser's Certificate Transparency (CT) policy.
+		You could get a report when a browser loaded your site with a TLS certificate that didn't meet the requirements of the browser's Certificate Transparency (CT) policy.
 		For example Google Chrome requires all publicly-trusted TLS certificates issued after April 30, 2018 to be "CT Qualified" in order to be recognized as valid.
-		Being "CT-Qualified" essentially means that all such certificates has to be logged in two or more <a href="https://www.certificate-transparency.org/known-logs">known Certificate Transparency logs</a>
-		which you can search with tools like <a href="https://crt.sh/">crt.sh</a>.
-		With <code>Expect-CT</code> header, you can also enforce the requirement for certificates issued earlier (or issued later with a "valid from" set before the date).
-		Check <a href="https://github.com/chromium/ct-policy/blob/master/ct_policy.md">Chrome's CT policy</a> to see what does it mean for the certificate to be "CT qualified".
-		Apple has a <a href="https://support.apple.com/en-us/HT205280">similar CT policy</a>.
+		Nowadays, it means that Chrome requires CT on all public sites, so Expect-CT could be used only as a tool to detect misconfigurations.
+		But CT certificate configuration is almost always done by certification authorities, virtually never by the site owners, so usefulness of Expect-CT as a debugging tool is also very limited.
+		In October 2022, Chrome <a href="https://chromestatus.com/feature/6244547273687040">removed Expect-CT in version 107</a>. Chrome was also the only browser that had implemented the <code>Expect-CT</code> support.
 	</em></p>
+	<div class="not-supported">🍌 Your browser doesn't support Expect-CT, no reports will be sent</div>
 	<h2>The <code>Expect-CT</code> response header:</h2>
 	<pre><code><?= \Can\Has\highlight($expectCtHeader); ?></code></pre>
 	<ul>
@@ -35,7 +34,7 @@ header($expectCtHeader);
 	</ul>
 
 	<h2>Test Expect-CT reporting</h2>
-	<p>It would be quite a feat to get a certificate that would violate for example Chrome's CT policy so there's no "click here to generate the report" button here. Luckily, Chrome offers to send a test Expect-CT report:</p>
+	<p>It would be quite a feat to get a certificate that would violate for example Chrome's CT policy so there's no "click here to generate the report" button here. Until the feature was removed, Chrome offered to send a test Expect-CT report:</p>
 	<ol>
 		<?php if (\Can\Has\reportToReportUri()) { ?>
 			<li>While in Report URI, add <code>expect-ct-report.test</code> to <em>Global Report Filters</em> &gt; <em>Sites to collect reports for</em> in <a href="https://report-uri.com/account/filters/"><em>Filters</em></a></li>
@@ -54,7 +53,7 @@ header($expectCtHeader);
 	</ol>
 
 	<h2>Example Expect-CT report</h2>
-	<p>This is how the full report would look like:</p>
+	<p>This is how the full report looked like:</p>
 	<pre><code><?= \Can\Has\jsonReportHtml([
 		'expect-ct-report' => [
 			'port' => 443,
