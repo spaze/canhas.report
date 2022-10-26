@@ -474,7 +474,11 @@ function specsHtml(string ...$specs): string
 				$hrefs[] = '<a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft';
 				break;
 			case 'expect-ct':
-				$hrefs[] = '<a href="https://tools.ietf.org/html/draft-ietf-httpbis-expect-ct">Expect-CT Extension for HTTP</a> Internet-Draft';
+				$hrefs[] = '<a href="https://www.rfc-editor.org/rfc/rfc9163">Expect-CT Extension for HTTP</a> (RFC 9163)';
+				$hrefs[] = '<a href="https://certificate.transparency.dev/logs/">Known Certificate Transparency logs</a>';
+				$hrefs[] = '<a href="https://github.com/chromium/ct-policy/blob/master/ct_policy.md">Chrome\'s CT policy</a>';
+				$hrefs[] = '<a href="https://support.apple.com/en-us/HT205280">Apple\'s CT policy</a>';
+				$hrefs[] = '<a href="https://crt.sh/">crt.sh</a> Certificate Search';
 				break;
 			case 'caa':
 				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc8659">DNS Certification Authority Authorization (CAA) Resource Record</a> (RFC 8659)';
