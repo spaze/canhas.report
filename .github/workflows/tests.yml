@@ -9,6 +9,7 @@ jobs:
       matrix:
         php-version:
           - "8.1"
+          - "8.2"
     steps:
     - name: OS info
       run: cat /etc/os-release
@@ -27,6 +28,7 @@ jobs:
       matrix:
         php-version:
           - "8.1"
+          - "8.2"
     steps:
     - uses: actions/checkout@v2
     - uses: shivammathur/setup-php@v2
@@ -41,6 +43,7 @@ jobs:
       matrix:
         php-version:
           - "8.1"
+          - "8.2"
     steps:
     - uses: actions/checkout@v2
     - uses: shivammathur/setup-php@v2
