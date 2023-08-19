@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 $nonce = \Can\Has\randomNonce();
-$cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self'; report-to default";
+$cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self' 'nonce-{$nonce}'; report-to default";
 $pageHeaderHtml = 'Content Security Policy with <code>report-to</code>';
 $reportToHeader = \Can\Has\reportToHeader();
 $pageDescriptionHtml = 'Sending Content Security Policy (CSP) violation reports with Reporting API using the <code>Report-To</code> header, asynchronously and out-of-band, when the browser feels like, possibly grouped with other reports and even other report types.<br><br>
@@ -25,7 +25,7 @@ header($reportToHeader);
 <!DOCTYPE html>
 <html lang="en">
 <?php
-echo \Can\Has\pageHead('CSP report-to');
+echo \Can\Has\pageHead('CSP report-to', $nonce);
 require __DIR__ . '/../shared/csp-body.php';
 ?>
 </html>

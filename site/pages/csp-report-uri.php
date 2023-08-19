@@ -2,7 +2,7 @@
 declare(strict_types = 1);
 
 $nonce = \Can\Has\randomNonce();
-$cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self'; report-uri " . \Can\Has\reportUrl('csp/enforce');
+$cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self' 'nonce-{$nonce}'; report-uri " . \Can\Has\reportUrl('csp/enforce');
 $pageHeaderHtml = 'Content Security Policy with <code>report-uri</code>';
 $pageDescriptionHtml = 'Sending Content Security Policy (CSP) violation reports.<br><br>
 	CSP is a policy that lets the authors (or server administrators) of a web application inform the browser about the sources from which the application expects to load resources like images, scripts, styles, or even where to submit forms.
@@ -23,7 +23,7 @@ header($cspHeader);
 <!DOCTYPE html>
 <html lang="en">
 <?php
-echo \Can\Has\pageHead('CSP report-uri');
+echo \Can\Has\pageHead('CSP report-uri', $nonce);
 require __DIR__ . '/../shared/csp-body.php';
 ?>
 </html>

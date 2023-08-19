@@ -2,14 +2,14 @@
 declare(strict_types = 1);
 
 $nonce = \Can\Has\randomNonce();
-$cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self'; form-action 'self'; report-to default";
+$cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self' 'nonce-{$nonce}'; form-action 'self'; report-to default";
 $reportToHeader = \Can\Has\reportToHeader();
 header($cspHeader);
 header($reportToHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?= \Can\Has\pageHead('More CSP reports'); ?>
+<?= \Can\Has\pageHead('More CSP reports', $nonce); ?>
 <body>
 <?= \Can\Has\headerHtml('Reporting API Demos'); ?>
 <div id="main">

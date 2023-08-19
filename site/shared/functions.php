@@ -20,11 +20,16 @@ function bookmarks(string ...$links): string
 }
 
 
-function pageHead(?string $title = null): string
+function pageHead(?string $title = null, ?string $nonce = null): string
 {
 	return '<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>' . ($title ? " {$title} | " : '') . 'Reporting API Demos</title>
+		<style' . ($nonce ? ' nonce="' . \htmlspecialchars($nonce) . '"' : '') . '>
+			body { font: 1em/1.5 Arial, sans-serif; }
+			img { max-width: 100%; height: auto; }
+			pre { overflow-x: auto; }
+		</style>
 		<link rel="icon" type="image/svg+xml" href="' . \htmlspecialchars(baseOrigin()) . '/assets/favicon.svg">
 		<link rel="alternate icon" href="' . \htmlspecialchars(baseOrigin()) . '/assets/favicon.png">
 		<link rel="stylesheet" href="' . \htmlspecialchars(baseOrigin()) . '/assets/style.css">

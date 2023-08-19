@@ -9,7 +9,7 @@ header($reportToHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?= \Can\Has\pageHead('CSPRO report-to'); ?>
+<?= \Can\Has\pageHead('CSPRO report-to', $nonce); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div id="main">
@@ -30,7 +30,7 @@ header($reportToHeader);
 			<ul>
 				<li><code>data:</code> used for the placeholder image below</li>
 				<li><code>'self'</code> means current URL's origin (scheme + host + port)</li>
-				<li><code>'nonce-<?= htmlspecialchars($nonce); ?>'</code> means <code>script</code> elements with <code>nonce="<?= htmlspecialchars($nonce); ?>"</code> attribute</li>
+				<li><code>'nonce-<?= htmlspecialchars($nonce); ?>'</code> means <code>script</code> & <code>style</code> elements with <code>nonce="<?= htmlspecialchars($nonce); ?>"</code> attribute</li>
 				<li>
 					<code>'report-sample'</code> instructs the browser to include a violation sample, the first 40 characters
 					(valid for CSS, JS only but included in <code>default-src</code> here to keep the header short)
