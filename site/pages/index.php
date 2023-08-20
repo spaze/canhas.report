@@ -118,7 +118,7 @@ if (\Can\Has\who() !== null) {
 
 <h2>Tools</h2>
 <ul>
-	<li><a href="https://report-uri.com/">report-uri.com</a> Browser reporting aggregator ← I <a href="https://www.michalspacek.com/adding-features-and-deleting-code-or-how-i-joined-report-uri">work</a> on this one</li>
+	<li><a href="https://report-uri.com/">report-uri.com</a> Browser reporting aggregator ← I've <a href="https://www.michalspacek.com/adding-features-and-deleting-code-or-how-i-joined-report-uri">worked</a> on this one</li>
 	<li><a href="https://securityheaders.com/">securityheaders.com</a> Security headers tester</li>
 	<li>Other testers: <a href="https://hardenize.com/">hardenize.com</a>, <a href="https://observatory.mozilla.org/">observatory.mozilla.org</a></li>
 </ul>
