@@ -8,7 +8,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
     steps:
     - name: OS info
@@ -27,7 +26,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
     steps:
     - uses: actions/checkout@v4
@@ -42,7 +40,6 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
     steps:
     - uses: actions/checkout@v4
