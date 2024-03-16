@@ -25,7 +25,7 @@ header($permissionsPolicyHeader);
 		Permissions Policy allows web developers to selectively enable, disable, and modify the behavior of certain APIs and web features in the browser,
 			and query the state (allowed or denied) in the current document for a given feature. See the <a href="permissions-policy">Permissions Policy</a> page for more details.
 	</em></p>
-	<p><em><?= \Can\Has\permissionsPolicyBehindFlagHtml(); ?></em></p>
+	<?= \Can\Has\permissionsPolicyFirstPartyReportsHtml(); ?>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 	<?= \Can\Has\permissionsPolicyNotSupportedHtml() ?>
 	<h2>The <code>Permissions-Policy-Report-Only</code> response header:</h2>
@@ -63,7 +63,6 @@ header($permissionsPolicyHeader);
 	<ul>
 		<li><span class="allowed">Allowed</span> even though the current policy contains <code>fullscreen=()</code></li>
 		<li>Going full screen would be blocked if the policy was <em>enforced</em> and not <em>report-only</em></li>
-		<li><?= \Can\Has\enableExperimentalFeaturesHtml(); ?></li>
 		<li><?= \Can\Has\willTriggerReportToHtml('no violation'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>

@@ -30,7 +30,7 @@ header($permissionsPolicyHeader);
 			and treated iframe <code>allow</code> attribute <a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/permissions-policy-explainer.md#header-and-allow-attribute-combine-differently">differently</a>.
 		The migration is not fully finished yet and the old name still has to be used in scripts.
 	</em></p>
-	<p><em><?= \Can\Has\permissionsPolicyBehindFlagHtml(); ?></em></p>
+	<?= \Can\Has\permissionsPolicyFirstPartyReportsHtml(); ?>
 	<?= \Can\Has\reportingApiNotSupportedHtml(); ?>
 	<?= \Can\Has\permissionsPolicyNotSupportedHtml(); ?>
 	<h2>The <code>Permissions-Policy</code> response header:</h2>
@@ -84,7 +84,6 @@ header($permissionsPolicyHeader);
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li><span class="blocked">Blocked</span> by the current policy <code>geolocation=()</code>, the feature is disabled in all contexts everywhere, in all frames</li>
-		<li><?= \Can\Has\enableExperimentalFeaturesHtml(); ?></li>
 		<li><?= \Can\Has\willTriggerReportToHtml('no violation'); ?></li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
 	</ul>
@@ -104,7 +103,6 @@ header($permissionsPolicyHeader);
 	<?php \Can\Has\scriptSourceHtmlEnd(); ?>
 	<ul>
 		<li><span class="blocked">Blocked</span> by the current policy <code>fullscreen=()</code>, the feature is not allowed even in iframes</li>
-		<li><?= \Can\Has\enableExperimentalFeaturesHtml(); ?></li>
 		<li><?= \Can\Has\willTriggerReportToHtml('no violation'); ?></li>
 		<li>This is a first-party report, the violation happened on this page, not in an embedded iframe</li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>

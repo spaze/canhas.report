@@ -345,19 +345,9 @@ function trustedTypesNotSupportedHtml(string $messageSuffix = 'the demo will not
 }
 
 
-function enableExperimentalFeaturesHtml(): string
+function permissionsPolicyFirstPartyReportsHtml(): string
 {
-	return 'The report will be sent only when the <code>chrome://flags/#enable-experimental-web-platform-features</code> flag is enabled';
-}
-
-
-function permissionsPolicyBehindFlagHtml(): string
-{
-	return <<< 'EOT'
-		Right now, the policy violation reporting part of Permissions Policy <strong>must be manually enabled</strong> in Chrome by setting the
-			<a href="chrome://flags/#enable-experimental-web-platform-features">Experimental Web Platform features</a> flag (copy & paste the link), otherwise you'll get no reports.
-		Also, only first-party reports will be sent, no reports for violations that happened in embedded iframes.
-	EOT;
+	return '<p>Only <em>first-party reports</em> will be sent, no reports for violations that happened in embedded iframes.</p>';
 }
 
 
