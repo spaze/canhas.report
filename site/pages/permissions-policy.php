@@ -110,6 +110,7 @@ header($permissionsPolicyHeader);
 
 
 	<h2 id="supported-features">List of all features supported by your browser</h2>
+	<span>The list as returned by JavaScript after calling <code>document.featurePolicy.features()</code> (yes, it is still called <code>featurePolicy</code> here):</span>
 	<ul id="features">
 	</ul>
 	<script>
