@@ -527,7 +527,7 @@ function specsHtml(string ...$specs): string
 			case 'trusted-types':
 				$hrefs[] = '<a href="https://www.michalspacek.com/talks/dom-xss-and-trusted-types-owaspcz">My article about <abbr title="Document Object Model">DOM</abbr> <abbr title="Cross-Site Scripting">XSS</abbr> and Trusted Types</a> (also available <a href="https://www.michalspacek.cz/prednasky/jak-princezna-finalne-zatocila-s-dom-xss-jsdays">in Czech</a>)';
 				$hrefs[] = '<a href="https://w3c.github.io/trusted-types/dist/spec/">Trusted Types</a> Editor\'s Draft';
-				$hrefs[] = '<a href="https://web.dev/trusted-types/">Prevent DOM-based cross-site scripting vulnerabilities with Trusted Types</a> on web.dev';
+				$hrefs[] = '<a href="https://web.dev/articles/trusted-types">Prevent DOM-based cross-site scripting vulnerabilities with Trusted Types</a> on web.dev';
 				$hrefs[] = '<a href="https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API">Trusted Types API</a> on MDN';
 				break;
 			case 'permissions-policy':
