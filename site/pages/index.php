@@ -66,6 +66,13 @@ if (\Can\Has\who() !== null) {
 
 <h2 id="trusted-types-dom-based-prevention-reporting">Trusted Types DOM-based XSS Prevention & Reporting</h2>
 <?= \Can\Has\trustedTypesNotSupportedHtml("the following demos won't work") ?>
+<p>
+	Trusted Types require you to escape the data before passing it to a property like <code>innerHTML</code> or a method like <code>document.write()</code>.
+	These dangerous features that can execute arbitrary JavaScript are called <em>sinks</em> and when Trusted Types are enabled, these sinks only accept a <code>TrustedHTML</code> object.
+	You can produce such objects by creating a <em>policy</em> and calling its <code>createHTML()</code> method.
+	See <a href="https://www.michalspacek.com/talks/dom-xss-and-trusted-types-owaspcz">my article</a> about <abbr title="Document Object Model">DOM</abbr>-based <abbr title="Cross-Site Scripting">XSS</abbr>
+	and Trusted Types for <a href="https://www.michalspacek.com/talks/dom-xss-and-trusted-types-owaspcz">more details</a>.
+</p>
 <ol>
 	<li><a href="trusted-types-cspro">Injection Sinks Detection with Trusted Types and CSPRO</a></li>
 	<li><a href="trusted-types">Prevent DOM-XSS with Trusted Types and a custom policy</a></li>

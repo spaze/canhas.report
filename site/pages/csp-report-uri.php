@@ -13,8 +13,8 @@ $includeReportingApiNotSupportedWarning = false;
 $cspHeaderDescription = 'The CSP response header';
 $reportDirective = 'report-uri';
 $reportDirectiveDescription = 'where to send violation reports to';
-$willTriggerReportHtml = 'Will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)';
-$checkReportsHtml = 'Check your <a href="' . htmlspecialchars(\Can\Has\reportViewer()) . '/">reports</a>';
+$willTriggerReportHtml = \Can\Has\willTriggerReportUriHtml();
+$checkReportsHtml = \Can\Has\checkReportsReportUriHtml();
 $additionalHeaderHtml = null;
 $specs = ['csp'];
 

@@ -54,8 +54,8 @@ header($cspHeader);
 			</ul>
 		</li>
 		<li>Would be blocked if the policy was <em>enforced</em> and not <em>report-only</em></li>
-		<li>Will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)</li>
-		<li>Check your <a href="<?= htmlspecialchars(\Can\Has\reportViewer()); ?>/">reports</a></li>
+		<li><?= \Can\Has\willTriggerReportUriHtml(); ?></li>
+		<li><?= \Can\Has\checkReportsReportUriHtml(); ?></li>
 	</ul>
 
 	<?= \Can\Has\specsHtml('csp'); ?>

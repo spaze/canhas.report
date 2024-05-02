@@ -314,10 +314,22 @@ function dmarcRecord(): string
 }
 
 
+function willTriggerReportUriHtml(): string
+{
+	return 'Will trigger a report, check <em>Developer tools</em> (<em>Network</em> and <em>Console</em> tabs)';
+}
+
+
 function willTriggerReportToHtml(string $what = 'violation'): string
 {
 	return "Will trigger a report that will be sent asynchronously, possibly grouped with other reports ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
 		. ' <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header#chrome-71-and-newer">view the reporting requests</a>)';
+}
+
+
+function checkReportsReportUriHtml(): string
+{
+	return 'Check your <a href="' . \htmlspecialchars(reportViewer()) . '/">reports</a>';
 }
 
 
@@ -342,6 +354,22 @@ function trustedTypesNotSupportedHtml(string $messageSuffix = 'the demo will not
 		. '😥 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/API/TrustedHTML#browser_compatibility">does not support</a> Trusted Types, '
 		. $messageSuffix
 		. '</div>';
+}
+
+
+function trustedTypesCspHeaderDescriptionHtml(): string
+{
+	return '<ul>
+		<li>
+			<code>' . highlight("require-trusted-types-for 'script'") . '</code>: enable Trusted Types for <abbr title="Document Object Model">DOM</abbr> <abbr title="Cross-Site Scripting">XSS</abbr> sinks (<code>' . highlight("'script'") . '</code> is the only available value)
+		</li>
+		<li>
+			<code>report-uri</code>: where to send violation reports to
+			<ul>
+				<li><em>Reporting would also work with the <code>report-to</code> directive, see the <a href="csp-report-to">CSP demo</a>, but let\'s keep things simple here</em></li>
+			</ul>
+		</li>
+	</ul>';
 }
 
 
@@ -497,6 +525,7 @@ function specsHtml(string ...$specs): string
 				$hrefs[] = '<a href="https://tools.ietf.org/html/rfc6698">DNS-Based Authentication of Named Entities (DANE)</a> (RFC 6698)';
 				break;
 			case 'trusted-types':
+				$hrefs[] = '<a href="https://www.michalspacek.com/talks/dom-xss-and-trusted-types-owaspcz">My article about <abbr title="Document Object Model">DOM</abbr> <abbr title="Cross-Site Scripting">XSS</abbr> and Trusted Types</a> (also available <a href="https://www.michalspacek.cz/prednasky/jak-princezna-finalne-zatocila-s-dom-xss-jsdays">in Czech</a>)';
 				$hrefs[] = '<a href="https://w3c.github.io/trusted-types/dist/spec/">Trusted Types</a> Editor\'s Draft';
 				$hrefs[] = '<a href="https://web.dev/trusted-types/">Prevent DOM-based cross-site scripting vulnerabilities with Trusted Types</a> on web.dev';
 				$hrefs[] = '<a href="https://developer.mozilla.org/en-US/docs/Web/API/Trusted_Types_API">Trusted Types API</a> on MDN';
