@@ -24,7 +24,7 @@ function pageHead(?string $title = null, ?string $nonce = null): string
 {
 	return '<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>' . ($title ? " {$title} | " : '') . 'Reporting API Demos</title>
+		<title>' . ($title ? "{$title} | " : '') . 'Reporting API Demos</title>
 		<style' . ($nonce ? ' nonce="' . \htmlspecialchars($nonce) . '"' : '') . '>
 			body { font: 1em/1.5 Arial, sans-serif; }
 			img { max-width: 100%; height: auto; }
