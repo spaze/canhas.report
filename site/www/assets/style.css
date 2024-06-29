@@ -10,7 +10,6 @@ h1 {
 }
 body {
 	margin: 0;
-	font: 1em/1.7 Arial, sans-serif;
 	background-color: #E9ECF3;
 	display: flex;
 	flex-direction: column;
@@ -45,7 +44,6 @@ ol li:before {
 code {
 	background-color: #EFEFEF;
 	padding: 1px 4px;
-	font-size: 1.1em;
 }
 pre code { padding: 0; }
 button code { background-color: transparent; }
