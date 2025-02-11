@@ -5,7 +5,8 @@ require __DIR__ . '/config.php';
 require __DIR__ . '/../shared/functions.php';
 
 $baseOrigin = \Can\Has\baseOrigin();
-header("Content-Security-Policy: default-src 'none'; script-src {$baseOrigin}; img-src {$baseOrigin}; style-src {$baseOrigin}; base-uri 'none'; form-action 'none'");
+$nonce = \Can\Has\randomNonce();
+header("Content-Security-Policy: default-src 'none'; script-src {$baseOrigin}; img-src {$baseOrigin}; style-src {$baseOrigin} 'nonce-{$nonce}'; base-uri 'none'; form-action 'none'");
 
 $who = \Can\Has\who();
 if ($who === null) {
@@ -24,7 +25,7 @@ if ($seen) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?= \Can\Has\pageHead('Received Reports'); ?>
+<?= \Can\Has\pageHead('Received Reports', $nonce); ?>
 <body>
 <?= \Can\Has\headerHtml('Browser Reporting Demos'); ?>
 <div id="main">
