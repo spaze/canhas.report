@@ -215,16 +215,23 @@ function jsonReportHtml(array $data): string
 
 function reports(\PDOStatement $statement, ?int &$seen): string
 {
-	if ($statement->rowCount() === 0) {
+	$rowCount = $statement->rowCount();
+	if ($rowCount === 0) {
 		return '<p>No reports yet</p>';
 	}
 
 	$result = [];
 	$cookieSeen = $_COOKIE['seen'] ?? 0;
+	$newCount = 0;
+	$newestReceived = $oldestReceived = null;
 	foreach ($statement as $row) {
 		if ($seen === null) {
 			$seen = \strtotime($row['received']);
 		}
+		if ($newestReceived === null) {
+			$newestReceived = $row['received'];
+		}
+		$oldestReceived = $row['received'];
 		$counts = \array_count_values(\json_decode($row['types']));
 		$types = [];
 		foreach ($counts as $type => $count) {
@@ -232,8 +239,12 @@ function reports(\PDOStatement $statement, ?int &$seen): string
 		}
 		$reports = \json_decode($row['report'], true);
 		$who = (isset($row['who']) ? \htmlspecialchars($row['who']) : null);
+		$isNew = strtotime($row['received']) > $cookieSeen;
+		if ($isNew) {
+			$newCount++;
+		}
 		$result[] = \sprintf('<p>%s%s <small>%s</small> <strong>%s</strong>%s%s</p><pre><code>%s</code></pre>',
-			(strtotime($row['received']) > $cookieSeen ? '🆕 ' : ''),
+			($isNew ? '🆕 ' : ''),
 			\htmlspecialchars($row['received']),
 			\htmlspecialchars(\date_default_timezone_get()),
 			\htmlspecialchars(\implode(' + ', $types)),
@@ -244,7 +255,45 @@ function reports(\PDOStatement $statement, ?int &$seen): string
 	}
 	unset($row, $counts, $types, $count, $type, $reports, $who);
 
-	return \implode("\n", $result);
+	$dates = '';
+	if ($rowCount > 1) {
+		$now = new \DateTimeImmutable();
+		$newest = getInterval(new \DateTimeImmutable($newestReceived)->diff($now));
+		$oldest = getInterval(new \DateTimeImmutable($oldestReceived)->diff($now));
+		if ($newest === $oldest) {
+			$dates = \sprintf('; %s are %s old', ($rowCount === 2 ? 'both' : 'all'), $newest);
+		} else {
+			$dates = \sprintf('; the newest is %s old, the oldest is %s old', $newest, $oldest);
+		}
+	}
+	$counts = \sprintf('<p><em>%s new %s, %s %s total%s</em></p>',
+		\htmlspecialchars($newCount === 0 ? 'No' : (string)$newCount),
+		\htmlspecialchars($newCount === 1 ? 'report' : 'reports'),
+		\htmlspecialchars((string)$rowCount),
+		\htmlspecialchars($rowCount > 1 ? 'reports' : 'report'),
+		\htmlspecialchars($dates),
+	);
+	return $counts . \implode("\n", $result);
+}
+
+
+function getInterval(\DateInterval $interval): string
+{
+	$age = '';
+	if ($interval->y !== 0) {
+		$age = "{$interval->y} " . ($interval->y === 1 ? 'year' : 'years');
+	} elseif ($interval->m !== 0) {
+		$age = "{$interval->m} " . ($interval->m === 1 ? 'month' : 'months');
+	} elseif ($interval->d !== 0) {
+		$age = "{$interval->d} " . ($interval->d === 1 ? 'day' : 'days');
+	} elseif ($interval->h !== 0) {
+		$age = "{$interval->h} " . ($interval->h === 1 ? 'hour' : 'hours');
+	} elseif ($interval->i !== 0) {
+		$age = "{$interval->i} " . ($interval->i === 1 ? 'minute' : 'minutes');
+	} elseif ($interval->s !== 0) {
+		$age = "{$interval->s} " . ($interval->s === 1 ? 'second' : 'seconds');
+	}
+	return $age;
 }
 
 
