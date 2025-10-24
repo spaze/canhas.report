@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
 $permissionsPolicyHeader = 'Permissions-Policy-Report-Only: fullscreen=()';
-header($reportToHeader);
+header($reportingEndpointsHeader);
 header($permissionsPolicyHeader);
 ?>
 <!DOCTYPE html>
@@ -39,7 +39,7 @@ header($permissionsPolicyHeader);
 		</li>
 	</ul>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
 
 	<h2>Go full screen</h2>
 	<button id="fullscreen" class="allowed">Toggle full screen</button>

@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
-header($reportToHeader);
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
+header($reportingEndpointsHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ header($reportToHeader);
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
 
 	<h2>Use an "intervened" feature</h2>
 	<p>

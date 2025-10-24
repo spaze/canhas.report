@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
 $permissionsPolicyHeader = 'Permissions-Policy: geolocation=(), fullscreen=(), camera=(self "https://www.michalspacek.com"), midi=*';
-header($reportToHeader);
+header($reportingEndpointsHeader);
 header($permissionsPolicyHeader);
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ header($permissionsPolicyHeader);
 		</li>
 	</ul>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
 
 	<h2>Try getting the current location of the device</h2>
 	<button id="geolocation" class="blocked">Get current geolocation</button>

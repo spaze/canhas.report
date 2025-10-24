@@ -27,7 +27,7 @@ declare(strict_types = 1);
 			</ul>
 		</li>
 		<li><code>style-src</code>: allowed CSS sources</li>
-		<li><code><?= htmlspecialchars($reportDirective); ?></code>: <?= htmlspecialchars($reportDirectiveDescription); ?></li>
+		<li><?= $reportDirectiveDescriptionHtml; ?></li>
 	</ul>
 
 	<?= $additionalHeaderHtml; ?>

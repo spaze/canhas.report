@@ -3,9 +3,9 @@ declare(strict_types = 1);
 
 $nonce = \Can\Has\randomNonce();
 $cspHeader = "Content-Security-Policy: default-src 'none'; img-src 'self' https://www.michalspacek.cz; script-src 'nonce-{$nonce}' 'self' 'report-sample'; style-src 'self' 'nonce-{$nonce}'; form-action 'self'; report-to default";
-$reportToHeader = \Can\Has\reportToHeader();
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
 header($cspHeader);
-header($reportToHeader);
+header($reportingEndpointsHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +37,10 @@ header($reportToHeader);
 		</li>
 		<li><code>style-src</code>: allowed CSS sources</li>
 		<li><code>form-action</code>: where it's allowed to submit forms, not part of <code>default-src</code></li>
-		<li><code>report-to</code>: name of the group where to send violation reports to</li>
+		<li><?= \Can\Has\reportToDirectiveDescriptionHtml(); ?></li>
 	</ul>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'the same as in the CSP header in the <code>report-to</code> directive'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'the same as in the CSP header in the <code>report-to</code> directive'); ?>
 
 	<h2>Load any image</h2>
 	<p>

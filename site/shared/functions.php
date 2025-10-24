@@ -303,6 +303,12 @@ function maxAge(): int
 }
 
 
+function reportToDirectiveDescriptionHtml(): string
+{
+	return '<code>report-to</code>: name of the endpoint where to send violation reports, as defined in the <code>Reporting-Endpoints</code> header';
+}
+
+
 function reportToHeader(): string
 {
 	$reportTo = [
@@ -319,6 +325,12 @@ function reportToHeader(): string
 }
 
 
+function reportingEndpointsHeader(): string
+{
+	return 'Reporting-Endpoints: default="' . reportUrl() . '"';
+}
+
+
 function reportToHeaderHtml(string $header, string $groupDescriptionHtml): string
 {
 	return '<h2>The <code>Report-To</code> response header:</h2>
@@ -330,6 +342,23 @@ function reportToHeaderHtml(string $header, string $groupDescriptionHtml): strin
 				<code>endpoints</code>: reporting endpoint configuration, can specify multiple endpoints but reports will be sent to just one of them
 				<ul>
 					<li><code>url</code>: where to send reports to, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
+				</ul>
+			</li>
+		</ul>';
+}
+
+
+function reportingEndpointsHeaderHtml(string $header, string $endpointNameDescriptionHtml): string
+{
+	return '<h2>The <code>Reporting-Endpoints</code> response header:</h2>
+		<pre><code>' . highlight($header) . '</code></pre>
+		<ul>
+			<li><code>default</code>: the name of the endpoint, ' . $endpointNameDescriptionHtml .  '</li>
+			<li><code>"<em>url</em>"</code>: where to send reports to, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
+			<li>
+				You may provide multiple <code><em>name</em>="<em>url</em>"</code> endpoints separated by comma (<code>,</code>)
+				<ul>
+					<li><small>For example: <code>Reporting-Endpoints: csp-reporting="https://example.com/csp", nel-reporting="https://example.com/nel"</code></small></li>
 				</ul>
 			</li>
 		</ul>';
@@ -415,7 +444,7 @@ function trustedTypesCspHeaderDescriptionHtml(): string
 		<li>
 			<code>report-uri</code>: where to send violation reports to
 			<ul>
-				<li><em>Reporting would also work with the <code>report-to</code> directive, see the <a href="csp-report-to">CSP demo</a>, but let\'s keep things simple here</em></li>
+				<li><small>Reporting would also work with the <code>report-to</code> directive, see the <a href="csp-report-to">CSP demo</a>, but let\'s keep things simple here</small></li>
 			</ul>
 		</li>
 	</ul>';
@@ -534,7 +563,7 @@ function specsHtml(string ...$specs): string
 					<ul>
 						<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a Working Draft, followed by a Recommendation eventually)</small></li>
 						<li><small>
-							Notable changes in the Editor's Draft are switching to structured headers (<code>Reporting-Endpoints</code> instead of <code>Report-To</code>) and moving out concrete reports into the following separate Draft Community Group Reports:
+							Notable changes in the Editor's Draft are moving out concrete reports into the following separate Draft Community Group Reports:
 							<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a>,
 							<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a>,
 							<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a>

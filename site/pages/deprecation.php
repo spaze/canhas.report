@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
-header($reportToHeader);
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
+header($reportingEndpointsHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +16,12 @@ header($reportToHeader);
 	<h1>Deprecation reports</h1>
 	<p><em>
 		Some browser features, functions, or APIs are considered <em>deprecated</em>, no longer recommended, and while they still work, you shouldn't be using them.
-		Deprecation reporting will send you a report if your code uses such deprecated feature, all you need to send is a <code>Report-To</code> response header.
+		Deprecation reporting will send you a report if your code uses such deprecated feature, all you need to send is a <code>Reporting-Endpoints</code> response header.
+		Deprecation reports are always delivered to the endpoint named <code>default</code>.
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
 
 	<h2>Use a deprecated feature</h2>
 	<p>
