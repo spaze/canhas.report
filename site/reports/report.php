@@ -36,9 +36,10 @@ if ($who === null) {
 }
 
 if ($types && $reports) {
-	$statement = $database->prepare('INSERT INTO reports (who, received, types, report) VALUES (?, NOW(), ?, ?)');
+	$statement = $database->prepare('INSERT INTO reports (who, received, types, report) VALUES (?, ?, ?, ?)');
 	$statement->execute([
 		$who,
+		(new DateTimeImmutable())->format('Y-m-d H:i:s'),
 		json_encode($types),
 		$json
 	]);
