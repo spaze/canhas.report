@@ -65,7 +65,7 @@ header($reportingEndpointsHeader);
 	</ul>
 	<p>See Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/deprecation/deprecation.json5;l=63">source code</a> for more deprecated and invalid features.</p>
 
-	<?= \Can\Has\specsHtml('reporting-api'); ?>
+	<?= \Can\Has\specsHtml('reporting-api', 'deprecation'); ?>
 </div>
 </div>
 <?= \Can\Has\footerHtml(); ?>

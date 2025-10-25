@@ -562,14 +562,17 @@ function specsHtml(string ...$specs): string
 					<a href="https://www.w3.org/TR/reporting/">Reporting API</a> Working Draft
 					<ul>
 						<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a Working Draft, followed by a Recommendation eventually)</small></li>
-						<li><small>
-							Notable changes in the Editor's Draft are moving out concrete reports into the following separate Draft Community Group Reports:
-							<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a>,
-							<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a>,
-							<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a>
-						</small></li>
 					</ul>
 				EOT;
+				break;
+			case 'crash':
+				$hrefs[] = '<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a> Draft Community Group Report';
+				break;
+			case 'deprecation':
+				$hrefs[] = '<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a> Draft Community Group Report';
+				break;
+			case 'intervention':
+				$hrefs[] = '<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a> Draft Community Group Report';
 				break;
 			case 'nel':
 				$hrefs[] = '<a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft';

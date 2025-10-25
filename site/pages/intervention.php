@@ -58,7 +58,7 @@ header($reportingEndpointsHeader);
 		(the above-mentioned <a href="https://www.chromestatus.com/feature/5644273861001216">phone vibrate intervention</a> is not included in this list for some reason).
 	</p>
 
-	<?= \Can\Has\specsHtml('reporting-api'); ?>
+	<?= \Can\Has\specsHtml('reporting-api', 'intervention'); ?>
 </div>
 </div>
 <?= \Can\Has\footerHtml(); ?>

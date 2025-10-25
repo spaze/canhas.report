@@ -29,7 +29,7 @@ header($reportingEndpointsHeader);
 		<li>Reports can contain an optional <code>reason</code>, e.g. <code>oom</code> (Out-of-Memory, try with <a href="chrome://memory-exhaust/">chrome://memory-exhaust/</a>), <code>unresponsive</code> (killed due to being unresponsive)</li>
 	</ul>
 
-	<?= \Can\Has\specsHtml('reporting-api'); ?>
+	<?= \Can\Has\specsHtml('reporting-api', 'crash'); ?>
 </div>
 </div>
 <?= \Can\Has\footerHtml(); ?>
