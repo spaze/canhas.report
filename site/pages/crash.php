@@ -16,7 +16,7 @@ header($reportingEndpointsHeader);
 	<p><em>Sending reports about browser or tab (where tab means one of the browser processes) crashes with Reporting API using the <code>Reporting-Endpoints</code> header (and only the <code>Reporting-Endpoints</code> header, no other header required), asynchronously.</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 
-	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'crash reports are delivered to an endpoint named <code>crash-reporting</code> if specified, otherwise to an endpoint named <code>default</code>'); ?>
 
 	<h2>Try crashing your tab</h2>
 	<p>

@@ -21,7 +21,7 @@ header($reportingEndpointsHeader);
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 
-	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'deprecation reports are always delivered to the endpoint named <code>default</code>'); ?>
 
 	<h2>Use a deprecated feature</h2>
 	<p>
