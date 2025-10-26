@@ -26,7 +26,7 @@ header($reportingEndpointsHeader);
 		<li><?= \Can\Has\willTriggerReportToHtml(); ?></li>
 		<li>&hellip;if the tab crashes after receiving the <code>Reporting-Endpoints</code> header, <a href="crash">reload</a> the page first to make sure it does</li>
 		<li><?= \Can\Has\checkReportsReportToHtml(); ?></li>
-		<li>Reports can contain an optional <code>reason</code>, e.g. <code>oom</code> (Out-of-Memory, try with <a href="chrome://memory-exhaust/">chrome://memory-exhaust/</a>), <code>unresponsive</code> (killed due to being unresponsive)</li>
+		<li>Reports can contain an optional <code>reason</code>, e.g. <code>oom</code> (Out-of-Memory, try with <a href="chrome://memory-exhaust/">chrome://memory-exhaust/</a>), <code>unresponsive</code> (killed due to being unresponsive, try with <a href="chrome://hang/">chrome://hang/</a> and wait)</li>
 	</ul>
 
 	<?= \Can\Has\specsHtml('reporting-api', 'crash'); ?>
