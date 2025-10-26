@@ -50,7 +50,7 @@ header($cspHeader);
 			<span class="allowed">Allowed</span> even though the image source points to <em><strong>http://</strong>www.michalspacek.cz</em> and not to <em><strong>https://</strong>www.michalspacek.cz</em>
 			<ul>
 				<li><small>My site supports HTTP Strict Transport Security (HSTS) so the request would be eventually auto-upgraded to HTTPS in browsers that support HSTS but CSP comes first</small></li>
-				<li><small>Chrome <a href="https://www.chromestatus.com/feature/4926989725073408">plans</a> to auto-upgrade all image mixed content</small></li>
+				<li><small>Chrome and other browsers auto-upgrade all image mixed content to HTTPS</small></li>
 			</ul>
 		</li>
 		<li>Would be blocked if the policy was <em>enforced</em> and not <em>report-only</em></li>
