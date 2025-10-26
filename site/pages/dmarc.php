@@ -22,8 +22,8 @@ declare(strict_types = 1);
 	<ul>
 		<li><code>v=DMARC1</code>: this TXT DNS record is a DMARC policy record</li>
 		<li><code>p=quarantine</code>: mail receivers should quarantine messages from example.com that fail authentication, usually means "place into spam folder", other policies are <code>none</code> and <code>reject</code></li>
-		<li><code>rua</code>: where to send <em>aggregated</em> reports to, can be any valid URI (multiple URIs comma-separated) but only <code>mailto:</code> is guaranteed to be universally supported</li>
-		<li><code>ruf</code>: one or more URIs where to send message-specific detailed <em>failure</em> reports to, only <code>mailto:</code> is guaranteed to be universally supported</li>
+		<li><code>rua</code>: where to send <em>aggregated</em> reports, can be any valid URI (multiple URIs comma-separated) but only <code>mailto:</code> is guaranteed to be universally supported</li>
+		<li><code>ruf</code>: one or more URIs where to send message-specific detailed <em>failure</em> reports, only <code>mailto:</code> is guaranteed to be universally supported</li>
 	</ul>
 	<p>
 		The email address in <code>rua</code> and <code>ruf</code> should be the same as the domain where the DMARC policy was found at, which is the case for the failure reports in the example above.

@@ -354,7 +354,7 @@ function reportingEndpointsHeaderHtml(string $header, string $endpointNameDescri
 		<pre><code>' . highlight($header) . '</code></pre>
 		<ul>
 			<li><code>default</code>: the name of the endpoint, ' . $endpointNameDescriptionHtml .  '</li>
-			<li><code>"<em>url</em>"</code>: where to send reports to, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
+			<li><code>"<em>url</em>"</code>: where to send reports, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
 			<li>
 				You may provide multiple <code><em>name</em>="<em>url</em>"</code> endpoints separated by comma (<code>,</code>)
 				<ul>
@@ -442,7 +442,7 @@ function trustedTypesCspHeaderDescriptionHtml(): string
 			<code>' . highlight("require-trusted-types-for 'script'") . '</code>: enable Trusted Types for <abbr title="Document Object Model">DOM</abbr> <abbr title="Cross-Site Scripting">XSS</abbr> sinks (<code>' . highlight("'script'") . '</code> is the only available value)
 		</li>
 		<li>
-			<code>report-uri</code>: where to send violation reports to
+			<code>report-uri</code>: where to send violation reports
 			<ul>
 				<li><small>Reporting would also work with the <code>report-to</code> directive, see the <a href="csp-report-to">CSP demo</a>, but let\'s keep things simple here</small></li>
 			</ul>

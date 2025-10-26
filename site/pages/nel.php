@@ -24,7 +24,7 @@ header($nelHeader);
 	<h2>The <code>NEL</code> response header:</h2>
 	<pre><code><?= \Can\Has\highlight($nelHeader); ?></code></pre>
 	<ul>
-		<li><code>report_to</code>: name of the group where to send NEL reports to (that's an underscore, unlike in the <code>Content-Security-Policy</code> header)</li>
+		<li><code>report_to</code>: name of the group where to send NEL reports (that's an underscore, unlike in the <code>Content-Security-Policy</code> header)</li>
 		<li><code>max_age</code>: the lifetime of this NEL policy in seconds, set to weeks or months eventually to also get reports from browsers that have not visited the site for some time</li>
 		<li>
 			<code>include_subdomains</code>: optional, whether this policy applies to all subdomains of the current domain

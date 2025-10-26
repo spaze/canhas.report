@@ -26,7 +26,7 @@ header($xxpHeader);
 	<pre><code><?= htmlspecialchars($xxpHeader); ?></code></pre>
 	<ul>
 		<li><code>1</code>: enable the auditor</li>
-		<li><code>report</code>: where to send the reports to</li>
+		<li><code>report</code>: where to send the reports</li>
 	</ul>
 
 	<p>
