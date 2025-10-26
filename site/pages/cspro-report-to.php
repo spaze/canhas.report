@@ -3,9 +3,9 @@ declare(strict_types = 1);
 
 $nonce = \Can\Has\randomNonce();
 $cspHeader = "Content-Security-Policy-Report-Only: default-src data: 'self' 'nonce-{$nonce}' 'report-sample'; report-to default";
-$reportToHeader = \Can\Has\reportToHeader();
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
 header($cspHeader);
-header($reportToHeader);
+header($reportingEndpointsHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,10 +37,10 @@ header($reportToHeader);
 				</li>
 			</ul>
 		</li>
-		<li><code>report-to</code>: name of the group where to send violation reports to</li>
+		<li><?= \Can\Has\reportToDirectiveDescriptionHtml(); ?></li>
 	</ul>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'the same as in the CSP header in the <code>report-to</code> directive'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'the same as in the CSP header in the <code>report-to</code> directive'); ?>
 
 	<h2>Try it with images</h2>
 	<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABDAQMAAABQhTKZAAAABlBMVEX////MzMw46qqDAAAAI0lEQVR4AWP4f4D/D4xgGGAeg/0H5v8wYmB5gytcRsNlNFwAFna2DZiUiFYAAAAASUVORK5CYII=" id="image" width="100" height="67" alt="Loaded image">

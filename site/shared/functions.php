@@ -303,6 +303,12 @@ function maxAge(): int
 }
 
 
+function reportToDirectiveDescriptionHtml(): string
+{
+	return '<code>report-to</code>: name of the endpoint where to send violation reports, as defined in the <code>Reporting-Endpoints</code> header';
+}
+
+
 function reportToHeader(): string
 {
 	$reportTo = [
@@ -319,6 +325,12 @@ function reportToHeader(): string
 }
 
 
+function reportingEndpointsHeader(): string
+{
+	return 'Reporting-Endpoints: default="' . reportUrl() . '"';
+}
+
+
 function reportToHeaderHtml(string $header, string $groupDescriptionHtml): string
 {
 	return '<h2>The <code>Report-To</code> response header:</h2>
@@ -330,6 +342,23 @@ function reportToHeaderHtml(string $header, string $groupDescriptionHtml): strin
 				<code>endpoints</code>: reporting endpoint configuration, can specify multiple endpoints but reports will be sent to just one of them
 				<ul>
 					<li><code>url</code>: where to send reports to, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
+				</ul>
+			</li>
+		</ul>';
+}
+
+
+function reportingEndpointsHeaderHtml(string $header, string $endpointNameDescriptionHtml): string
+{
+	return '<h2>The <code>Reporting-Endpoints</code> response header:</h2>
+		<pre><code>' . highlight($header) . '</code></pre>
+		<ul>
+			<li><code>default</code>: the name of the endpoint, ' . $endpointNameDescriptionHtml .  '</li>
+			<li><code>"<em>url</em>"</code>: where to send reports, must be <code>https://</code>, otherwise the endpoint will be ignored</li>
+			<li>
+				You may provide multiple <code><em>name</em>="<em>url</em>"</code> endpoints separated by comma (<code>,</code>)
+				<ul>
+					<li><small>For example: <code>Reporting-Endpoints: csp-reporting="https://example.com/csp", nel-reporting="https://example.com/nel"</code></small></li>
 				</ul>
 			</li>
 		</ul>';
@@ -371,7 +400,7 @@ function willTriggerReportUriHtml(): string
 
 function willTriggerReportToHtml(string $what = 'violation'): string
 {
-	return "Will trigger a report that will be sent asynchronously, possibly grouped with other reports ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
+	return "Will trigger a report that will be sent asynchronously ({$what} visible in Developer Tools in the <em>Console</em> tab, you won't see the report in <em>Network</em> tab but you can still"
 		. ' <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header#chrome-71-and-newer">view the reporting requests</a>)';
 }
 
@@ -413,9 +442,9 @@ function trustedTypesCspHeaderDescriptionHtml(): string
 			<code>' . highlight("require-trusted-types-for 'script'") . '</code>: enable Trusted Types for <abbr title="Document Object Model">DOM</abbr> <abbr title="Cross-Site Scripting">XSS</abbr> sinks (<code>' . highlight("'script'") . '</code> is the only available value)
 		</li>
 		<li>
-			<code>report-uri</code>: where to send violation reports to
+			<code>report-uri</code>: where to send violation reports
 			<ul>
-				<li><em>Reporting would also work with the <code>report-to</code> directive, see the <a href="csp-report-to">CSP demo</a>, but let\'s keep things simple here</em></li>
+				<li><small>Reporting would also work with the <code>report-to</code> directive, see the <a href="csp-report-to">CSP demo</a>, but let\'s keep things simple here</small></li>
 			</ul>
 		</li>
 	</ul>';
@@ -434,6 +463,20 @@ function permissionsPolicyNotSupportedHtml(string $messageSuffix = 'all features
 		. '🍌 Your browser <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy#browser_compatibility">does not</a> support Permissions Policy</a>, '
 		. $messageSuffix
 		. '</div>';
+}
+
+
+function permissionsPolicyEndpointNameDescriptionHtml(): string
+{
+	return <<< 'EOT'
+		the Permissions Policy reports will be sent to the endpoint named <code>default</code>;
+		to send policy violation reports to a different endpoint, you have to specify it for each feature with a <code>report-to</code> parameter
+		<ul>
+			<li><small>For example: <code>Permissions-Policy: geolocation=();report-to=geo-reporting, fullscreen=();report-to=fs-reporting</code></small></li>
+			<li><small>Then add <code>geo-reporting=<em>"url"</em></code> and <code>fs-reporting=<em>"url"</em></code> endpoints to your <code>Reporting-Endpoints</code> header</small></li>
+			<li><small>Endpoint names in all <code>report-to</code> directives can be the same, but you can't change the reporting endpoint for all features at once</small></li>
+		</ul>
+	EOT;
 }
 
 
@@ -533,14 +576,17 @@ function specsHtml(string ...$specs): string
 					<a href="https://www.w3.org/TR/reporting/">Reporting API</a> Working Draft
 					<ul>
 						<li><small><a href="https://w3c.github.io/reporting/">Reporting API</a> Editor's Draft (which will evolve into a Working Draft, followed by a Recommendation eventually)</small></li>
-						<li><small>
-							Notable changes in the Editor's Draft are switching to structured headers (<code>Reporting-Endpoints</code> instead of <code>Report-To</code>) and moving out concrete reports into the following separate Draft Community Group Reports:
-							<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a>,
-							<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a>,
-							<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a>
-						</small></li>
 					</ul>
 				EOT;
+				break;
+			case 'crash':
+				$hrefs[] = '<a href="https://wicg.github.io/crash-reporting/">Crash Reporting</a> Draft Community Group Report';
+				break;
+			case 'deprecation':
+				$hrefs[] = '<a href="https://wicg.github.io/deprecation-reporting/">Deprecation Reporting</a> Draft Community Group Report';
+				break;
+			case 'intervention':
+				$hrefs[] = '<a href="https://wicg.github.io/intervention-reporting/">Intervention Reporting</a> Draft Community Group Report';
 				break;
 			case 'nel':
 				$hrefs[] = '<a href="https://www.w3.org/TR/network-error-logging/">Network Error Logging</a> Working Draft';
@@ -587,6 +633,7 @@ function specsHtml(string ...$specs): string
 					</ul>
 				EOT;
 				$hrefs[] = '<a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/permissions-policy-explainer.md">Permissions Policy explainer</a>';
+				$hrefs[] = '<a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/reporting.md">Permissions Policy reporting details</a>';
 				break;
 		}
 	}

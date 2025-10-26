@@ -29,7 +29,7 @@ header($cspHeader);
 				<li><code>'unsafe-inline'</code> means JavaScript, CSS inlined right in the HTML source code, not in external files (e.g. code between <code>&lt;script&gt;</code> and <code>&lt;/script&gt;</code>, handlers like <code>onmouseover</code> etc.)</li>
 			</ul>
 		</li>
-		<li><code>report-uri</code>: where to send violation reports to</li>
+		<li><code>report-uri</code>: where to send violation reports</li>
 	</ul>
 
 	<h2>Image mixed content</h2>

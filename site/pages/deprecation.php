@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
-header($reportToHeader);
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
+header($reportingEndpointsHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,11 +16,12 @@ header($reportToHeader);
 	<h1>Deprecation reports</h1>
 	<p><em>
 		Some browser features, functions, or APIs are considered <em>deprecated</em>, no longer recommended, and while they still work, you shouldn't be using them.
-		Deprecation reporting will send you a report if your code uses such deprecated feature, all you need to send is a <code>Report-To</code> response header.
+		Deprecation reporting will send you a report if your code uses such deprecated feature, all you need to send is a <code>Reporting-Endpoints</code> response header.
+		Deprecation reports are always delivered to the endpoint named <code>default</code>.
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'deprecation reports are always delivered to the endpoint named <code>default</code>'); ?>
 
 	<h2>Use a deprecated feature</h2>
 	<p>
@@ -64,7 +65,7 @@ header($reportToHeader);
 	</ul>
 	<p>See Chrome's <a href="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/deprecation/deprecation.json5;l=63">source code</a> for more deprecated and invalid features.</p>
 
-	<?= \Can\Has\specsHtml('reporting-api'); ?>
+	<?= \Can\Has\specsHtml('reporting-api', 'deprecation'); ?>
 </div>
 </div>
 <?= \Can\Has\footerHtml(); ?>

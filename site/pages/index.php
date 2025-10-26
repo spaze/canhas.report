@@ -33,21 +33,26 @@ if (\Can\Has\who() !== null) {
 	In Chrome, you can also use <a href="chrome://net-export/">chrome://net-export/</a> (copy/paste the link) to see "hidden" asynchronous reports in exported logs.
 	See my <a href="https://www.michalspacek.com/chrome-err_spdy_protocol_error-and-an-invalid-http-header">article about how to read the logs</a>.
 </p>
-<p>Not all of these use Reporting API, some are proprietary reporting mechanisms and you'll notice them easily &ndash; they don't use the <code>Report-To</code> header.</p>
 <ol>
-	<li><a href="csp-report-uri">Content Security Policy <code>report-uri</code></a></li>
-	<li><a href="csp-report-to">Content Security Policy <code>report-to</code></a></li>
+	<li><a href="csp-report-uri">Content Security Policy <code>report-uri</code> directive</a></li>
+	<li><a href="csp-report-to">Content Security Policy <code>report-to</code> directive</a></li>
 	<li><a href="csp-urls">More CSP <code>report-to</code> &ndash; load resources by specified URL, submit forms</a></li>
-	<li><a href="cspro-report-uri">CSP Report-Only <code>report-uri</code> &ndash; mixed content detection</a></li>
-	<li><a href="cspro-report-to">CSP Report-Only <code>report-to</code></a></li>
+	<li><a href="cspro-report-uri">CSP Report-Only <code>report-uri</code> directive &ndash; mixed content detection</a></li>
+	<li><a href="cspro-report-to">CSP Report-Only <code>report-to</code> directive</a></li>
 	<li><a href="crash">Crash</a></li>
 	<li><a href="deprecation">Deprecation</a></li>
 	<li><a href="intervention">Intervention</a></li>
-	<li><a href="nel">Network Error Logging</a></li>
+	<li><a href="nel">Network Error Logging (NEL)</a></li>
 	<li><a href="permissions-policy">Permissions Policy</a></li>
 	<li><a href="permissions-policy-iframes">Permissions Policy in iframes</a></li>
 	<li><a href="permissions-policy-report-only">Permissions Policy Report-Only</a></li>
 </ol>
+<p>
+	Not all of these use Reporting API, some are proprietary reporting mechanisms and you'll notice them easily &ndash; they don't use the Reporting API's <code>Reporting-Endpoints</code> header.
+	Earlier versions of the Reporting API specification used <code>Report-To</code> header instead of <code>Reporting-Endpoints</code>.
+	The <code>Report-To</code> header is deprecated and generally shouldn't be used, but it is still required in Chrome to deliver all Network Error Logging reports.
+	It should not be confused with the CSP <code>report-to</code> directive.
+</p>
 
 <h3>Removed Browser Reporting</h3>
 <p>Browsers used to send some reports but don't anymore as these features have been (mostly) removed:</p>

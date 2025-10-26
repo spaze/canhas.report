@@ -22,7 +22,7 @@ declare(strict_types = 1);
 	<pre><code>TXT "v=TLSRPTv1;rua=mailto:example@tlsrpt.report-uri.com"</code></pre>
 	<ul>
 		<li><code>v=TLSRPTv1</code>: this TXT DNS record is a SMTP TLSRPT policy record</li>
-		<li><code>rua</code>: where to send <em>aggregated</em> reports to, can be a <code>mailto:</code> or <code>https:</code> URI (multiple URIs comma-separated)</li>
+		<li><code>rua</code>: where to send <em>aggregated</em> reports, can be a <code>mailto:</code> or <code>https:</code> URI (multiple URIs comma-separated)</li>
 	</ul>
 	<p>
 		The <em>canhas.report</em> domain has no SMTP TLSRPT record because no mail is sent from this domain, which is indicated with

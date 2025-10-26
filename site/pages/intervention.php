@@ -1,8 +1,8 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
-header($reportToHeader);
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
+header($reportingEndpointsHeader);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ header($reportToHeader);
 	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'can be used in a CSP header in the <code>report-to</code> directive, for example'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'intervention reports are always delivered to the endpoint named <code>default</code>'); ?>
 
 	<h2>Use an "intervened" feature</h2>
 	<p>
@@ -58,7 +58,7 @@ header($reportToHeader);
 		(the above-mentioned <a href="https://www.chromestatus.com/feature/5644273861001216">phone vibrate intervention</a> is not included in this list for some reason).
 	</p>
 
-	<?= \Can\Has\specsHtml('reporting-api'); ?>
+	<?= \Can\Has\specsHtml('reporting-api', 'intervention'); ?>
 </div>
 </div>
 <?= \Can\Has\footerHtml(); ?>

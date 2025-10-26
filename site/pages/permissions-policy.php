@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
 $permissionsPolicyHeader = 'Permissions-Policy: geolocation=(), fullscreen=(), camera=(self "https://www.michalspacek.com"), midi=*';
-header($reportToHeader);
+header($reportingEndpointsHeader);
 header($permissionsPolicyHeader);
 ?>
 <!DOCTYPE html>
@@ -25,10 +25,9 @@ header($permissionsPolicyHeader);
 	<p><em>
 		The <code>Permissions-Policy</code> header is similar to Content Security Policy header, although the syntax is different
 			as the <code>Permissions-Policy</code> header is defined as a <a href="https://datatracker.ietf.org/doc/html/rfc8941">Structured Header</a>.
-		Permissions Policy, shipped in Chrome 88, was previously known as Feature Policy and was available in Chrome since 2016. Both Permissions Policy and Feature Policy share the same ideas
+		Permissions Policy, shipped in Chrome 88 in 2021, was previously known as Feature Policy and was available in Chrome since 2016. Both Permissions Policy and Feature Policy share the same ideas
 			but the <code>Feature-Policy</code> header used a <a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/permissions-policy-explainer.md#new-header">different format</a>
 			and treated iframe <code>allow</code> attribute <a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/permissions-policy-explainer.md#header-and-allow-attribute-combine-differently">differently</a>.
-		The migration is not fully finished yet and the old name still has to be used in scripts.
 	</em></p>
 	<?= \Can\Has\permissionsPolicyFirstPartyReportsHtml(); ?>
 	<?= \Can\Has\reportingApiNotSupportedHtml(); ?>
@@ -63,7 +62,7 @@ header($permissionsPolicyHeader);
 		</li>
 	</ul>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, \Can\Has\permissionsPolicyEndpointNameDescriptionHtml()); ?>
 
 	<h2>Try getting the current location of the device</h2>
 	<button id="geolocation" class="blocked">Get current geolocation</button>

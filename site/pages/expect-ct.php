@@ -30,7 +30,7 @@ header($expectCtHeader);
 			<code>enforce</code>: optional, if present, the browser should refuse future connections that violate the CT policy, for <code>max-age</code> seconds after the reception of the <code>Expect-CT</code> header
 			&ndash; using <code>enforce</code> doesn't make sense with <code>max-age: 0</code>, also keep in mind some browsers have their own CT requirements that cannot be disabled by simply omitting <code>enforce</code> or setting a short <code>max-age</code>
 		</li>
-		<li><code>report-uri</code>: where to send policy violation reports to, must use HTTPS</li>
+		<li><code>report-uri</code>: where to send policy violation reports, must use HTTPS</li>
 	</ul>
 
 	<h2>Test Expect-CT reporting</h2>

@@ -11,8 +11,7 @@ $pageDescriptionHtml = 'Sending Content Security Policy (CSP) violation reports.
 	To support more browsers, apps usually send both <code>report-uri</code> and <code>report-to</code> in their CSP headers.';
 $includeReportingApiNotSupportedWarning = false;
 $cspHeaderDescription = 'The CSP response header';
-$reportDirective = 'report-uri';
-$reportDirectiveDescription = 'where to send violation reports to';
+$reportDirectiveDescriptionHtml = '<code>report-uri</code>: where to send violation reports';
 $willTriggerReportHtml = \Can\Has\willTriggerReportUriHtml();
 $checkReportsHtml = \Can\Has\checkReportsReportUriHtml();
 $additionalHeaderHtml = null;

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-$reportToHeader = \Can\Has\reportToHeader();
+$reportingEndpointsHeader = \Can\Has\reportingEndpointsHeader();
 $permissionsPolicyHeader = 'Permissions-Policy: fullscreen=(self "https://exploited.cz")';
-header($reportToHeader);
+header($reportingEndpointsHeader);
 header($permissionsPolicyHeader);
 $iframeUrl = 'https://exploited.cz/frames/fullscreen/fullscreen.html';
 ?>
@@ -37,8 +37,8 @@ $iframeUrl = 'https://exploited.cz/frames/fullscreen/fullscreen.html';
 		</li>
 	</ul>
 
-	<?= \Can\Has\reportToHeaderHtml($reportToHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
-	<p><em>Note: the <code>Report-To</code> header here is mostly useless as the following violations happen in 3<sup>rd</sup> party embedded iframes, and no reports are sent in such cases.</em></p>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, \Can\Has\permissionsPolicyEndpointNameDescriptionHtml()); ?>
+	<p><em>Note: the <code>Reporting-Endpoints</code> header here is mostly useless as the following violations happen in 3<sup>rd</sup> party embedded iframes, and no reports are sent in such cases.</em></p>
 
 	<h2>Embedded frame cannot go fullscreen</h2>
 	<?php \Can\Has\scriptSourceHtmlStart('blocked'); ?>
