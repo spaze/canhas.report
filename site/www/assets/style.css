@@ -131,6 +131,10 @@ pre {
 	margin: 0.5em;
 	text-decoration: none;
 }
+#features {
+	height: 16em;
+	overflow: auto;
+}
 .hidden {
 	display: none;
 }
