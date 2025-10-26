@@ -15,9 +15,9 @@ header($nelHeader);
 <div class="content">
 	<?= \Can\Has\bookmarks('index', 'reports'); ?>
 
-	<h1>Network Error Logging reports</h1>
+	<h1>Network Error Logging (NEL) reports</h1>
 	<p><em>
-		Network Error Logging (NEL) enables web applications to declare a reporting policy that can be used by the browser to report network errors for a given origin.
+		Network Error Logging enables web applications to declare a reporting policy that can be used by the browser to report network errors for a given origin.
 		DNS resolution errors, secure connection errors, HTTP errors like 404s, redirect loops etc. But you can even get HTTP 2xx, 3xx success reports, if you wish.
 	</em></p>
 	<p><em>
