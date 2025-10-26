@@ -466,6 +466,20 @@ function permissionsPolicyNotSupportedHtml(string $messageSuffix = 'all features
 }
 
 
+function permissionsPolicyEndpointNameDescriptionHtml(): string
+{
+	return <<< 'EOT'
+		the Permissions Policy reports will be sent to the endpoint named <code>default</code>;
+		to send policy violation reports to a different endpoint, you have to specify it for each feature with a <code>report-to</code> parameter
+		<ul>
+			<li><small>For example: <code>Permissions-Policy: geolocation=();report-to=geo-reporting, fullscreen=();report-to=fs-reporting</code></small></li>
+			<li><small>Then add <code>geo-reporting=<em>"url"</em></code> and <code>fs-reporting=<em>"url"</em></code> endpoints to your <code>Reporting-Endpoints</code> header</small></li>
+			<li><small>Endpoint names in all <code>report-to</code> directives can be the same, but you can't change the reporting endpoint for all features at once</small></li>
+		</ul>
+	EOT;
+}
+
+
 function scriptSourceHtmlStart(string $class): bool
 {
 	static $counter = 0;
@@ -619,6 +633,7 @@ function specsHtml(string ...$specs): string
 					</ul>
 				EOT;
 				$hrefs[] = '<a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/permissions-policy-explainer.md">Permissions Policy explainer</a>';
+				$hrefs[] = '<a href="https://github.com/w3c/webappsec-permissions-policy/blob/main/reporting.md">Permissions Policy reporting details</a>';
 				break;
 		}
 	}

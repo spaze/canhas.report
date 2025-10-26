@@ -37,7 +37,7 @@ $iframeUrl = 'https://exploited.cz/frames/fullscreen/fullscreen.html';
 		</li>
 	</ul>
 
-	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, \Can\Has\permissionsPolicyEndpointNameDescriptionHtml()); ?>
 	<p><em>Note: the <code>Reporting-Endpoints</code> header here is mostly useless as the following violations happen in 3<sup>rd</sup> party embedded iframes, and no reports are sent in such cases.</em></p>
 
 	<h2>Embedded frame cannot go fullscreen</h2>

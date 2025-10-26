@@ -39,7 +39,7 @@ header($permissionsPolicyHeader);
 		</li>
 	</ul>
 
-	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, 'the Permissions Policy reports will always be sent to the group named <code>default</code>'); ?>
+	<?= \Can\Has\reportingEndpointsHeaderHtml($reportingEndpointsHeader, \Can\Has\permissionsPolicyEndpointNameDescriptionHtml()); ?>
 
 	<h2>Go full screen</h2>
 	<button id="fullscreen" class="allowed">Toggle full screen</button>
