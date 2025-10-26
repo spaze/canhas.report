@@ -120,6 +120,7 @@ if (\Can\Has\who() !== null) {
 <h2>Meta</h2>
 <ul>
 	<li><a href="https://github.com/spaze/canhas.report/tree/main/site">Source code</a></li>
+	<li><a href="https://github.com/spaze/canhas.report/issues">Bugs, comments, issues</a></li>
 	<li>The domain name <em>can has</em> is a reference to <a href="https://cheezburger.com/875511040/original-cat-meme-that-started-cheezburger">this meme</a></li>
 </ul>
 
