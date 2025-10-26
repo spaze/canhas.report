@@ -50,7 +50,8 @@ if (\Can\Has\who() !== null) {
 <p>
 	Not all of these use Reporting API, some are proprietary reporting mechanisms and you'll notice them easily &ndash; they don't use the Reporting API's <code>Reporting-Endpoints</code> header.
 	Earlier versions of the Reporting API specification used <code>Report-To</code> header instead of <code>Reporting-Endpoints</code>.
-	The <code>Report-To</code> header is deprecated and should not be confused with the CSP <code>report-to</code> directive.
+	The <code>Report-To</code> header is deprecated and generally shouldn't be used, but it is still required in Chrome to deliver all Network Error Logging reports.
+	It should not be confused with the CSP <code>report-to</code> directive.
 </p>
 
 <h3>Removed Browser Reporting</h3>

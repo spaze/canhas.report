@@ -20,11 +20,17 @@ header($nelHeader);
 		Network Error Logging (NEL) enables web applications to declare a reporting policy that can be used by the browser to report network errors for a given origin.
 		DNS resolution errors, secure connection errors, HTTP errors like 404s, redirect loops etc. But you can even get HTTP 2xx, 3xx success reports, if you wish.
 	</em></p>
+	<p><em>
+		The Network Error Logging specification still uses the now deprecated <code>Report-To</code> header, which was defined in what's sometimes referred to as Reporting API v0.
+		Chrome also sends all NEL reports only when the reporting endpoints are defined with the <code>Report-To</code> header.
+		If you'd use the <code>Reporting-Endpoints</code> header (referred to as Reporting API v1), Chrome would send only some NEL reports, for example the <code>tcp.refused</code> type sent when the server is down, but the report types used here wouldn't be delivered.
+		In the future, NEL <a href="https://github.com/w3c/network-error-logging/issues/159">may use</a> <code>Reporting-Endpoints</code>, or a completely different mechanism to configure the reporting, for <a href="https://github.com/w3c/network-error-logging/issues/173">example DNS records</a>.
+	</em></p>
 	<?= \Can\Has\reportingApiNotSupportedHtml() ?>
 	<h2>The <code>NEL</code> response header:</h2>
 	<pre><code><?= \Can\Has\highlight($nelHeader); ?></code></pre>
 	<ul>
-		<li><code>report_to</code>: name of the group where to send NEL reports (that's an underscore, unlike in the <code>Content-Security-Policy</code> header)</li>
+		<li><code>report_to</code>: name of the group where to send NEL reports, as defined in the <code>Report-To</code> header</li>
 		<li><code>max_age</code>: the lifetime of this NEL policy in seconds, set to weeks or months eventually to also get reports from browsers that have not visited the site for some time</li>
 		<li>
 			<code>include_subdomains</code>: optional, whether this policy applies to all subdomains of the current domain
